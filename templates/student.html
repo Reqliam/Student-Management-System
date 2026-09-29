@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard · Octagon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --bg:       #080c14;
+            --surface:  #0e1420;
+            --surface2: #141c2e;
+            --border:   rgba(255,255,255,0.07);
+            --border2:  rgba(255,255,255,0.12);
+            --accent:   #4f8fff;
+            --accent2:  #7b61ff;
+            --glow:     rgba(79,143,255,0.18);
+            --text:     #eef2ff;
+            --sub:      #8892aa;
+            --green:    #34d399;
+            --green-glow: rgba(52,211,153,0.15);
+            --radius:   18px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Animated background orbs ── */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        .bg-orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #1a3a7a, transparent);
+            top: -100px; left: -100px;
+            animation: drift1 18s ease-in-out infinite alternate;
+        }
+
+        .bg-orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #2d1b69, transparent);
+            bottom: -80px; right: -80px;
+            animation: drift2 22s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift1 {
+            from { transform: translate(0, 0); }
+            to   { transform: translate(60px, 40px); }
+        }
+
+        @keyframes drift2 {
+            from { transform: translate(0, 0); }
+            to   { transform: translate(-50px, -30px); }
+        }
+
+        /* ── Layout ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 32px;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            background: rgba(8,12,20,0.6);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .brand span { color: var(--accent); }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 99px;
+            padding: 6px 14px 6px 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .user-avatar {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 99px;
+            background: transparent;
+            border: 1px solid var(--border2);
+            color: var(--sub);
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            border-color: rgba(255,80,80,0.4);
+            color: #ff6b6b;
+            background: rgba(255,80,80,0.06);
+        }
+
+        /* ── Main content ── */
+        .main {
+            flex: 1;
+            padding: 40px 32px;
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ── Welcome ── */
+        .welcome {
+            margin-bottom: 36px;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .welcome-label {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .welcome h1 {
+            font-size: clamp(26px, 4vw, 38px);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text);
+        }
+
+        .welcome h1 span {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome p {
+            margin-top: 8px;
+            font-size: 15px;
+            color: var(--sub);
+        }
+
+        /* ── Grid ── */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            animation: fadeUp 0.5s ease both;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover { border-color: var(--border2); }
+
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.10s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+
+        .card-label {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sub);
+            margin-bottom: 18px;
+        }
+
+        /* ── QR Scanner card ── */
+        .scanner-card { grid-column: span 1; }
+
+        #reader {
+            width: 100% !important;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Override html5-qrcode default styles */
+        #reader * { font-family: 'Outfit', sans-serif !important; }
+        #reader video { border-radius: 10px; }
+        #reader img { display: none !important; }
+
+        #reader__scan_region {
+            background: var(--surface2) !important;
+            border-radius: 12px !important;
+        }
+
+        #reader__dashboard {
+            background: transparent !important;
+            padding: 10px 0 0 !important;
+        }
+
+        #reader__dashboard_section_swaplink,
+        #reader__dashboard_section_csr span,
+        #html5-qrcode-button-camera-permission,
+        #html5-qrcode-button-camera-start,
+        #html5-qrcode-button-camera-stop {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 8px 16px !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 13px !important;
+            cursor: pointer !important;
+        }
+
+        /* scanner success flash */
+        .scan-success {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--green-glow);
+            border: 1px solid rgba(52,211,153,0.3);
+            border-radius: 10px;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .scan-success.show { display: flex; }
+
+        /* ── Mark attendance card ── */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--sub);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .code-input {
+            width: 100%;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--text);
+            font-size: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            letter-spacing: 2px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .code-input::placeholder {
+            color: var(--sub);
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        .code-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--glow);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(255,255,255,0.12), transparent);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .helper-text {
+            font-size: 12px;
+            color: var(--sub);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* ── View attendance card (full width) ── */
+        .full-width { grid-column: span 2; }
+
+        .attend-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .attend-link:hover {
+            border-color: var(--accent);
+            background: rgba(79,143,255,0.06);
+            transform: translateX(4px);
+        }
+
+        .attend-link-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .attend-icon {
+            width: 46px; height: 46px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(79,143,255,0.2), rgba(123,97,255,0.2));
+            border: 1px solid rgba(79,143,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .attend-link-text strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .attend-link-text span {
+            font-size: 12px;
+            color: var(--sub);
+        }
+
+        .attend-arrow {
+            font-size: 20px;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .attend-link:hover .attend-arrow { transform: translateX(4px); }
+
+        /* ── Result Entry & Prediction ── */
+        .sem-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .sem-tab {
+            padding: 6px 14px;
+            border-radius: 99px;
+            border: 1px solid var(--border2);
+            background: transparent;
+            color: var(--sub);
+            font-size: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+
+        .sem-tab:hover { border-color: var(--accent); color: var(--accent); }
+
+        .sem-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .sem-tab.done {
+            border-color: rgba(52,211,153,0.4);
+            color: #34d399;
+            background: rgba(52,211,153,0.08);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .result-sub {
+            font-size: 13px;
+            color: var(--sub);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .result-sub strong { color: var(--text); }
+
+        /* Grade legend */
+        .grade-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .gl-item {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 99px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--c, var(--sub));
+        }
+
+        /* Subject table header */
+        .subj-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            padding: 0 4px;
+            margin-bottom: 6px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+        }
+
+        .subjects-form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+            max-height: 240px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .subjects-form::-webkit-scrollbar { width: 4px; }
+        .subjects-form::-webkit-scrollbar-track { background: transparent; }
+        .subjects-form::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+        .subject-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .subj-input, .credit-input, .grade-select {
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: var(--text);
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .subj-input::placeholder { color: var(--sub); }
+
+        .subj-input:focus, .credit-input:focus, .grade-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--glow);
+        }
+
+        .credit-input {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+
+        .grade-select {
+            cursor: pointer;
+            appearance: none;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .grade-select option { background: #141c2e; }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-row-btn {
+            padding: 10px 14px;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            color: var(--sub);
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .add-row-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .predict-btn {
+            flex: 1;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .predict-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        /* Prediction panel */
+        .prediction-panel {
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            border-radius: 14px;
+            padding: 24px;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pred-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+            color: var(--sub);
+        }
+
+        .pred-empty-icon { font-size: 36px; opacity: 0.5; }
+        .pred-empty p { font-size: 13px; line-height: 1.6; }
+        .pred-empty strong { color: var(--text); }
+
+        .notice {
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid;
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+        .notice.ok { background: rgba(52,211,153,0.12); border-color: rgba(52,211,153,0.4); color: #9ff1ba; }
+        .notice.err { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); color: #fbb4b4; }
+
+        .pred-box-simple {
+            display: grid;
+            place-items: center;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px dashed var(--border2);
+            background: rgba(255,255,255,0.03);
+            margin-top: 12px;
+        }
+        .pred-label-simple { font-size: 11px; color: var(--sub); text-transform: uppercase; letter-spacing: 1px; }
+        .pred-value-simple { font-size: 34px; font-weight: 800; margin-top: 6px; color: var(--accent); }
+        .pred-meta { margin-top: 10px; font-size: 12px; color: var(--sub); text-align: center; line-height: 1.5; }
+        .confidence-chip {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--border2);
+            border-radius: 999px;
+            padding: 3px 10px;
+            font-size: 11px;
+            margin-top: 8px;
+            color: var(--sub);
+        }
+
+        .pred-result {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* SGPA / CGPA boxes */
+        .sgpa-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .gpa-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 12px;
+            gap: 3px;
+        }
+
+        .gpa-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sub);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .gpa-value {
+            font-size: 30px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+            transition: color 0.4s;
+        }
+
+        .gpa-sub {
+            font-size: 11px;
+            color: var(--sub);
+        }
+
+        .gpa-divider {
+            width: 1px;
+            height: 60px;
+            background: var(--border2);
+        }
+
+        .pred-label-wrap { text-align: center; }
+
+        .pred-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pred-msg {
+            font-size: 12px;
+            color: var(--sub);
+            line-height: 1.5;
+        }
+
+        .pred-subject-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bar-row { display: flex; flex-direction: column; gap: 4px; }
+
+        .bar-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--sub);
+        }
+
+        .bar-meta .grade-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .bar-track {
+            height: 5px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            width: 0%;
+            transition: width 0.9s cubic-bezier(0.22,1,0.36,1);
+        }
+
+        /* Semester CGPA trend */
+        .sem-trend {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            padding-top: 4px;
+        }
+
+        .trend-bar-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .trend-val {
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--sub);
+        }
+
+        .trend-bar {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            transition: height 0.8s cubic-bezier(0.22,1,0.36,1);
+            min-height: 4px;
+        }
+
+        .trend-label {
+            font-size: 9px;
+            color: var(--sub);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .main { padding: 24px 16px; }
+            .topbar { padding: 16px 20px; }
+            .grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .result-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Chatbot Panel ── */
+        .chat-toggle {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f8fff, #7b61ff);
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(79,143,255,0.4);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,143,255,0.5); }
+
+        .chat-panel {
+            position: fixed;
+            bottom: 94px;
+            right: 28px;
+            width: 520px;
+            height: 650px;
+            background: #0e1420;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+            z-index: 499;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.92) translateY(16px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.22s cubic-bezier(0.22,1,0.36,1);
+        }
+        .chat-panel.open {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .chat-header {
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #0f1f3d, #162a52);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chat-header-avatar {
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f8fff, #7b61ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+        }
+        .chat-header-info { flex: 1; }
+        .chat-header-name { font-size: 13px; font-weight: 700; color: #fff; }
+        .chat-header-status { font-size: 11px; color: #34d399; }
+        .chat-close {
+            background: transparent; border: none; color: rgba(255,255,255,0.5);
+            font-size: 18px; cursor: pointer; padding: 4px; line-height: 1;
+            transition: color 0.15s;
+        }
+        .chat-close:hover { color: #fff; }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.1) transparent;
+        }
+        .chat-bubble {
+            max-width: 85%;
+            padding: 10px 13px;
+            border-radius: 14px;
+            font-size: 13px;
+            line-height: 1.55;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .chat-bubble.bot {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #eef2ff;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-bubble.user {
+            background: linear-gradient(135deg, #4f8fff, #7b61ff);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-bubble.typing { color: rgba(255,255,255,0.4); font-style: italic; }
+        .chat-suggestions {
+            padding: 0 14px 8px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .chat-chip {
+            padding: 5px 10px;
+            background: rgba(79,143,255,0.1);
+            border: 1px solid rgba(79,143,255,0.25);
+            border-radius: 99px;
+            font-size: 11px;
+            color: #4f8fff;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .chat-chip:hover { background: rgba(79,143,255,0.2); }
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            padding: 12px 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: rgba(0,0,0,0.2);
+        }
+        .chat-input {
+            flex: 1;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 9px 12px;
+            color: #eef2ff;
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chat-input::placeholder { color: rgba(255,255,255,0.3); }
+        .chat-input:focus { border-color: rgba(79,143,255,0.5); }
+        .chat-send {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4f8fff, #7b61ff);
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+        }
+        .chat-send:hover { opacity: 0.85; }
+    </style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<div class="page">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="brand">OCT<span>AGON</span></div>
+        <div class="topbar-right">
+            <div class="user-chip">
+                <div class="user-avatar">{{ username[0] | upper if username else 'S' }}</div>
+                {{ username }}
+            </div>
+            <a href="/logout" class="logout-btn">↩ Logout</a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+
+        <div class="welcome">
+            <p class="welcome-label">// Student Portal</p>
+            <h1>Welcome back, <span>{{ username }}</span></h1>
+            <p>Scan your session QR or enter a code to mark your attendance.</p>
+        </div>
+
+        {% if success %}<div class="notice ok">{{ success }}</div>{% endif %}
+        {% if saved %}<div class="notice ok">Semester SGPA saved successfully.</div>{% endif %}
+        {% if error %}<div class="notice err">{{ error }}</div>{% endif %}
+
+        <div class="grid">
+
+            <!-- QR Scanner -->
+            <div class="card scanner-card">
+                <p class="card-label">📷 Scan QR Code</p>
+
+                <div id="scannerWrap">
+                    <!-- Start button -->
+                    <div id="startScanBtn" onclick="startScanner()"
+                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;border:2px dashed rgba(255,255,255,0.1);border-radius:14px;cursor:pointer;transition:all 0.2s;"
+                        onmouseover="this.style.borderColor='var(--accent)'"
+                        onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                        <div style="font-size:40px;">📷</div>
+                        <div style="font-size:14px;font-weight:600;color:var(--text);">Tap to start camera</div>
+                        <div style="font-size:12px;color:var(--sub);">Allow camera access when prompted</div>
+                    </div>
+
+                    <!-- Video feed -->
+                    <div id="readerContainer" style="display:none;">
+                        <div id="reader" style="width:100%;border-radius:12px;overflow:hidden;"></div>
+                        <button onclick="stopScanner()"
+                            style="margin-top:10px;width:100%;padding:10px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:10px;color:#f87171;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;">
+                            ✕ Stop Camera
+                        </button>
+                    </div>
+
+                    <!-- Error -->
+                    <div id="scanError" style="display:none;padding:14px;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:12px;font-size:13px;color:#f87171;margin-top:10px;line-height:1.6;"></div>
+                </div>
+
+                <div class="scan-success" id="scanSuccess">
+                    ✅ Code scanned — ready to submit
+                </div>
+            </div>
+
+            <!-- Mark Attendance -->
+            <div class="card">
+                <p class="card-label">✏️ Mark Attendance</p>
+                <form method="POST" action="/mark_attendance">
+                    <div class="form-group">
+                        <label for="session_code">Session Code</label>
+                        <input
+                            class="code-input"
+                            type="text"
+                            name="session_code"
+                            id="session_code"
+                            placeholder="Enter or scan code"
+                            required
+                            autocomplete="off"
+                        >
+                    </div>
+                    <button class="submit-btn" type="submit">Mark Present →</button>
+                    <p class="helper-text">The session code is auto-filled when you scan a QR. You can also type it manually if provided by your teacher.</p>
+                </form>
+            </div>
+
+            <!-- View Attendance -->
+            <div class="card full-width">
+                <p class="card-label">📊 My Attendance</p>
+                <a href="/my_attendance" class="attend-link">
+                    <div class="attend-link-left">
+                        <div class="attend-icon">📈</div>
+                        <div class="attend-link-text">
+                            <strong>View My Attendance Record</strong>
+                            <span>Check your attendance percentage, session history and more</span>
+                        </div>
+                    </div>
+                    <span class="attend-arrow">→</span>
+                </a>
+            </div>
+
+            <!-- Next Semester Prediction -->
+            <div class="card">
+                <p class="card-label">🔮 Next Semester Prediction</p>
+                <form method="POST" action="/save_score">
+                    <div class="form-group">
+                        <label for="semester_no">Semester</label>
+                        <input
+                            class="code-input"
+                            type="number"
+                            name="semester_no"
+                            id="semester_no"
+                            min="1"
+                            max="12"
+                            required
+                            value="{{ next_semester }}"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="score">SGPA (0-10)</label>
+                        <input
+                            class="code-input"
+                            type="number"
+                            name="score"
+                            id="score"
+                            min="0"
+                            max="10"
+                            step="0.01"
+                            required
+                            placeholder="8.05"
+                        >
+                    </div>
+                    <button class="submit-btn" type="submit">Save SGPA →</button>
+                </form>
+
+                <div class="pred-box-simple">
+                    <div class="pred-label-simple">Predicted Next Semester SGPA</div>
+                    <div class="pred-value-simple">{% if predicted is not none %}{{ '%.2f'|format(predicted) }}{% else %}-{% endif %}</div>
+                    <div class="confidence-chip">Confidence: {{ confidence }}</div>
+                    <div class="pred-meta">{{ recommendation }}</div>
+                </div>
+            </div>
+
+            <!-- My Entered SGPA Marks -->
+            <div class="card full-width">
+                <p class="card-label">📘 My Entered SGPA Marks</p>
+                <table style="width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;padding:10px 6px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--sub);">Semester</th>
+                            <th style="text-align:left;padding:10px 6px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--sub);">SGPA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if records %}
+                            {% for r in records %}
+                            <tr>
+                                <td style="padding:10px 6px;border-bottom:1px solid var(--border);">S{{ r['semester_no'] }}</td>
+                                <td style="padding:10px 6px;border-bottom:1px solid var(--border);">{{ '%.2f'|format(r['score']) }}</td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr><td colspan="2" style="padding:10px 6px;">No SGPA records yet.</td></tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+<script>
+    let html5QrCode = null;
+
+    function startScanner() {
+        document.getElementById('startScanBtn').style.display    = 'none';
+        document.getElementById('readerContainer').style.display = 'block';
+        document.getElementById('scanError').style.display       = 'none';
+
+        html5QrCode = new Html5Qrcode("reader");
+
+        Html5Qrcode.getCameras().then(cameras => {
+            if (!cameras || cameras.length === 0) {
+                showScanError("No camera found on this device.");
+                return;
+            }
+
+            // Prefer back camera on mobile
+            const cam = cameras.find(c => c.label.toLowerCase().includes('back')) || cameras[cameras.length - 1];
+
+            html5QrCode.start(
+                cam.id,
+                { fps: 10, qrbox: { width: 220, height: 220 } },
+                (decodedText) => {
+                    // Success
+                    document.getElementById('session_code').value = decodedText;
+                    document.getElementById('scanSuccess').classList.add('show');
+                    stopScanner();
+                },
+                (errorMsg) => {
+                    // Scan errors are normal (frame not a QR) — ignore
+                }
+            ).catch(err => {
+                showScanError("Could not start camera. " + err);
+            });
+
+        }).catch(err => {
+            showScanError("Camera access denied. Please allow camera permission in your browser and try again.");
+        });
+    }
+
+    function stopScanner() {
+        if (html5QrCode) {
+            html5QrCode.stop().then(() => {
+                html5QrCode.clear();
+                html5QrCode = null;
+            }).catch(() => {});
+        }
+        document.getElementById('readerContainer').style.display = 'none';
+        document.getElementById('startScanBtn').style.display    = 'flex';
+    }
+
+    function showScanError(msg) {
+        document.getElementById('readerContainer').style.display = 'none';
+        document.getElementById('startScanBtn').style.display    = 'flex';
+        const err = document.getElementById('scanError');
+        err.style.display  = 'block';
+        err.innerHTML = '⚠️ ' + msg;
+    }
+</script>
+
+
+<!-- ── Chatbot ── -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleChat()" title="KTU Assistant">🤖</button>
+
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+        <div class="chat-header-avatar">🤖</div>
+        <div class="chat-header-info">
+            <div class="chat-header-name">KTU Assistant</div>
+            <div class="chat-header-status">● Online</div>
+        </div>
+        <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble bot">👋 Hi! I'm your KTU Assistant. Ask me about your attendance, SGPA, KTU notices, or academic rules.</div>
+    </div>
+
+    <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-chip" onclick="sendChip(this)">My attendance</button>
+        <button class="chat-chip" onclick="sendChip(this)">My SGPA</button>
+        <button class="chat-chip" onclick="sendChip(this)">Attendance rules</button>
+        <button class="chat-chip" onclick="sendChip(this)">Latest notices</button>
+    </div>
+
+    <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" type="text" placeholder="Ask anything..." onkeydown="if(event.key==='Enter') sendMessage()">
+        <button class="chat-send" onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        document.getElementById('chatPanel').classList.toggle('open');
+        if (document.getElementById('chatPanel').classList.contains('open')) {
+            document.getElementById('chatInput').focus();
+        }
+    }
+
+    function sendChip(btn) {
+        document.getElementById('chatInput').value = btn.textContent;
+        sendMessage();
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const msg   = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        // Hide chips after first message
+        document.getElementById('chatSuggestions').style.display = 'none';
+
+        appendBubble(msg, 'user');
+        const typing = appendBubble('...', 'bot typing');
+
+        try {
+            const res  = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            });
+            const data = await res.json();
+            typing.remove();
+            appendBubble(data.reply || 'Sorry, something went wrong.', 'bot');
+        } catch (e) {
+            typing.remove();
+            appendBubble('Network error. Please try again.', 'bot');
+        }
+    }
+
+    function appendBubble(text, cls) {
+        const msgs = document.getElementById('chatMessages');
+        const div  = document.createElement('div');
+        div.className = 'chat-bubble ' + cls;
+        div.textContent = text;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+        return div;
+    }
+</script>
+
+</body>
+</html>

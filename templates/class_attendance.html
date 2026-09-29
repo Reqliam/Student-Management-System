@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Attendance · Octagon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:      #0f1f3d;
+            --navy2:     #162a52;
+            --blue:      #1a56db;
+            --accent:    #4f8fff;
+            --glow:      rgba(79,143,255,0.12);
+            --green:     #10b981;
+            --green-lt:  #d1fae5;
+            --amber:     #f59e0b;
+            --amber-lt:  #fef3c7;
+            --red:       #ef4444;
+            --red-lt:    #fee2e2;
+            --text:      #111827;
+            --sub:       #6b7280;
+            --border:    #e5e7eb;
+            --bg:        #f3f4f8;
+            --white:     #ffffff;
+            --radius:    14px;
+            --top-h:     64px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            height: var(--top-h);
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+        }
+
+        .topbar-brand {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .topbar-brand span { color: var(--accent); }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 99px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.14);
+            color: #fff;
+        }
+
+        /* ── Main ── */
+        .main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 28px 60px;
+        }
+
+        /* ── Page header ── */
+        .page-header {
+            margin-bottom: 32px;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .page-header .eyebrow {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(24px, 3.5vw, 34px);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.1;
+        }
+
+        .page-header p {
+            margin-top: 6px;
+            font-size: 14px;
+            color: var(--sub);
+        }
+
+        /* ── Stat row ── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+            animation: fadeUp 0.4s 0.05s ease both;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+        }
+
+        .stat-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+        }
+
+        .stat-value.blue  { color: var(--accent); }
+        .stat-value.green { color: var(--green); }
+        .stat-value.amber { color: var(--amber); }
+        .stat-value.red   { color: var(--red); }
+
+        /* ── Table card ── */
+        .table-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            animation: fadeUp 0.4s 0.1s ease both;
+        }
+
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .table-header h2 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* search */
+        .search-wrap {
+            position: relative;
+        }
+
+        .search-wrap input {
+            padding: 9px 14px 9px 36px;
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+            background: var(--bg);
+            color: var(--text);
+            width: 220px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search-wrap input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--glow);
+        }
+
+        .search-wrap::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 13px;
+            pointer-events: none;
+        }
+
+        /* table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            padding: 13px 20px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:last-child td { border-bottom: none; }
+
+        tbody tr {
+            transition: background 0.15s;
+        }
+
+        tbody tr:hover { background: #f9fafb; }
+
+        .student-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .student-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* mini progress bar */
+        .bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 6px;
+            background: var(--bg);
+            border-radius: 99px;
+            overflow: hidden;
+            min-width: 80px;
+        }
+
+        .bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .fill-green { background: var(--green); }
+        .fill-amber { background: var(--amber); }
+        .fill-red   { background: var(--red);   }
+
+        /* badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+        }
+
+        .badge.high   { background: var(--green-lt); color: var(--green); }
+        .badge.medium { background: var(--amber-lt); color: var(--amber); }
+        .badge.low    { background: var(--red-lt);   color: var(--red);   }
+
+        /* rank column */
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--sub);
+        }
+
+        /* empty state */
+        .empty-row td {
+            text-align: center;
+            padding: 48px;
+            color: var(--sub);
+            font-size: 14px;
+        }
+
+        /* ── Footer ── */
+        .table-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--sub);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .stat-row { grid-template-columns: repeat(2,1fr); }
+            .topbar { padding: 0 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .stat-row { grid-template-columns: 1fr; }
+            th, td { padding: 12px 14px; }
+            .main { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+    <div class="topbar-brand">OCT<span>AGON</span></div>
+    <a href="/teacher" class="back-btn">← Dashboard</a>
+</div>
+
+<div class="main">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <p class="eyebrow">// Faculty View</p>
+        <h1>Class Attendance Report</h1>
+        <p>An overview of student attendance across all sessions conducted.</p>
+    </div>
+
+    <!-- Stat cards (computed by JS from table data) -->
+    <div class="stat-row">
+        <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <p class="stat-label">Total Sessions</p>
+            <p class="stat-value blue" id="statSessions">{{ total_sessions }}</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <p class="stat-label">Total Students</p>
+            <p class="stat-value blue" id="statStudents">—</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <p class="stat-label">Above 75%</p>
+            <p class="stat-value green" id="statHigh">—</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⚠️</div>
+            <p class="stat-label">Below 75%</p>
+            <p class="stat-value red" id="statLow">—</p>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+        <div class="table-header">
+            <h2>Student Breakdown</h2>
+            <div class="search-wrap">
+                <input type="text" id="searchInput" placeholder="Search student..." oninput="filterTable()">
+            </div>
+        </div>
+
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Sessions Present</th>
+                    <th>Attendance</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                {% for student in records %}
+                {% set pct = (student.present / total_sessions * 100) if total_sessions > 0 else 0 %}
+                <tr>
+                    <td class="rank">{{ loop.index }}</td>
+                    <td>
+                        <div class="student-name">
+                            <div class="student-avatar">{{ student.username[0] | upper }}</div>
+                            {{ student.username }}
+                        </div>
+                    </td>
+                    <td>
+                        <span style="font-family:'JetBrains Mono',monospace;font-weight:600;">
+                            {% if total_sessions > 0 %}
+                                {{ student.present }} <span style="color:var(--sub);font-weight:400;">/ {{ total_sessions }}</span>
+                            {% else %}
+                                <span style="color:var(--sub);font-weight:400;">No sessions yet</span>
+                            {% endif %}
+                        </span>
+                    </td>
+                    <td>
+                        {% if total_sessions > 0 %}
+                        <div class="bar-wrap">
+                            <div class="bar-track">
+                                <div class="bar-fill {% if pct >= 75 %}fill-green{% elif pct >= 50 %}fill-amber{% else %}fill-red{% endif %}"
+                                    style="width:{{ pct|round(1) }}%;">
+                                </div>
+                            </div>
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;min-width:46px;">
+                                {{ pct|round(1) }}%
+                            </span>
+                        </div>
+                        {% else %}
+                        <span style="color:var(--sub);font-size:13px;">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if total_sessions == 0 %}
+                            <span class="badge" style="background:var(--bg);color:var(--sub);">— No sessions</span>
+                        {% elif pct >= 75 %}
+                            <span class="badge high">✓ Good</span>
+                        {% elif pct >= 50 %}
+                            <span class="badge medium">⚡ Average</span>
+                        {% else %}
+                            <span class="badge low">✕ At Risk</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr class="empty-row">
+                    <td colspan="5">📭 &nbsp; No attendance records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="table-footer">
+            <span id="footerCount">Showing all students</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">Total Sessions: <strong>{{ total_sessions }}</strong></span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Compute stats from rendered table rows
+    const rows = document.querySelectorAll('#tableBody tr:not(.empty-row)');
+    const total = rows.length;
+    let high = 0, low = 0;
+
+    rows.forEach(row => {
+        const barSpan = row.querySelector('.bar-wrap span');
+        if (!barSpan) return; // no sessions yet — skip pct counting
+
+        const pct = parseFloat(barSpan.textContent.trim().replace('%', ''));
+        if (pct >= 75) high++;
+        else low++;
+
+        // Animate bars on load
+        const fill = row.querySelector('.bar-fill');
+        if (fill) {
+            const target = fill.style.width;
+            fill.style.width = '0%';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                fill.style.width = target;
+            }));
+        }
+    });
+
+    document.getElementById('statStudents').textContent = total;
+    document.getElementById('statHigh').textContent     = high || '—';
+    document.getElementById('statLow').textContent      = low  || '—';
+
+    // Search filter
+    function filterTable() {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        let visible = 0;
+        rows.forEach(row => {
+            const name = row.querySelector('.student-name').textContent.toLowerCase();
+            const show = name.includes(q);
+            row.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        document.getElementById('footerCount').textContent =
+            q ? `Showing ${visible} of ${total} students` : `Showing all ${total} students`;
+    }
+</script>
+
+</body>
+</html>

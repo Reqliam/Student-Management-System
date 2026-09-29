@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Attendance</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1c1c28;
+            --border: rgba(255,255,255,0.07);
+            --accent: #c8f542;
+            --accent2: #7b61ff;
+            --text: #f0f0f0;
+            --muted: #6b6b80;
+            --danger: #ff5a7e;
+            --success: #c8f542;
+            --card-radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            padding: 32px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Subtle noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* ── Header ── */
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-text h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text h1 span {
+            color: var(--accent);
+        }
+
+        .header-text p {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 14px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            background: var(--surface);
+            border-color: rgba(255,255,255,0.15);
+            transform: translateX(-3px);
+        }
+
+        /* ── Stat Cards ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 28px 24px;
+            transition: border-color 0.2s, transform 0.2s;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+
+        .card:hover {
+            border-color: rgba(255,255,255,0.14);
+            transform: translateY(-4px);
+        }
+
+        .card-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .card-value {
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .card-value.accent { color: var(--accent); }
+        .card-value.danger { color: var(--danger); }
+
+        /* Dynamic coloring for percentage */
+        .card-value[data-pct="low"]  { color: var(--danger); }
+        .card-value[data-pct="mid"]  { color: #ffc14d; }
+        .card-value[data-pct="high"] { color: var(--accent); }
+
+        /* ── Empty State ── */
+        .empty-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--card-radius);
+            margin-bottom: 28px;
+            text-align: center;
+            gap: 12px;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .empty-state .icon { font-size: 48px; }
+        .empty-state h3 { font-size: 20px; font-weight: 700; }
+        .empty-state p  { color: var(--muted); font-size: 14px; max-width: 300px; }
+
+        /* ── Chart Area ── */
+        .chart-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 28px;
+            margin-bottom: 28px;
+            animation: fadeUp 0.5s 0.2s ease both;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            font-family: 'Space Mono', monospace;
+            color: var(--muted);
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 260px;
+        }
+
+        /* ── Progress bar ── */
+        .progress-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 28px;
+            margin-bottom: 28px;
+            animation: fadeUp 0.5s 0.25s ease both;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 14px;
+        }
+
+        .progress-label span:first-child {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .progress-label span:last-child {
+            font-size: 13px;
+            font-family: 'Space Mono', monospace;
+            color: var(--muted);
+        }
+
+        .progress-track {
+            height: 10px;
+            background: var(--surface2);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: var(--accent);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .progress-fill.danger { background: var(--danger); }
+        .progress-fill.mid    { background: #ffc14d; }
+
+        /* threshold line */
+        .progress-wrapper {
+            position: relative;
+        }
+
+        .threshold-marker {
+            position: absolute;
+            top: -6px;
+            width: 2px;
+            height: 22px;
+            background: var(--muted);
+            border-radius: 2px;
+        }
+
+        .threshold-label {
+            position: absolute;
+            top: -22px;
+            font-size: 10px;
+            font-family: 'Space Mono', monospace;
+            color: var(--muted);
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .stats { grid-template-columns: 1fr; }
+            body { padding: 20px 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .card:last-child { grid-column: 1 / -1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <header>
+        <div class="header-text">
+            <h1>Attendance <span>Overview</span></h1>
+            <p>Academic Year · All Sessions</p>
+        </div>
+        <a href="/student" class="back-btn">← Dashboard</a>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="card">
+            <p class="card-label">Total Sessions</p>
+            <p class="card-value" id="stat-total">
+                {{ total_sessions if total_sessions is not none else 0 }}
+            </p>
+        </div>
+
+        <div class="card">
+            <p class="card-label">Classes Attended</p>
+            <p class="card-value accent" id="stat-present">
+                {{ total_present if total_present is not none else 0 }}
+            </p>
+        </div>
+
+        <div class="card">
+            <p class="card-label">Attendance Rate</p>
+            <p class="card-value" id="stat-pct">
+                <!-- filled by JS for correct rounding & coloring -->
+                0%
+            </p>
+        </div>
+    </div>
+
+    <!-- Empty state (shown if no sessions) -->
+    <div class="empty-state" id="emptyState">
+        <span class="icon">📭</span>
+        <h3>No Data Yet</h3>
+        <p>Attendance records will appear here once classes begin.</p>
+    </div>
+
+    <!-- Doughnut chart -->
+    <div class="chart-wrap" id="chartWrap">
+        <div class="chart-header">
+            <span class="chart-title">Session Breakdown</span>
+            <div class="legend">
+                <span><span class="legend-dot" style="background:#c8f542"></span>Present</span>
+                <span><span class="legend-dot" style="background:#ff5a7e"></span>Absent</span>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="attendanceChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-section" id="progressSection">
+        <div class="progress-label">
+            <span>Attendance Progress</span>
+            <span id="progressText">0 / 0 classes</span>
+        </div>
+        <div class="progress-wrapper">
+            <div class="threshold-marker" id="thresholdMarker" style="left:75%">
+                <span class="threshold-label">75% min</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* ── Raw data from template ── */
+    const totalSessions = parseInt('{{ total_sessions or 0 }}') || 0;
+    const totalPresent  = parseInt('{{ total_present or 0 }}')  || 0;
+    const totalAbsent   = Math.max(0, totalSessions - totalPresent);
+
+    /* ── Percentage (1 decimal, safe division) ── */
+    const pct = totalSessions > 0
+        ? Math.round((totalPresent / totalSessions) * 1000) / 10   // 1 dp
+        : 0;
+
+    /* ── Colour tier ── */
+    function pctTier(p) {
+        if (p >= 75) return 'high';
+        if (p >= 50) return 'mid';
+        return 'low';
+    }
+
+    const tier = pctTier(pct);
+
+    /* ── Update percentage card ── */
+    const pctEl = document.getElementById('stat-pct');
+    pctEl.textContent = pct.toFixed(1) + '%';
+    pctEl.setAttribute('data-pct', tier);
+
+    /* ── Empty state logic ── */
+    if (totalSessions === 0) {
+        document.getElementById('emptyState').style.display = 'flex';
+        document.getElementById('chartWrap').style.display = 'none';
+        document.getElementById('progressSection').style.display = 'none';
+        return; // nothing more to render
+    }
+
+    /* ── Doughnut chart ── */
+    const ctx = document.getElementById('attendanceChart');
+    if (ctx) {
+        new Chart(ctx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Present', 'Absent'],
+                datasets: [{
+                    data: [totalPresent, totalAbsent],
+                    backgroundColor: ['#c8f542', '#ff5a7e'],
+                    borderColor: '#12121a',
+                    borderWidth: 4,
+                    hoverOffset: 8,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '72%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const val = ctx.raw;
+                                const p = totalSessions > 0
+                                    ? ((val / totalSessions) * 100).toFixed(1)
+                                    : 0;
+                                return ` ${ctx.label}: ${val} (${p}%)`;
+                            }
+                        },
+                        backgroundColor: '#1c1c28',
+                        titleColor: '#f0f0f0',
+                        bodyColor: '#a0a0b0',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        padding: 12,
+                        cornerRadius: 10
+                    }
+                },
+                animation: { animateRotate: true, duration: 900 }
+            },
+            plugins: [{
+                /* Centre text plugin — no extra lib needed */
+                id: 'centreText',
+                afterDraw(chart) {
+                    const { ctx: c, chartArea: { left, top, right, bottom } } = chart;
+                    const cx = (left + right) / 2;
+                    const cy = (top  + bottom) / 2;
+                    c.save();
+                    c.textAlign = 'center';
+                    c.textBaseline = 'middle';
+                    c.fillStyle = '#c8f542';
+                    c.font = 'bold 32px Syne, sans-serif';
+                    c.fillText(pct.toFixed(1) + '%', cx, cy - 10);
+                    c.fillStyle = '#6b6b80';
+                    c.font = '12px "Space Mono", monospace';
+                    c.fillText('attendance', cx, cy + 18);
+                    c.restore();
+                }
+            }]
+        });
+    }
+
+    /* ── Progress bar ── */
+    const fill  = document.getElementById('progressFill');
+    const label = document.getElementById('progressText');
+    const marker = document.getElementById('thresholdMarker');
+    const THRESHOLD = 75;
+
+    label.textContent = `${totalPresent} / ${totalSessions} classes`;
+
+    /* colour fill by tier */
+    if (tier === 'low') fill.classList.add('danger');
+    else if (tier === 'mid') fill.classList.add('mid');
+
+    /* threshold marker position */
+    marker.style.left = THRESHOLD + '%';
+
+    /* animate fill on next frame */
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            fill.style.width = Math.min(pct, 100) + '%';
+        });
+    });
+});
+</script>
+
+</body>
+</html>

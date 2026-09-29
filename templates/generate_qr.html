@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate QR · Octagon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:    #0f1f3d;
+            --navy2:   #162a52;
+            --accent:  #4f8fff;
+            --glow:    rgba(79,143,255,0.15);
+            --green:   #10b981;
+            --green-lt:#d1fae5;
+            --text:    #111827;
+            --sub:     #6b7280;
+            --border:  #e5e7eb;
+            --bg:      #f3f4f8;
+            --white:   #ffffff;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            height: 64px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+        }
+
+        .topbar-brand { font-size: 18px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        .topbar-brand span { color: var(--accent); }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 99px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+        /* ── Center layout ── */
+        .page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+            animation: fadeUp 0.4s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(20px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .card h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .class-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--sub);
+            margin-bottom: 32px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── QR box ── */
+        .qr-box {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--border);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* ── Session code ── */
+        .code-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+            margin-bottom: 10px;
+        }
+
+        .code-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin-bottom: 28px;
+        }
+
+        .code-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 3px;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 13px;
+            cursor: pointer;
+            color: var(--sub);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+        .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
+
+        /* ── Info note ── */
+        .info-note {
+            background: var(--green-lt);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #065f46;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        /* ── Buttons ── */
+        .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary { background: var(--navy); color: #fff; }
+        .btn-primary:hover { background: var(--navy2); transform: translateY(-1px); }
+
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+        .btn-outline:hover { background: var(--bg); }
+
+        /* ── Countdown ── */
+        .countdown-wrap {
+            margin-bottom: 24px;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+            margin-bottom: 8px;
+        }
+
+        .countdown-bar-track {
+            width: 100%;
+            height: 6px;
+            background: var(--bg);
+            border-radius: 99px;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .countdown-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: var(--green);
+            transition: width 1s linear, background 0.5s;
+        }
+
+        .countdown-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .countdown-text.warning { color: var(--amber); }
+        .countdown-text.expired { color: var(--red); }
+
+        /* ── QR expired overlay ── */
+        .qr-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 28px;
+        }
+
+        .qr-box {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--border);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: border-color 0.3s;
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: filter 0.5s;
+        }
+
+        .qr-expired-overlay {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.92);
+            border-radius: 18px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .qr-expired-overlay.show { display: flex; }
+
+        .qr-expired-overlay .exp-icon { font-size: 32px; }
+        .qr-expired-overlay .exp-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--red);
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-brand">OCT<span>AGON</span></div>
+    <a href="/teacher" class="back-btn">← Dashboard</a>
+</div>
+
+<div class="page">
+    <div class="card">
+
+        <p class="eyebrow">// Active Session</p>
+        <h1>Attendance QR Code</h1>
+
+        {% if dept and year %}
+        <div class="class-tag">📚 {{ dept }} · Year {{ year }}</div>
+        {% else %}
+        <div style="margin-bottom:32px;"></div>
+        {% endif %}
+
+        <!-- QR Image -->
+        <div class="qr-wrap">
+            <div class="qr-box" id="qrBox">
+                <img src="/static/qr.png?t={{ code }}" alt="QR Code" id="qrImg">
+            </div>
+            <div class="qr-expired-overlay" id="expiredOverlay">
+                <div class="exp-icon">⏰</div>
+                <div class="exp-text">QR Expired</div>
+            </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-wrap">
+            <p class="countdown-label">Session expires in</p>
+            <div class="countdown-bar-track">
+                <div class="countdown-bar-fill" id="countBar"></div>
+            </div>
+            <p class="countdown-text" id="countText">2:00</p>
+        </div>
+
+        <!-- Session code -->
+        <p class="code-label">Session Code</p>
+        <div class="code-box">
+            <span class="code-value" id="codeVal">{{ code }}</span>
+            <button class="copy-btn" id="copyBtn" onclick="copyCode()">Copy</button>
+        </div>
+
+        <!-- Info -->
+        <div class="info-note" id="infoNote">
+            ✅ Session is live. Students can scan this QR or enter the code manually to mark their attendance.
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-row">
+            <a href="/generate_qr?dept={{ dept }}&year={{ year }}" class="btn btn-outline" id="newQrBtn">🔄 New QR</a>
+            <a href="/teacher" class="btn btn-primary">← Dashboard</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const TOTAL    = 120; // 2 minutes in seconds
+    const expiresAt = {{ expires_at }};  // Unix timestamp from Flask
+    let expired = false;
+
+    // Copy code
+    function copyCode() {
+        const code = document.getElementById('codeVal').textContent.trim();
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.getElementById('copyBtn');
+            btn.textContent = '✓ Copied';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+
+    function tick() {
+        if (expired) return;
+
+        const remaining = Math.max(0, expiresAt - (Date.now() / 1000));
+        const pct       = (remaining / TOTAL) * 100;
+        const mins      = Math.floor(remaining / 60);
+        const secs      = Math.floor(remaining % 60);
+        const timeStr   = `${mins}:${String(secs).padStart(2, '0')}`;
+
+        const bar  = document.getElementById('countBar');
+        const text = document.getElementById('countText');
+
+        bar.style.width = pct + '%';
+
+        if (remaining <= 0) {
+            // Expired
+            expired = true;
+            bar.style.background  = 'var(--red)';
+            bar.style.width       = '0%';
+            text.textContent      = 'Expired';
+            text.className        = 'countdown-text expired';
+
+            // Blur QR and show overlay
+            document.getElementById('qrImg').style.filter        = 'blur(6px)';
+            document.getElementById('qrBox').style.borderColor   = 'var(--red)';
+            document.getElementById('expiredOverlay').classList.add('show');
+
+            // Update info note
+            document.getElementById('infoNote').style.background = 'var(--red-lt)';
+            document.getElementById('infoNote').style.color      = '#991b1b';
+            document.getElementById('infoNote').textContent      = '⏰ This session has expired. Students can no longer mark attendance with this QR. Generate a new one.';
+
+            // Disable copy
+            document.getElementById('copyBtn').disabled = true;
+            document.getElementById('copyBtn').style.opacity = '0.4';
+
+        } else if (remaining <= 30) {
+            bar.style.background = 'var(--red)';
+            text.textContent     = timeStr;
+            text.className       = 'countdown-text expired';
+        } else if (remaining <= 60) {
+            bar.style.background = 'var(--amber)';
+            text.textContent     = timeStr;
+            text.className       = 'countdown-text warning';
+        } else {
+            bar.style.background = 'var(--green)';
+            text.textContent     = timeStr;
+            text.className       = 'countdown-text';
+        }
+    }
+
+    // Run immediately then every second
+    tick();
+    setInterval(tick, 1000);
+</script>
+
+</body>
+</html>

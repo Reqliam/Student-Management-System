@@ -1,0 +1,779 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "Hi bot",
+        "Hello assistant",
+        "Hey chatbot"
+      ],
+      "responses": [
+        "Hello! I'm the KTU Student Assistant 🤖. How can I help you today?",
+        "Hi there! Ask me anything about attendance, SGPA prediction, or KTU academic rules."
+      ]
+    },
+    {
+      "tag": "attendance_mark",
+      "patterns": [
+        "How can I mark my attendance",
+        "How do I record attendance",
+        "Where can I mark attendance",
+        "How to add attendance",
+        "How to submit attendance",
+        "How do I enter attendance for a subject"
+      ],
+      "responses": [
+        "Login to the website and open the Attendance section. Select the subject and submit your attendance.",
+        "Go to the attendance page, choose the subject and date, then mark your attendance."
+      ]
+    },
+    {
+      "tag": "attendance_view",
+      "patterns": [
+        "How can I see my attendance",
+        "Where can I view my attendance",
+        "Show my attendance",
+        "How to check attendance percentage",
+        "Show attendance for each subject"
+      ],
+      "responses": [
+        "Open the dashboard and click 'View Attendance' to see subject-wise attendance.",
+        "Your attendance percentage is available in the Attendance section."
+      ]
+    },
+    {
+      "tag": "attendance_requirement",
+      "patterns": [
+        "Minimum attendance required in KTU",
+        "What is the minimum attendance percentage",
+        "How much attendance is required for exams",
+        "Can I write exam with low attendance",
+        "What happens if attendance is below 75"
+      ],
+      "responses": [
+        "KTU requires a minimum of 75% attendance to be eligible for semester examinations."
+      ]
+    },
+    {
+      "tag": "sgpa_prediction",
+      "patterns": [
+        "How does SGPA predictor work",
+        "How can I predict my next semester SGPA",
+        "What is SGPA prediction",
+        "How does the system estimate SGPA",
+        "What data is used for SGPA prediction"
+      ],
+      "responses": [
+        "The SGPA predictor uses your previous semester SGPA values to estimate your next semester SGPA."
+      ]
+    },
+    {
+      "tag": "cgpa_sgpa_difference",
+      "patterns": [
+        "What is CGPA",
+        "What is SGPA",
+        "Difference between CGPA and SGPA",
+        "Explain CGPA",
+        "Explain SGPA"
+      ],
+      "responses": [
+        "SGPA is the grade point average of a single semester while CGPA is the overall average across all semesters."
+      ]
+    },
+    {
+      "tag": "sgpa_calculation",
+      "patterns": [
+        "How is SGPA calculated",
+        "Explain SGPA calculation",
+        "How to calculate SGPA in KTU",
+        "What formula is used for SGPA"
+      ],
+      "responses": [
+        "SGPA is calculated by multiplying grade points with course credits and dividing by total credits of the semester."
+      ]
+    },
+    {
+      "tag": "ktu_minor",
+      "patterns": [
+        "What is minor in KTU",
+        "Explain minor degree",
+        "What does minor mean",
+        "What is the minor program",
+        "Benefits of minor degree"
+      ],
+      "responses": [
+        "A Minor is an additional specialization in another discipline along with your B.Tech degree."
+      ]
+    },
+    {
+      "tag": "minor_apply",
+      "patterns": [
+        "How to apply for minor",
+        "Minor registration process",
+        "Where to register minor",
+        "How can I take minor degree"
+      ],
+      "responses": [
+        "Students can apply for Minor through their college during the registration period announced by KTU."
+      ]
+    },
+    {
+      "tag": "ktu_honours",
+      "patterns": [
+        "What is honours in KTU",
+        "Explain honours degree",
+        "What is honours program",
+        "Benefits of honours"
+      ],
+      "responses": [
+        "Honours is an advanced specialization in your own branch that allows deeper learning in the discipline."
+      ]
+    },
+    {
+      "tag": "honours_eligibility",
+      "patterns": [
+        "How much CGPA is required for honours",
+        "Eligibility for honours",
+        "Conditions for registering honours",
+        "Minimum CGPA for honours in KTU"
+      ],
+      "responses": [
+        "Students must have a CGPA of 8.0 or above and no active backlogs to register for Honours."
+      ]
+    },
+    {
+      "tag": "grace_marks",
+      "patterns": [
+        "What are grace marks",
+        "Grace marks in KTU",
+        "How do grace marks work",
+        "Who gets grace marks"
+      ],
+      "responses": [
+        "Grace marks are additional marks awarded for achievements in sports, arts, or approved activities."
+      ]
+    },
+    {
+      "tag": "credit_system",
+      "patterns": [
+        "What is credit system",
+        "Explain credit system in KTU",
+        "What are course credits",
+        "How do credits work"
+      ],
+      "responses": [
+        "The credit system assigns credits to each subject based on workload. SGPA and CGPA are calculated using these credits."
+      ]
+    },
+    {
+      "tag": "course_registration",
+      "patterns": [
+        "What is course registration",
+        "How to register courses in KTU",
+        "When does course registration happen",
+        "Where can I register subjects"
+      ],
+      "responses": [
+        "Course registration is the process where students select subjects for the upcoming semester through the KTU portal."
+      ]
+    },
+    {
+      "tag": "add_drop",
+      "patterns": [
+        "What is add drop period",
+        "Explain add drop",
+        "Can I change course after registration",
+        "How does add drop work"
+      ],
+      "responses": [
+        "Add/Drop period allows students to modify their registered courses within a limited time after course registration."
+      ]
+    },
+    {
+      "tag": "audit_course",
+      "patterns": [
+        "What is audit course",
+        "Explain audit course in KTU",
+        "Purpose of audit course",
+        "Do audit courses give credits"
+      ],
+      "responses": [
+        "Audit courses are subjects taken for knowledge only and they do not contribute credits to SGPA or CGPA."
+      ]
+    },
+    {
+      "tag": "mooc_course",
+      "patterns": [
+        "What is MOOC course",
+        "Explain MOOC in KTU",
+        "What are online certification courses",
+        "Can MOOC give credits"
+      ],
+      "responses": [
+        "MOOC stands for Massive Open Online Course. KTU allows students to earn credits through approved online courses."
+      ]
+    },
+    {
+      "tag": "ktu_results",
+      "patterns": [
+        "How to check KTU results",
+        "Where can I see my KTU result",
+        "Result portal of KTU",
+        "How to download semester result"
+      ],
+      "responses": [
+        "You can check your results on the KTU student portal using your register number."
+      ]
+    },
+    {
+      "tag": "revaluation",
+      "patterns": [
+        "How to apply for revaluation",
+        "What is revaluation in KTU",
+        "When can I apply for revaluation",
+        "Can marks change after revaluation"
+      ],
+      "responses": [
+        "Students can apply for revaluation through the KTU portal after semester results are published."
+      ]
+    },
+    {
+      "tag": "supply_exam",
+      "patterns": [
+        "What is supplementary exam",
+        "What is supply exam",
+        "When are supply exams conducted",
+        "How to write supply exam"
+      ],
+      "responses": [
+        "Supplementary exams are conducted for students who failed a subject in the regular semester exam."
+      ]
+    },
+    {
+      "tag": "internship",
+      "patterns": [
+        "Is internship compulsory in KTU",
+        "What is internship requirement",
+        "When should we do internship",
+        "How many internships are required"
+      ],
+      "responses": [
+        "Internships are part of the KTU curriculum and help students gain industry experience."
+      ]
+    },
+    {
+      "tag": "transcript",
+      "patterns": [
+        "How to apply for transcript",
+        "What is transcript",
+        "How to get KTU transcript",
+        "Can I apply transcript online"
+      ],
+      "responses": [
+        "Students can apply for transcripts through the KTU portal by submitting an application and fee."
+      ]
+    },
+    {
+      "tag": "credit_transfer",
+      "patterns": [
+        "What is credit transfer",
+        "Explain credit transfer in KTU",
+        "Can I transfer credits from online courses"
+      ],
+      "responses": [
+        "Credit transfer allows approved external courses to be counted towards your KTU degree credits."
+      ]
+    },
+    {
+      "tag": "grade_improvement",
+      "patterns": [
+        "What is grade improvement exam",
+        "Can I improve my grade in KTU",
+        "How to apply for grade improvement"
+      ],
+      "responses": [
+        "Grade improvement exams allow students to reappear for a passed subject to improve their grade."
+      ]
+    },
+    {
+      "tag": "mini_project",
+      "patterns": [
+        "What is mini project",
+        "Explain mini project",
+        "When is mini project done"
+      ],
+      "responses": [
+        "Mini project is usually done in semester 5 and introduces students to research and development."
+      ]
+    },
+    {
+      "tag": "main_project",
+      "patterns": [
+        "What is final year project",
+        "Explain main project",
+        "What is BTech project"
+      ],
+      "responses": [
+        "The final year project is a major academic project done in the final year of B.Tech."
+      ]
+    },
+    {
+      "tag": "bye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye"
+      ],
+      "responses": [
+        "Goodbye! Feel free to ask anytime 😊"
+      ]
+    },
+    {
+      "tag": "ktu_result_notification_b_tech_s7_pt_r_s_exam_nov_2025_2019_sche",
+      "patterns": [
+        "RESULT NOTIFICATION -B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme)",
+        "What is RESULT NOTIFICATION -B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme)",
+        "Tell me about RESULT NOTIFICATION -B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme)",
+        "Details of RESULT NOTIFICATION -B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme)",
+        "Explain RESULT NOTIFICATION -B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme)"
+      ],
+      "responses": [
+        "KTU/EX-II#5/1797/2025 28.02.2026 NOTIFICATION Sub: APJAKTU - Examination (UG-Valuation) - Publication of Results - B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme) - Notified - Reg:- It is hereby notified that the results of the following examination is published. B.Tech S7 (PT) (R,S) Exam Nov 2025 (2019 Scheme) The detailed results are available in Student login and College login. Last date for submitting Answer book copy/ Revaluation request and Fee Payment is as follows. With out Fine With fine With super fine 09-03-2026 12-03-2026 14-03-2026 NOTE : Fee for answer script copy is ₹ 525/- and fee for revaluation is ₹ 630/- per answer script. Students can submit the request and pay the fee through student login only. ( Payment of Fee through the college is not permitted) Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_exam_registration",
+      "patterns": [
+        "Exam Registration",
+        "What is Exam Registration",
+        "Tell me about Exam Registration",
+        "Details of Exam Registration",
+        "Explain Exam Registration"
+      ],
+      "responses": [
+        "KTU/EX-I#18/758/2026 28.02.2026 NOTIFICATION It is hereby notified for information of all concerned that the Exam Registration to the following examination is now open for the Regular/FE students/ colleges, as per details given below :- Sl. No. Name of the examination in the portal (AY: 2025-26) Student Registration Submission by College 1 B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme) up to 05-03-2026 (Thursday) up to 09-03-2026 (Monday) NOTE : Supplementary exam registration will be notified later Students/Colleges are hereby informed to promptly complete the exam registration/submission. Requests for additional time to complete the exam registration will not be considered under any circumstances. Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Page 1 of 1"
+      ]
+    },
+    {
+      "tag": "ktu_b_tech_s6_wp_r_s_exam_april_2026_2019_scheme",
+      "patterns": [
+        "B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme)",
+        "What is B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme)",
+        "Tell me about B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme)",
+        "Details of B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme)",
+        "Explain B.Tech S6 (WP) (R,S) Exam April 2026 (2019 Scheme)"
+      ],
+      "responses": [
+        "KTU/ACA1/1219/2025 02.03.2026 INVITATION FOR EXPRESSIONS OF INTEREST (EOI) ( e-Content Development for Algorithmic Thinking with Python) DUE DATE: 16.03.2026, 15.00hours (3:00 pm). The Human Resource Development Centre (HRDC) of APJ Abdul Kalam Technological University (KTU), Thiruvananthapuram, proposes to develop e-content in the form of recorded video sessions for the course Algorithmic Thinking with Python (Course Code: UCEST105), included in the BTech 2024 Scheme curriculum of the University. In this connection, HRDC has proposed that the University may invite an Expression of Interest (EOI) from eligible and qualified faculty members for the development of high-quality e-content aligned with the approved syllabus of the BTech 2024 Scheme. The salient details are as follows; Course Details: Course Title: Algorithmic Thinking with Python Course Code: UCEST105 Applicable Programme: BTech (2024 Scheme), KTU Content Structure: The course syllabus comprises four (4) modules. The total duration of the video content shall be limited to 20–25 hours. Each module may be divided into smaller units with individual video durations of 10–30 minutes. Long continuous video lectures exceeding 30 minutes shall be avoided. The content shall include interactive elements such as activities, quizzes, or problem- solving tasks to enhance student engagement. Recording and Hosting: Since the University does not currently have a dedicated recording studio, the selected faculty shall use their own suitable hardware and software facilities for recording, ensuring good audio-visual quality. The selected expert faculty shall also be responsible for uploading the content to the University’s Learning Management System (LMS). Eligibility Criteria: Applicants shall be faculty members from: National Institutes such as IITs, IIMs, IISERs, NITs, IISTs, IIITs , or Affiliated colleges of KTU or Teaching departments of other Universities. Educational Qualification and Experience: UG, PG, and PhD in Computer Science and Engineering / Information Technology / Electronics and Communication Engineering, or related disciplines. Minimum five (5) years of teaching experience. Desirable: Prior experience in e-content development for reputed platforms such as SWAYAM-NPTEL. Remuneration: Content Development: ₹ 40,000/- ( ₹ 10,000/- per module) Academic Review: ₹ 16,000/- ( ₹ 2,000/- per module for two subject matter experts) Plagiarism and Copyright Compliance: The selected faculty shall ensure that the content is original and free from plagiarism. Proper copyright clearance shall be obtained for any third-party materials used. Plagiarism detection tools such as URKUND or Turnitin may be used to verify originality. Proper references and credits shall be provided for all source materials. Content Review and Approval: The developed e-content shall be reviewed by two subject matter experts appointed by the University. The content shall be accepted only upon favourable recommendation by the reviewers and approval by the competent authorities. Upon approval, the content shall be hosted on the University LMS. The Expression of Interest (EOI), in the prescribed proforma, should be sent to the following address: The Dean (Academic) APJ Abdul Kalam Technological University CET Campus Thiruvananthapuram Kerala- 695016 Dr. VINU THOMAS Dean (Academic) * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Proforma for Inviting Expression of Interest for Developing e-content for Algorithmic Thinking with Python 1Name 2Designation 3Department 4Contact Details Email ID: Mobile Number 5T eaching Experience (in years, months) 6Nature of Employment Permanent☐ T emporary ☐ Retired ☐ 7Affiliating Institution Name of the Institution: Address: City: State: PIN: Email id: Phone: 8MOOC/E-Content Development Experience (Courses must be hosted on platforms like NPTEL, SWAYAM, or by recognized universities - Only courses with video lectures will be considered) 9Number of SCIE indexed Research Publications 10Details of SCIE indexed Research Publications. Attach separate sheet if required. (Sl. No, Title of paper, journal name, publishers, Vol, Year of publication, DOI). 11Are you currently a member of Board of Studies (Computer Science or allied disciplines) of KTU? 12Google drive link to sample video I hereby certify that all the information provided above are true to the best of my knowledge and belief. Signature with date. Name: Documents to be Submitted: 1.Proof of teaching experience. 2.Details of MOOC/E-content development experience (with supporting documents). 3.Proof of publications (attach the first page of each publication). 4.Proof of SCIE indexing of publications (relevant records from Web of Science — webofscience.com / mjl.clarivate.com)"
+      ]
+    },
+    {
+      "tag": "ktu_invitation_for_expressions_of_interest_eoi",
+      "patterns": [
+        "INVITATION FOR EXPRESSIONS OF INTEREST (EOI)",
+        "What is INVITATION FOR EXPRESSIONS OF INTEREST (EOI)",
+        "Tell me about INVITATION FOR EXPRESSIONS OF INTEREST (EOI)",
+        "Details of INVITATION FOR EXPRESSIONS OF INTEREST (EOI)",
+        "Explain INVITATION FOR EXPRESSIONS OF INTEREST (EOI)"
+      ],
+      "responses": [
+        "KTU/SOEX-IV/2122/2024 02.03.2026 NOTIFICATION Sub: APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026 - Regular/Supplementary end semester Examinations Notification - reg: The Examination Calendar, which provides the slot-wise dates of end-semester examinations for UG programmes from April 2026 to June 2026, is notified herewith. The tentative schedule of result publishing dates is also included. The detailed time tables, including the time schedules, will be published later. Sd/- Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Date DayS1,S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S1 (S)S2 (R,S)S3 (S)S4 (R) S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (S)S8 (S)S9 (S)S1 (S)S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S8 (R,S)S9 (S)S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (R,S)S3 (S)S4 (R) 17.04.2026 FriA (A.N)A (F.N) 18.04.2026 SatA (F.N) 19.04.2026 Sun 20.04.2026 MonA (F.N)B (F.N)B (A.N)A (A.N)B (F.N) 21.04.2026 Tue 22.04.2026 WedC (F.N)C (A.N)A (F.N)A (F.N) 23.04.2026 ThuB (F.N)B (A.N)A (F.N)C (F.N) 24.04.2026 FriA (F.N)D (F.N)D (A.N)A (A.N)B (F.N) 25.04.2026 SatA (A.N)A (F.N)B (F.N)B (F.N) 26.04.2026 Sun 27.04.2026 MonC (F.N)A (F.N)U (F.N)T (A.N)C (A.N)C (F.N)B (F.N)A (A.N)B (F.N)D (F.N) 28.04.2026 TueB (F.N)A (A.N)A (F.N)B (A.N)B (A.N)C (F.N)C (F.N) 29.04.2026 WedB (F.N)B (F.N)D (F.N)E (F.N) 30.04.2026 ThuD (F.N)B (F.N)C (A.N)D (A.N)B (A.N)C (F.N)D (F.N) 01.05.2026 Fri 02.05.2026 SatC (F.N)B (A.N)C (F.N)D (A.N)C (A.N)B (A.N)D (F.N)F (F.N) 03.05.2026 Sun 04.05.2026 MonA (F.N)C (F.N)D (F.N)T (A.N)C (F.N)E (A.N)A (F.N)B (F.N)B (F.N)D (F.N)G (F.N) 05.05.2026 TueD (F.N)C (A.N)A (A.N)D (A.N)A (F.N)E (F.N)E (F.N) 06.05.2026 WedB (F.N)E (F.N)B (F.N)C (F.N) 07.05.2026 ThuD (F.N)B (A.N)D (F.N)T (A.N)A (F.N)C (F.N)E (F.N)M (F.N) 08.05.2026 FriE (F.N) D (A.N)T (F.N)A (F.N)E (A.N)C (F.N)B (F.N)B (F.N)F (F.N) 09.05.2026 Sat 10.05.2026 Sun 11.05.2026 MonC (F.N)E (F.N)C (A.N)B (F.N)T (A.N)D (F.N)C (F.N)B (F.N)B (F.N)A (F.N)G (F.N) 12.05.2026 TueF (F.N)E (A.N)A (F.N)T (F.N)B (F.N) 13.05.2026 WedA (A.N)D (F.N)S (A.N)C (F.N)E (F.N)D (F.N)B (F.N)A (F.N)A (F.N) 14.05.2026 ThuF (F.N)B (F.N)U (F.N)C (F.N)B (F.N)A (F.N) 15.05.2026 FriB (A.N)F (F.N)U (A.N)T (F.N)F (F.N)E (F.N)C (F.N)B (F.N)B (F.N) A (F.N) A (A.N) 17.05.2026 Sun 18.05.2026 MonC (A.N)A (A.N)A (A.N)A (F.N)U (F.N)A (A.N)A (F.N)E (F.N)B (F.N)D (F.N)C (F.N)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY UG EXAMINATION CALENDAR APRIL 2026 TO JUNE 2026 BBA (2024 Scheme)B.Tech (2019 Scheme) (incl.WP/ PT)BHMCT (2024 Scheme)B.Des (2024 Scheme)BCA (2024 Scheme)B.Arch old scheme (2016 Scheme)B.Arch New scheme (2021 Scheme)BHMCT (2018 Scheme) B.Des (2019 Scheme) B.Tech (2024 Scheme) C (F.N)16.05.2026 SatT (A.N)C (F.N)B (F.N)D (F.N) Date DayS1,S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S1 (S)S2 (R,S)S3 (S)S4 (R) S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (S)S8 (S)S9 (S)S1 (S)S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S8 (R,S)S9 (S)S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (S)S3 (S)S4 (S)S5 (S)S6 (R,S)S7 (S)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (R,S)S3 (S)S4 (R)S1 (S)S2 (R,S)S3 (S)S4 (R)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY UG EXAMINATION CALENDAR APRIL 2026 TO JUNE 2026 BBA (2024 Scheme)B.Tech (2019 Scheme) (incl.WP/ PT)BHMCT (2024 Scheme)B.Des (2024 Scheme)BCA (2024 Scheme)B.Arch old scheme (2016 Scheme)B.Arch New scheme (2021 Scheme)BHMCT (2018 Scheme) B.Des (2019 Scheme) B.Tech (2024 Scheme) B (F.N) B (A.N) 20.05.2026 WedD (A.N)B (A.N)B (A.N)B (F.N)A (A.N)B (A.N)B (F.N)A (F.N)C (F.N)E (F.N)D (A.N) C (F.N) C (A.N) 22.05.2026 FriE (A.N)C (A.N)C (A.N)C (F.N)B (A.N)A (F.N)C (A.N)C (F.N)B (F.N)E (A.N) D (F.N) D (A.N) 24.05.2026 Sun 25.05.2026 MonF (A.N)D (A.N)C (A.N)D (F.N)T (A.N)D (F.N)D (A.N)D (F.N)C (F.N)F (A.N) E (F.N) E (A.N) 27.05.2026 Wed 28.05.2026 Thu 29.05.2026 Fri F (F.N)F (A.N)S (A.N)T (F.N)U (A.N)E (F.N)E (F.N)E (A.N)D (F.N)G (A.N) 30.05.2026 SatCST 206 (A.N)F (A.N)D (A.N)C (F.N)E (A.N)E (F.N)E (F.N)G (F.N) 31.05.2026 Sun 01.06.2026 MonA (F.N)G (A.N)U (A.N)D (F.N)F (A.N)F (F.N)E (F.N) 02.06.2026 TueA (A.N)H (F.N)H (F.N)T (A.N)F (F.N)F (A.N) 03.06.2026 WedB (F.N)V (A.N)E (F.N)A (A.N)G (F.N) 04.06.2026 ThuB (A.N)M (F.N)M (F.N)A (F.N) 05.06.2026 FriC (F.N)T (F.N)B (A.N) 06.06.2026 SatC (A.N)B (F.N) 07.06.2026 Sun 08.06.2026 MonD (F.N)C (A.N)C (F.N) 09.06.2026 TueD (A.N) 10.06.2026 WedE (F.N)D (A.N)D (F.N) 11.06.2026 ThuE (A.N) 12.06.2026 FriF (F.N)E (A.N)E (F.N) 13.06.2026 Sat 14.06.2026 Sun 15.06.2026 MonF (A.N)F (A.N)F (F.N) 16.06.2026 Tue 17.06.2026 WedCST 201 (A.N)F (F.N)B (A.N ) D (F.N)D (A.N)D (F.N)C (A.N)B (F.N)D (A.N) 26.05.2026 TueC (F.N)C (A.N)C (A.N)23.05.2026 SatC (F.N)C (F.N)E (F.N)E (F.N)C (A.N)B (F.N)B (A.N)D (F.N)D (F.N)B (F.N)B (F.N)A (A.N)A (F.N) T (F.N)21.05.2026 ThuB (A.N)C (F.N)C (F.N)A (F.N)A (A.N)A (F.N)19.05.2026 TueD (F.N)A (A.N) Tentative Schedule of Result Publishing Dates for UG Examinations April 2026 – June2026 Sl. No. Name of Examination Result Declaration Date 1. B.TechS8 (R,S) (2019 sch.) 13.06.2026 2. B.TechS7 (S) (2019 sch.) 13.06.2026 3. B.TechS6 (R,S) (2019 sch.) 25.07.2026 4. B.TechS5 (S) (2019 sch.) 10.09.2026 5. B.TechS4 (S) (2019 sch.) 30.08.2026 6. B.TechS3 (S) (2019 sch.) 10.09.2026 7. B.TechS1 B.TechS2 (S) (2019 sch.) 25.08.2026 8. B.TechS4 (R) (2024 sch.) 25.07.2026 9. B.TechS3 (S) (2024 sch.) 01.09.2026 10. B.TechS2 (R,S) (2024 sch.) 28.07.2026 11. B.TechS1(S) (2024 sch.) 20.08.2026 12. B.ArchS9 (S) (2016 sch.) 25.08.2026 13. B.ArchS8 (S) (2016 sch.) 04.08.2026 14. B.ArchS6 (S) (2016 sch.) 24.07.2026 15. B.ArchS5 (S) (2016 sch.) 08.08.2026 16. B.ArchS4 (S) (2016 sch.) 21.08.2026 17. B.ArchS3 (S) (2016 sch.) 29.08.2026 18. B.ArchS2 (S) (2016 sch.) 15.08.2026 19. B.ArchS1 (S) (2016 sch.) 03.09.2026 20. B.ArchS9 (S) (2021 sch.) 29.08.2026 21. B.ArchS8 (R,S) (2021 sch.) 15.07.2026 22. B.ArchS6 (R,S) (2021 sch.) 25.07.2026 23. B.ArchS5 (S) (2021 sch.) 05.09.2026 24. B.ArchS4 (R,S) (2021 sch.) 20.08.2026 25. B.ArchS3 (S) (2021 sch.) 02.09.2026 26. B.ArchS2 (R,S) (2021 sch.) 28.07.2026 27. B.ArchS1 (S) (2021 sch.) 29.08.2026 28. BHMCTS7 (S) (2018 sch.) 03.09.2026 29. BHMCTS6 (R,S) (2018 sch.) 15.07.2026 30. BHMCTS5 (S) (2018 sch.) 02.08.2026 31. BHMCTS4 (S) (2018 sch.) 01.09.2026 32. BHMCTS3 (S) (2018 sch.) 10.09.2026 33. BHMCTS2 (S) (2018 sch.) 02.09.2026 34. BHMCTS1 (S) (2018 sch.) 10.09.2026 35. BHMCTS4 (R) (2024 sch.) 25.07.2026 36. BHMCTS3 (S) (2024 sch.) 30.08.2026 37. BHMCTS2 (R,S) (2024 sch.) 29.07.2026 38. BHMCTS1 (S) (2024 sch.) 01.09.2026 39. B.DesS7 (S) (2019 sch.) 02.08.2026 40. B.DesS6 (R,S) (2019 sch.) 05.07.206 41. B.DesS5 (S) (2019 sch.) 06.08.2026 42. B.DesS4 (S) (2019 sch.) 20.08.2026 43. B.DesS3 (S) (2019 sch.) 11.08.2026 44. B.DesS2 (S) (2019 sch.) 15.08.2026 45. B.DesS1 (S) (2019 sch.) 20.08.2026 46. B.DesS4 (R) (2024 sch.) 10.07.2026 47. B.DesS3 (S) (2024 sch.) 07.08.2026 48. B.DesS2 (R,S) (2024 sch.) 05.07.2026 49. B.DesS1 (S) (2024 sch.) 11.08.2026 50. BCAS4 (R) (2024 sch.) 15.07.2026 51. BCAS3 (S) (2024 sch.) 20.08.2026 52. BCAS2 (R,S) (2024 sch.) 25.07.2026 53. BCAS1 (S) (2024 sch.) 23.08.2026 54. BBAS4 (R) (2024 sch.) 25.07.2026 55. BBAS3 (S) (2024 sch.) 30.08.2026 56. BBAS2 (R,S) (2024 sch.) 28.07.2026 57. BBAS1 (S) (2024 sch.) 28.08.2026 Registration opening & closing dates of Regular & Supplementary Examinations Sl. No. Name of Examination Opening Date Closing Date 1. B.TechS8 (R,S) (2019 sch.) 06.02.2026 19.02.2026 2. B.TechS7 (S) (2019 sch.) 20.04.2026 02.05.2026 3. B.TechS6 (R,S) (2019 sch.) 06.02.2026 19.02.2026 4. B.TechS5 (S) (2019 sch.) 01.06.2026 05.05.2026 5. B.TechS4 (S) (2019 sch.) 19.04.2026 01.05.2026 6. B.TechS3 (S) (2019 sch.) 04.05.2026 17.05.2026 7. B.TechS1 B.TechS2 (S) (2019 sch.) 21.04.2026 03.05.2026 8. B.TechS4 (R) (2024 sch.) 06.02.2026 09.02.2026 9. B.TechS3 (S) (2024 sch.) 23.04.2026 06.05.2026 10. B.TechS2 (R,S) (2024 sch.) 09.02.2026 23.02.2026 11. B.TechS1(S) (2024 sch.) 22.04.2026 06.05.2026 12. B.ArchS9 (S) (2016 sch.) 24.03.2026 06.04.2026 13. B.ArchS8 (S) (2016 sch.) 01.04.2026 13.04.2026 14. B.ArchS6 (S) (2016 sch.) 23.03.2026 05.04.2026 15. B.ArchS5 (S) (2016 sch.) 02.04.2026 15.04.2026 16. B.ArchS4 (S) (2016 sch.) 18.04.2026 02.05.2026 17. B.ArchS3 (S) (2016 sch.) 22.04.2026 06.05.2026 18. B.ArchS2 (S) (2016 sch.) 10.04.2026 22.04.2026 19. B.ArchS1 (S) (2016 sch.) 22.04.2026 06.05.2026 20. B.ArchS9 (S) (2021 sch.) 22.04.2026 06.05.2026 21. B.ArchS8 (R,S) (2021 sch.) 21.01.2026 02.02.2026 22. B.ArchS6 (R,S) (2021 sch.) 21.01.2026 02.02.2026 23. B.ArchS5 (S) (2021 sch.) 26.04.2026 09.05.2026 24. B.ArchS4 (R,S) (2021 sch.) 21.01.2026 02.02.2026 25. B.ArchS3 (S) (2021 sch.) 24.04.2026 07.05.2026 26. B.ArchS2 (R,S) (2021 sch.) 09.02.2026 09.02.2026 27. B.ArchS1 (S) (2021 sch.) 22.04.2026 06.05.2026 28. BHMCTS7 (S) (2018 sch.) 22.04.2026 06.05.2026 29. BHMCTS6 (R,S) (2018 sch.) 12.01.2026 19.01.2026 30. BHMCTS5 (S) (2018 sch.) 22.04.2026 06.05.2026 31. BHMCTS4 (S) (2018 sch.) 22.04.2026 06.05.2026 32. BHMCTS3 (S) (2018 sch.) 11.04.2026 23.04.2026 33. BHMCTS2 (S) (2018 sch.) 22.04.2026 06.05.2026 34. BHMCTS1 (S) (2018 sch.) 08.05.2026 21.05.2026 35. BHMCTS4 (R) (2024 sch.) 12.01.2026 19.01.2026 36. BHMCTS3 (S) (2024 sch.) 22.04.2026 06.05.2026 37. BHMCTS2 (R,S) (2024 sch.) 10.04.2026 24.04.2026 38. BHMCTS1 (S) (2024 sch.) 24.04.2026 07.05.2026 39. B.DesS7 (S) (2019 sch.) 06.04.2026 19.04.2026 40. B.DesS6 (R,S) (2019 sch.) 12.01.2026 09.01.2026 41. B.DesS5 (S) (2019 sch.) 08.04.2026 21.04.2026 42. B.DesS4 (S) (2019 sch.) 12.04.2026 25.04.2026 43. B.DesS3 (S) (2019 sch.) 15.04.2026 28.04.2026 44. B.DesS2 (S) (2019 sch.) 17.04.2026 01.05.2026 45. B.DesS1 (S) (2019 sch.) 22.04.2026 06.05.2026 46. B.DesS4 (R) (2024 sch.) 01.04.2026 14.04.2026 47. B.DesS3 (S) (2024 sch.) 11.04.2026 23.04.2026 48. B.DesS2 (R,S) (2024 sch.) 03.04.2026 16.04.2026 49. B.DesS1 (S) (2024 sch.) 17.04.2026 03.05.2026 50. BCAS4 (R) (2024 sch.) 12.01.2026 19.01.2026 51. BCAS3 (S) (2024 sch.) 15.04.2026 28.04.2026 52. BCAS2 (R,S) (2024 sch.) 28.03.2026 10.04.2026 53. BCAS1 (S) (2024 sch.) 17.04.2026 30.04.2026 54. BBAS4 (R) (2024 sch.) 12.01.2026 19.01.2026 55. BBAS3 (S) (2024 sch.) 18.04.2026 02.05.2026 56. BBAS2 (R,S) (2024 sch.) 27.03.2026 09.04.2026 57. BBAS1 (S) (2024 sch.) 17.04.2026 30.04.2026"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_programmes_examination_calendar_april",
+      "patterns": [
+        "APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026- Regular/Supplementary end semester Examinations",
+        "What is APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026- Regular/Supplementary end semester Examinations",
+        "Tell me about APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026- Regular/Supplementary end semester Examinations",
+        "Details of APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026- Regular/Supplementary end semester Examinations",
+        "Explain APJAKTU - Examination - UG programmes - Examination Calendar April 2026 to June 2026- Regular/Supplementary end semester Examinations"
+      ],
+      "responses": [
+        "KTU/EX-II#1/4990/2024 02.03.2026 NOTIFICATION Sub: APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations - Notification - reg: The Examination Calendar furnishing the slot-wise dates of End semester Examinations for PG programmes from April 2026 to June 2026 is notified herewith. A tentative schedule of result publishing is also furnished below. The detailed time tables including the time schedule of all programmes will be published later. Sd/- Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Date Day S1 (S) S2 (R,S)S1 (S)S2 (S) S3 (S) S1 (S) S2(R S1 (S)S2 (R,S)S3 (S)S1 (S) S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S9 (S) S1 (S)S2 (R,S)S3 (S)S4 (R,S) 20.04.2026 MonA (F.N) 21.04.2026 TueA (F.N) 22.04.2026 WedB (F.N) 23.04.2026 Thu 24.04.2026 FriB (F.N) 25.04.2026 SatC (F.N) 26.04.2026 Sun 27.04.2026 MonC (F.N) 28.04.2026 TueD (F.N) 29.04.2026 Wed 30.04.2026 ThuA (F.N)D (F.N) 01.05.2026 Fri 02.05.2026 SatE (F.N) 03.05.2026 SunAPJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY PG EXAMINATION CALENDAR April 2026 - June 2026 M.Tech (Incl. WP) (2022 Scheme)M.Arch / M.Plan (2016Scheme)MCA 2Year (2020 Scheme)MCA Integrated (2020 Scheme)MBA (Inc. PT) (2020 Scheme)M.Arch / M.Plan (2025 Scheme) Date Day S1 (S) S2 (R,S)S1 (S)S2 (S) S3 (S) S1 (S) S2(R S1 (S)S2 (R,S)S3 (S)S1 (S) S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S9 (S) S1 (S)S2 (R,S)S3 (S)S4 (R,S)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY PG EXAMINATION CALENDAR April 2026 - June 2026 M.Tech (Incl. WP) (2022 Scheme)M.Arch / M.Plan (2016Scheme)MCA 2Year (2020 Scheme)MCA Integrated (2020 Scheme)MBA (Inc. PT) (2020 Scheme)M.Arch / M.Plan (2025 Scheme) 04.05.2026 MonA (F.N)E (F.N) 05.05.2026 TueA (F.N) 06.05.2026 WedB (F.N) 07.05.2026 ThuB (F.N)F (F.N) 08.05.2026 FriA (F.N)A (F.N)B (F.N) 09.05.2026 Sat 10.05.2026 Sun 11.05.2026 MonB (F.N)B (F.N)G (F.N) 12.05.2026 Tue 13.05.2026 WedS (F.N) 14.05.2026 ThuC (F.N)A (F.N) 15.05.2026 FriU (F.N)C (F.N)A (A.N) 16.05.2026 SatC (F.N) 17.05.2026 Sun Date Day S1 (S) S2 (R,S)S1 (S)S2 (S) S3 (S) S1 (S) S2(R S1 (S)S2 (R,S)S3 (S)S1 (S) S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S9 (S) S1 (S)S2 (R,S)S3 (S)S4 (R,S)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY PG EXAMINATION CALENDAR April 2026 - June 2026 M.Tech (Incl. WP) (2022 Scheme)M.Arch / M.Plan (2016Scheme)MCA 2Year (2020 Scheme)MCA Integrated (2020 Scheme)MBA (Inc. PT) (2020 Scheme)M.Arch / M.Plan (2025 Scheme) 18.05.2026 MonD (F.N)C (F.N)B (A.N) 19.05.2026 TueB (F.N) 20.05.2026 WedD (F.N)C (A.N) 21.05.2026 ThuE (F.N)A (A.N)D (F.N) 22.05.2026 FriD (F.N)D (A.N) 23.05.2026 SatB (A.N)C (F.N) 24.05.2026 Sun 25.05.2026 MonC (A.N)E (F.N)E (A.N) 26.05.2026 Tue 27.05.2026 Wed 28.05.2026 ThuS (A.N)A (A.N)F (A.N) 29.05.2026 FriA (F.N)E (F.N) 30.05.2026 SatT (A.N)B (A.N)D (F.N)G (A.N) 31.05.2026 Sun Date Day S1 (S) S2 (R,S)S1 (S)S2 (S) S3 (S) S1 (S) S2(R S1 (S)S2 (R,S)S3 (S)S1 (S) S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S9 (S) S1 (S)S2 (R,S)S3 (S)S4 (R,S)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY PG EXAMINATION CALENDAR April 2026 - June 2026 M.Tech (Incl. WP) (2022 Scheme)M.Arch / M.Plan (2016Scheme)MCA 2Year (2020 Scheme)MCA Integrated (2020 Scheme)MBA (Inc. PT) (2020 Scheme)M.Arch / M.Plan (2025 Scheme) 01.06.2026 MonA (A.N)C (A.N)B (F.N)H (A.N) 02.06.2026 TueA (A.N) 03.06.2026 WedB (A.N)D (A.N)C (F.N) 04.06.2026 ThuB (A.N)R (F.N) 05.06.2026 FriS (A.N)S (A.N)D (F.N)A (F.N)A (A.N) 06.06.2026 SatC (A.N)A (F.N) 07.06.2026 Sun 08.06.2026 MonD (A.N)T (A.N)A (A.N)B (F.N)B (A.N) 09.06.2026 TueA (A.N)A (A.N)B (F.N) 10.06.2026 WedE (A.N)A (A.N)B (A.N)C (F.N)C (A.N) 11.06.2026 ThuB (A.N)B (A.N)A (F.N) 12.06.2026 FriS (A.N)B (A.N)C (A.N)D (F.N)D (A.N) 13.06.2026 Sat 14.06.2026 Sun Date Day S1 (S) S2 (R,S)S1 (S)S2 (S) S3 (S) S1 (S) S2(R S1 (S)S2 (R,S)S3 (S)S1 (S) S2 (R,S)S3 (S)S4 (R,S)S5 (S)S6 (R,S)S7 (S)S8 (R,S)S9 (S) S1 (S)S2 (R,S)S3 (S)S4 (R,S)APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY PG EXAMINATION CALENDAR April 2026 - June 2026 M.Tech (Incl. WP) (2022 Scheme)M.Arch / M.Plan (2016Scheme)MCA 2Year (2020 Scheme)MCA Integrated (2020 Scheme)MBA (Inc. PT) (2020 Scheme)M.Arch / M.Plan (2025 Scheme) 15.06.2026 MonS (A.N)C (A.N)D (A.N)E (F.N)E (A.N) 16.06.2026 TueA (A.N)C (A.N)B (F.N) 17.06.2026 WedT (A.N)D (A.N)E (A.N)C (F.N)F (A.N) 18.06.2026 ThuB (A.N)D (A.N)C (F.N) 19.06.2026 FriU (A.N)D (F.N)G (A.N) 20.06.2026 SatC (A.N)E (A.N)D (F.N) 21.06.2026 Sun 22.06.2026 MonD (A.N)E (F.N)G,C (A.N) Tentative Schedule of Result Publishing Dates for PG Examinations April – June 2026 Sl.No. Name of Examination Result Declaration Date 1. M.Tech S2 (R,S) (2022 Scheme) 21.07.2026 2. M.Tech S1 (S) (2022 Scheme) 12.09.2026 3. M.Arch / MPlan S3 (S) (2016 Scheme) 08.09.2026 4. M.Arch / MPlan S2 (S) (2016 Scheme) 10.08.2026 5. M.Arch / MPlan S1 (S) (2016 Scheme) 20.08.2026 6. M.Arch / MPlan S2 (R) (2025 Scheme) 20.07.2026 7. M.Arch / MPlan S1(S) (2025 Scheme) 05.09.2026 8. MCA 2 Year S3 (S) (2020 Scheme) 22.09.2026 9. MCA 2 Year S2 (R,S) (2020 Scheme) 10.08.2026 10. MCA 2 Year S1 (S) (2020 Scheme) 17.09.2026 11. MBA S4 (R,S) (2020 Scheme) 15.07.2026 12. MBA S3 (S)(2020 Scheme) 22.09.2026 13. MBA S2 (R,S) (2020 Scheme) 30.07.2026 14. MBA S1 (S)(2020 Scheme) 30.08.2026 15. MCA Integrated S9 (S) (2020 Scheme) 19.09.2026 16. MCA Integrated S8 (R,S) (2020 Scheme) 05.08.2026 17. MCA Integrated S7 (S) (2020 Scheme) 22.09.2026 18. MCA Integrated S6 (R,S) (2020 Scheme) 30.07.2026 19. MCA Integrated S5 (S) (2020 Scheme) 15.09.2026 20. MCA Integrated S4 (R,S) (2020 Scheme) 10.08.2026 21. MCA Integrated S3 (S) (2020 Scheme) 20.09.2026 22. MCA Integrated S2 (R,S) (2020 Scheme) 15.08.2026 23. MCA Integrated S1 (S) (2020 Scheme) 17.09.2026"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_calendar_pg_end_semester_examinations_ap",
+      "patterns": [
+        "APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations",
+        "What is APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations",
+        "Tell me about APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations",
+        "Details of APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations",
+        "Explain APJAKTU - Examination Calendar - PG End semester Examinations April 2026 - June 2026 - Regular and Supplementary Examinations"
+      ],
+      "responses": [
+        "KTU/EX-II#5/1797/2025 08.03.2026 NOTIFICATION Sub: APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Des Exams Nov/Dec 2025 (2024 scheme and 2019 Scheme ). - Notified - Reg:- It is hereby notified that the results of the following examinations are published. The detailed results are available in the Student Login and College Login. B.Des S1 (R,S) Exam Dec 2025 (2024 Scheme) B.Des S1 (S,FE) Exam Nov 2025 (2019 Scheme) B.Des S2 (S) Exam Dec 2025 (2024 Scheme) B.Des S2 (S,FE) Exam Dec 2025 (2019 Scheme) B.Des S3, S, FE, Exam Dec 2025, 2019 Scheme B.Des S3(R) Exam Nov 2025 (2024 Scheme) B.Des S4 (S,FE) Exam Nov 2025 (2019 Scheme) B.Des S5 (R,S) Exam Nov 2025 (2019 Scheme) B.Des S6 (S,FE) Exam Dec 2025 (2019 Scheme) B.Des S7 (R,S) Exam Nov 2025 (2019 Scheme) Last date for submitting Answer book copy/ Revaluation request and Fee Payment is as follows. With out Fine With fine With super fine 15-03-2026 18-03-2026 20-03-2026 NOTE : Fee for answer script copy is ₹ 525/- and fee for revaluation is ₹ 630/- per answer script. Students can submit the request and pay the fee through student login only. ( Payment of Fee through the college is not permitted) Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_course_duration_extension",
+      "patterns": [
+        "Course Duration Extension",
+        "What is Course Duration Extension",
+        "Tell me about Course Duration Extension",
+        "Details of Course Duration Extension",
+        "Explain Course Duration Extension"
+      ],
+      "responses": [
+        "Notice: Course Duration Extension"
+      ]
+    },
+    {
+      "tag": "ktu_result_notification_b_des_exams_nov_dec_2025_2019_scheme_and",
+      "patterns": [
+        "Result Notification -B.Des Exams Nov/Dec 2025 (2019 scheme and 2024 scheme)",
+        "What is Result Notification -B.Des Exams Nov/Dec 2025 (2019 scheme and 2024 scheme)",
+        "Tell me about Result Notification -B.Des Exams Nov/Dec 2025 (2019 scheme and 2024 scheme)",
+        "Details of Result Notification -B.Des Exams Nov/Dec 2025 (2019 scheme and 2024 scheme)",
+        "Explain Result Notification -B.Des Exams Nov/Dec 2025 (2019 scheme and 2024 scheme)"
+      ],
+      "responses": [
+        "KTU/EX-VII#2/233/2025 11.03.2026 NOTIFICATION It is hereby notified for information of all concerned that the result of B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn) is published. Detailed results are available in Student/ College portal login. Answer Book Copy/ Revaluation Request The portal is now open to the students for submitting requests for Revaluation/ . Answer Book Copy . Requests shall be submitted on or before the following deadlines . With out Fine : on or before 19.03.2026 (Thursday) With Fine : on or before 22.03.2026 (Sunday) With Super Fine : on or before 24.03.2026 (Tuesday) NOTE Fee (without fine) for answer script copy is Rs.525/- and fee for revaluation is Rs.630/ - per answer script. Students can submit the request and make the payment through their login. (Fee payment through college office will not be available.) Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Page 1 of 1"
+      ]
+    },
+    {
+      "tag": "ktu_result_notification_b_tech_s7_hons_exam_nov_2025_2022_admn",
+      "patterns": [
+        "Result Notification-B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn)",
+        "What is Result Notification-B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn)",
+        "Tell me about Result Notification-B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn)",
+        "Details of Result Notification-B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn)",
+        "Explain Result Notification-B.Tech S7 (Hons.) Exam Nov 2025 (2022 Admn)"
+      ],
+      "responses": [
+        "KTU/EX-VI#2/2829/2022 28.02.2026 NOTIFICATION Ref: 1.Notification No KTU/EX-VI#2/2829/2022 dtd 19.02.2026 2. Notification No KTU/EX-VI#2/2829/2022 dtd 23.02.2026 2. Notification No KTU/EX-V#1/4837/2025 dtd 20.02.2026 4. Notification No KTU/EX-I#18/589/2026 dtd 19.02.2026 It is hereby notified that the exam registration for the following examinations has been extended for regular/FE students and Colleges: B.Tech S8 (R, S) Examination April 2026 (2019 Scheme) B.Tech S8 (WP) (R) Examination April 2026 B.Tech S4 (R) Examination April 2026 (2024 Scheme) B.Tech S6 (R, S) Examination April 2026 (2019 Scheme) The revised last dates are as follows: For Regular/FE Students: up to 02.03.2026 (Monday) For Colleges: up to 04.03.2026 (Wednesday) Students and Colleges are hereby informed to complete the exam registration/submission within the stipulated period. Requests for further extension will not be considered. Dr. VINU THOMAS Controller of Examinations To All Colleges (affiliated to APJ Abdul Kalam Technological University) * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Page 1 of 1"
+      ]
+    },
+    {
+      "tag": "ktu_date_extended_exam_registration_b_tech_s4_s6_s8",
+      "patterns": [
+        "Date Extended-Exam Registration-B.Tech S4,S6,S8",
+        "What is Date Extended-Exam Registration-B.Tech S4,S6,S8",
+        "Tell me about Date Extended-Exam Registration-B.Tech S4,S6,S8",
+        "Details of Date Extended-Exam Registration-B.Tech S4,S6,S8",
+        "Explain Date Extended-Exam Registration-B.Tech S4,S6,S8"
+      ],
+      "responses": [
+        "KTU/EX-VI#2/2829/2022 28.02.2026 NOTIFICATION Ref: 1.Notification No KTU/EX-VI#2/2829/2022 dtd 19.02.2026 2. Notification No KTU/EX-VI#2/2829/2022 dtd 23.02.2026 2. Notification No KTU/EX-V#1/4837/2025 dtd 20.02.2026 4. Notification No KTU/EX-I#18/589/2026 dtd 19.02.2026 It is hereby notified that the exam registration for the following examinations has been extended for regular/FE students and Colleges: B.Tech S8 (R, S) Examination April 2026 (2019 Scheme) B.Tech S8 (WP) (R) Examination April 2026 B.Tech S4 (R) Examination April 2026 (2024 Scheme) B.Tech S6 (R, S) Examination April 2026 (2019 Scheme) The revised last dates are as follows: For Regular/FE Students: up to 02.03.2026 (Monday) For Colleges: up to 04.03.2026 (Wednesday) Students and Colleges are hereby informed to complete the exam registration/submission within the stipulated period. Requests for further extension will not be considered. Dr. VINU THOMAS Controller of Examinations To All Colleges (affiliated to APJ Abdul Kalam Technological University) * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Page 1 of 1"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_publication_of_results_bhmc",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026",
+        "What is APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026",
+        "Details of APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026",
+        "Explain APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026"
+      ],
+      "responses": [
+        "KTU/EX-II#5/1797/2025 11.03.2026 NOTIFICATION Sub : APJAKTU - Examination(UG-Valuation) - Publication of Results - BHMCT Exams Nov/Dec 2025 and Jan 2026 - Notified - Reg:- It is hereby notified that the results of the following examinations are published. The detailed results are available in the Student Login and College Login. BHMCT S1 (R,S) Exam Dec 2025 (2024 Scheme) BHMCT S2 (S) Exam Jan 2026 (2024 Scheme) BHMCT S3 (R) Exam Nov 2025 (2024 Scheme) BHMCT S1 (S, FE) Exam Dec 2025 (2018 Scheme) BHMCT S2 (S, FE) Exam Dec 2025 (2018 Scheme) BHMCT S3 (S, FE) Exam Jan 2026 (2018 Scheme) BHMCT S4 (S, FE) Exam Dec 2025 (2018 Scheme) BHMCT S5 (R,S) Exam Nov 2025 (2018 Scheme) BHMCT S6 (S, FE) Exam Dec 2025 (2018 Scheme) BHMCT S7 (R,S) Exam Nov 2025(2018 Scheme) Last date for submitting Answer book copy/ Revaluation request and Fee Payment is as follows. With out Fine With fine With super fine 20-03-2026 23-03-2026 25-03-2026 NOTE : Fee for answer script copy is ₹ 525/- and fee for revaluation is ₹ 630/- per answer script. Students can submit the request and pay the fee through student login only. ( Payment of Fee through the college is not permitted) Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_exam_registration_to_b_tech_s2_r_s_exam_april_2026_2024_sche",
+      "patterns": [
+        "Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)",
+        "What is Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)",
+        "Tell me about Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)",
+        "Details of Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)",
+        "Explain Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)"
+      ],
+      "responses": [
+        "Notice: Exam registration to B.Tech S2(R,S) Exam April 2026 (2024 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_exam_registration_for_b_arc",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)"
+      ],
+      "responses": [
+        "Notice: APJAKTU - Examination(UG-Valuation) - Exam registration for B.Arch S2/S4/S6/S8 (R,S) Exam April/May 2026 (2021 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_exam_registration_for_b_tec",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_exam_registration_for_b_tec_1",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: APJAKTU - Examination(UG-Valuation) - Exam registration for B.Tech S6 (PT) (S,FE) Exam April 2026 (2019 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_approval_of_additional_moocs_mca_mca_information_sciences_20",
+      "patterns": [
+        "Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned",
+        "What is Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned",
+        "Tell me about Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned",
+        "Details of Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned",
+        "Explain Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned"
+      ],
+      "responses": [
+        "Notice: Approval of additional MOOCs - MCA - (MCA / Information Sciences) 2020 Regulations - Sanctioned"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_publication_of_results_b_te",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: APJAKTU - Examination(UG-Valuation) - Publication of Results - B.Tech S6 (PT) (S,FE) Exam Dec 2025 (2019 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_publication_of_results_b_ar",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme)"
+      ],
+      "responses": [
+        "KTU/EX-II#5/1797/2025 15.03.2026 NOTIFICATION Sub : APJAKTU - Examination(UG-Valuation) - Publication of results - B.Arch S1/S3/S5/S9 (R,S) Exam Nov/Dec 2025 (2021 Scheme) - Notified - Reg:- It is hereby notified that the results of the following examinations are published. The detailed results are available in the Student Login and College Login. B.Arch S1 (R,S) Exam Dec 2025 (2021 Scheme) B.Arch S3 (R,S) Exam Nov 2025 (2021 Scheme) B.Arch S5 (R,S) Exam Nov 2025 (2021 Scheme) B.Arch S9 (R) Exam Nov 2025 (2021 Scheme) Last date for submitting Answer book copy/ Revaluation request and Fee Payment is as follows. With out Fine With fine With super fine 23-03-2026 26-03-2026 28-03-2026 Low Pass Grade Request Students who wish to opt for a Low Pass Grade for any course of this exam must submit their request through the Student Portal within 15 days from the date of this notification . Students who have applied for Revaluation of Answer Books can submit their Low Pass Grade request, within 15 days , after the publication of revaluation results. NOTE : Fee for answer script copy is ₹ 525/- and fee for revaluation is ₹ 630/- per answer script. Students can submit the request and pay the fee through student login only. ( Payment of Fee through the college is not permitted) Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_exam_registration_for_bba_honours_s2_r_s_exam_april_2026",
+      "patterns": [
+        "Exam registration for BBA Honours S2 (R,S) Exam April 2026",
+        "What is Exam registration for BBA Honours S2 (R,S) Exam April 2026",
+        "Tell me about Exam registration for BBA Honours S2 (R,S) Exam April 2026",
+        "Details of Exam registration for BBA Honours S2 (R,S) Exam April 2026",
+        "Explain Exam registration for BBA Honours S2 (R,S) Exam April 2026"
+      ],
+      "responses": [
+        "Notice: Exam registration for BBA Honours S2 (R,S) Exam April 2026"
+      ]
+    },
+    {
+      "tag": "ktu_detailed_time_tables_of_b_tech_s6_r_s_examination_april_2026",
+      "patterns": [
+        "Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)",
+        "What is Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)",
+        "Tell me about Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)",
+        "Details of Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)",
+        "Explain Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: Detailed Time Tables of B.Tech S6 (R, S) Examination April 2026 (2019 scheme) including B.Tech S6 (WP) (R, S) Exam April 2026 (2019 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_result_notification_b_tech_s3_pt_s_fe_exam_nov_2025_2019_sch",
+      "patterns": [
+        "RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)",
+        "What is RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)",
+        "Tell me about RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)",
+        "Details of RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)",
+        "Explain RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: RESULT NOTIFICATION -B.Tech S3 (PT) (S,FE) Exam Nov 2025 (2019 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_exam_registration_regular_f",
+      "patterns": [
+        "APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/May 2026 (2024 Scheme)",
+        "What is APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/May 2026 (2024 Scheme)",
+        "Tell me about APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/May 2026 (2024 Scheme)",
+        "Details of APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/May 2026 (2024 Scheme)",
+        "Explain APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/May 2026 (2024 Scheme)"
+      ],
+      "responses": [
+        "KTU/EX-II#5/3913/2025 16.03.2026 NOTIFICATION Sub : APJAKTU - Examination(UG-Valuation) - Exam registration (Regular/FE and Supplementary) for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/ May 2026 (2024 Scheme) - Reg: It is hereby informed that Exam Registrations for B.Des S1/S2/S3/S4/S5/S7 Exams May 2026 (2019 Scheme) and B.Des S1/S2/S3 Exams April/ May 2026 (2024 Scheme) are opened for Regular/FE & Supplementary Students/ Colleges, as scheduled below:- Exam Definition Date for submission by Regular/ FE Students Last date for submission to University through portal by Colleges* for Regular/ FE Students Date for submission by Supplementary Students Without Fine With Fine With Super Fine 1 . B.Des S1 (S) Exam May 2026 (2024 Scheme) 2 . B.Des S2 (R,S) Exam April 2026 (2024 Scheme) 3 . B.Des S3 (S) Exam May 2026 (2024 Scheme) 4 . B.Des S1 (S,FE) Exam May 2026 (2019 Scheme) 5 . B.Des S2 (S,FE) Exam May 2026 (2019 Scheme) 6 . B.Des S3 (S,FE) Exam 26-03-2026 (Thursday ) 28-03-2026 (Friday) 26-03-2026 (Thursday) 29-03-2026 (Sunday) 31-03-2025 (Tuesday) May 2026 (2019 Scheme) 7 . B.Des S4 (S,FE) Exam May 2026 (2019 Scheme) 8 . B.Des S5 (S,FE) Exam May 2026 (2019 Scheme) 9 . B.Des S7 (S,FE) Exam May 2026 (2019 Scheme) *Exam registration submission by colleges is required only for Regular/FE students. Note For supplementary Students 1 . Supplementary students can do exam registration including the payment of fee through student login. 2 . Once supplementary registration is submitted through student login, the registration process including payment of fee should be completed through student login itself. 3 . Registration will be completed only after successful payment of fee made through student login in the portal. 4 . Students are directed to ensure that payment is successful before the last date of registration mentioned in notification for the students. ** Requests for additional time to complete exam registration will not be entertained under any circumstances. Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_exam_registration_opening_b_arch_s10_r_exam_april_2026_2021_",
+      "patterns": [
+        "Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)",
+        "What is Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)",
+        "Tell me about Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)",
+        "Details of Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)",
+        "Explain Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)"
+      ],
+      "responses": [
+        "Notice: Exam Registration opening - B.Arch S10 (R) Exam April 2026 (2021 Scheme)"
+      ]
+    },
+    {
+      "tag": "ktu_ay_2026_27_semester_extension_of_colleges_under_apj_abdul_ka",
+      "patterns": [
+        "AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University",
+        "What is AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University",
+        "Tell me about AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University",
+        "Details of AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University",
+        "Explain AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University"
+      ],
+      "responses": [
+        "Notice: AY 2026-27 - Semester extension of Colleges under APJ Abdul Kalam Technological University"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_detailed_time_table_of_b_tech_s8_r_s_exam_april_2026",
+      "patterns": [
+        "APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026",
+        "What is APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026",
+        "Tell me about APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026",
+        "Details of APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026",
+        "Explain APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026"
+      ],
+      "responses": [
+        "KTU/SOEX-IV/2122/2024 17.03.2026 NOTIFICATION Sub: APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026 - Notification - reg: The Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026 , is furnished below. Sd/- Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Slot Course Code Course Name Date/Day Time AOT402 ROCKETRY AND SPACE MECHANICS AGT402 DAIRY AND FOOD ENGINEERING AET402 VLSI CIRCUIT DESIGN AIT402 ROBOTIC PROCESS AUTOMATION ADT402 BUSINESS ANALYTICS AMT402 CONCEPTS IN REINFORCEMENT LEARNING AUT402 VEHICLE DYNAMICS BMT402 BIOMATERIALS BTT402 ENVIRONMENTAL BIOTECHNOLOGY CHT402 CHEMICAL PROCESS EQUIPMENT DESIGN II CET402 QUANTITY SURVEYING AND VALUATION CXT402 ADVANCED COMPUTER GRAPHICS CST402 DISTRIBUTED COMPUTING CMT402 INTRODUCTION TO INTERNET OF THINGS CDT402 DEEP LEARNING FOR DATA SCIENCE CCT402 BIOMETRIC SECURITY EBT402 BIOMECHANICS AND DESIGN OF PROSTHETIC DEVICES ECT402 WIRELESS COMMUNICATION ERT402 ALGORITHM ANALYSIS AND DESIGN EOT402 POWER SYSTEM ENGINEERINGB.Tech S8 (R,S) Exam April 2026 (2019 Scheme) including B.Tech S8 (WP) (R) Exam April 2026 & B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme) A20.04.2026 Monday9.30am- 12.30pm EET402 ELECTRICAL SYSTEM DESIGN AND ESTIMATION FTT402 FOOD PLANT LAYOUT AND DESIGN IET402 APPLIED ERGONOMICS ITT402 CRYPTOGRAPHY AND NETWORK SECURITY ICT402 INSTRUMENTATION SYSTEM DESIGN MET402 MECHATRONICS MRT402 AUTOTRONICS MTT402 CERAMICS, POLYMERS AND COMPOSITE MATERIALS MUT402 HYBRID AND ELECTRIC VEHICLES SBT402 OFFSHORE STRUCTURES POT402 POLYMER PRODUCTS - DESIGN AND TESTING PET402 OPERATIONS MANAGEMENT RAT402 AI AND MACHINE LEARNING FST402HUMAN FACTORS ENGINEERING AND BEHAVIOUR BASED SAFETY CBT402 IT PROJECT MANAGEMENT RIT402 FUNDAMENTALS OF HUMANOID ROBOTS CGT402FOUNDATIONS OF BLOCK CHAIN TECHNOLOGY AND APPLICATIONS AOT414 FINITE ELEMENT METHOD AOT424 HYPERSONIC AND HIGH TEMPERATURE AERODYNAMICS AOT434 MICROPROCESSOR AND ITS APPLICATIONS AOT444 INSTRUMENTATION AND MEASUREMENTS AOT454 AEROSPACE GUIDANCE AND CONTROLS AOT464 AUTOMATION AND FEEDBACK CONTROLS IN AEROSPACE AOT474 MACHINE LEARNING IN AEROSPACE ENGINEERING AGT414 DESIGN OF MACHINE ELEMENTS AGT424 REFRIGERATION AND AIR CONDITIONING AGT434 ORGANO ELECTRONICS AGT444 DRAINAGE ENGINEERING AGT454 WEB DESIGNING AND INTERNET APPLICATION AGT464 PROCESS ENGINEERING OF FRUITS AND VEGETABLES AET414 ANN AND DEEP LEARNING AET424 SOFT COMPUTING AET434 BIOINFORMATICS AET444 SPEECH AND AUDIO PROCESSING AET454 WIRELESS SENSOR NETWORKS AET464 NANOELECTRONICS AET474 INTEGRATED OPTICS AND PHOTONIC SYSTEMS AIT414 AI FOR CYBER SECURITY AIT424 INTRODUCTION TO BUSINESS ANALYTICS CST434 NETWORK SECURITY PROTOCOLS CST444 SOFT COMPUTING CST454 FUZZY SET THEORY AND APPLICATIONS CST464 EMBEDDED SYSTEMS CST474 COMPUTER VISION AMT414 GPU COMPUTING CST424 PROGRAMMING PARADIGMS AMT464 SOCIAL AND INFORMATION NETWORKS AUT414 SPECIAL TYPES OF VEHICLES AUT424 ENGINE AND VEHICLE MANAGEMENT SYSTEM AUT434 ADVANCED METAL JOINING TECHNIQUES AUT444 AGV AND AUTONOMOUS VEHICLE AUT454 SUPPLY CHAIN MANAGEMENT AUT464 AEROSPACE ENGINEERING AUT474 METROLOGY AND MEASUREMENTS BMT414 POWER ELECTRONICS AND APPLICATIONS BMT424 ARTIFICIAL ORGANS AND IMPLANTS BMT434COMPUTATIONAL TECHNIQUES FOR BIOMEDICAL SCIENCES BMT444 MEDICAL ROBOTICS BMT454 FUNDAMENTALS OF BIOMEMS AND MICROFLUIDICS BMT464 QUANTITATIVE PHYSIOLOGY BMT474ADVANCED MEDICAL IMAGING AND IMAGE PROCESSING TECHNIQUES BTT414 FOOD PROCESS TECHNOLOGY BTT424 BIOREFINERY ENGINEERING BTT434 BIOPHARMACEUTICAL TECHNOLOGY BTT444 EFFLUENT/ WASTE WATER TREATMENT BTT454 DAIRY PROCESS TECHNOLOGY BTT464 OPERATIONAL RESEARCH CHT414 AIR POLLUTION MONITORING AND CONTROL CHT424 PETROLEUM REFINERY ENGINEERING CHT434 COMPUTATIONAL FLUID DYNAMICS CHT444 POLYMER TECHNOLOGY CHT454 PROCESS UTILITY AND PIPING ENGINEERING CHT464 DRUGS AND PHARMACEUTICALS TECHNOLOGY CHT474 ELECTROCHEMICAL ENGINEERING CET414 ADVANCED STRUCTURAL DESIGN CET424 GEOENVIRONMENTAL ENGINEERING CET434 RAILWAY AND TUNNEL ENGINEERING CET444 IRRIGATION AND DRAINAGE ENGINEERING CET454 CONSTRUCTION METHODS AND EQUIPMENT CET464 AIRQUALITY MANAGEMENT CET474 URBAN PLANNING AND ARCHITECTURE CNT464 ENVIRONMENT MANAGEMENT CXT414 FUZZY SYSTEMS AND GENETIC ALGORITHMS CXT424 BIG DATA ANALYTICS CXT434 SOFTWARE TESTING AND QUALITY ASSURANCE CXT444 MULTIMEDIA COMPRESSION CXT454 PROTOTYPING INTERACTIVE SYSTEMS CXT464 PARALLEL PROGRAMMING CST414 DEEP LEARNING CDT464 BIG DATA SECURITY CCT434 STENOGRAPHY AND DIGITAL WATERMARKING EBT414 POWER ELECTRONICS AND APPLICATIONS EBT424 ARTIFICIAL ORGANS AND IMPLANTS EBT434 ADVANCED COMPUTER PROGRAMMING TECHNIQUES EBT444 MEDICAL ROBOTICS EBT454 FUNDAMENTALS OF BIOMEMS AND MICROFLUIDICS EBT464 CONTROL SYSTEMS ENGINEERING EBT474ADVANCED MEDICAL IMAGING AND IMAGE PROCESSING TECHNIQUES ECT414 BIOMEDICAL ENGINEERING ECT424 SATELLITE COMMUNICATION ECT434 SECURE COMMUNICATION ECT444 PATTERN RECOGNITION ECT454 RF CIRCUIT DESIGN ECT464 MIXED SIGNAL CIRCUIT DESIGN ECT474 ENTREPRENEURSHIP ERT414 ROBOTICS AND AUTOMATION ERT424 MEDICAL IMAGE PROCESSING ERT434 HYBRID AND ELECTRIC VEHICLES ERT444 COMPILER DESIGN ERT454 CRYPTOGRAPHY AND NETWORK SECURITY EOT414 MECHATRONICS EET444 ELECTRICAL MACHINE DESIGN EET434 SMART GRID TECHNOLOGIES EET414 ROBOTICS EET424 ENERGY MANAGEMENT EET454 SWITCHED MODE POWER CONVERTERS EET464 COMPUTER AIDED POWER SYSTEM ANALYSIS EET474 MACHINE LEARNING FTT414 FAT AND OIL PROCESSING TECHNOLOGY FTT424 FOOD STORAGE ENGINEERING FTT434 FOOD SUPPLY CHAIN MANAGEMENT FTT444 EXTENSION AND TRANSFER OF TECHNOLOGY FTT454 NEUTRACEUTICALS AND FUNCTIONAL FOODS FTT464 FOOD TOXICOLOGY FTT474 BEVERAGE PROCESSING IET414 BIOMATERIALS MET424 INDUSTRIAL HYDRAULICS IET434 TIME SERIES ANALYSIS IET444 MULTIVARIATE DATA ANALYSIS IET454 DESIGN AND ANALYSIS OF EXPERIMENTS MET464 MICRO AND NANO MANUFACTURING IET474 TOTAL QUALITY MANAGEMENT AND SIX SIGMAB23.04.2026 Thursday9.30am- 12.30pm ITT414 COMPUTER VISION ITT424 CYBER AND NETWORK FORENSICS ITT434 CLOUD COMPUTING ITT444 DATA MINING AND WAREHOUSING ITT454 SEARCH ENGINE OPTIMISATION ITT464 COMPUTER GRAPHICS ITT474 BLOCK CHAIN TECHNOLOGY ICT414 NUMERICAL COMPUTATION USING PYTHON ICT424 INDUSTRIAL NETWORKS ICT434 ARTIFICIAL INTELLIGENCE ICT444 POWER PLANT INSTRUMENTATION ICT454 IoT AND APPLICATIONS ICT464 IMAGE PROCESSING ICT474 REMOTE SENSING AND CONTROL MET414 QUALITY MANAGEMENT MET434 PRESSURE VESSEL AND PIPING DESIGN MET444 DATA ANALYTICS FOR ENGINEERS MET474 HEATING AND VENTILATION SYSTEMS MET454 INDUSTRIAL TRIBOLOGY MRT414 IOT AND APPLICATIONS MRT424 COMMUNICATION ENGINEERING MRT434 SPECIAL ELECTRICAL MACHINES AND APPLICATION MRT444 METALLURGY AND MATERIALS ENGINEERING MRT474 OPERATIONS MANAGEMENT MRT464 HYBRID AND ELECTRIC VEHICLES MRT454 STATISTICAL QUALITY CONTROL MTT454 ALLOY DEVELOPMENT MTT444LADLE METALLURGY AND CONTINUOUS CASTING OF STEELS MTT434 SPECIAL CASTING TECHNIQUES MTT424 FATIGUE, CREEP AND FRACTURE MTT414 METALLURGICAL FAILURE ANALYSIS MTT474 SURFACE ENGINEERING MTT464 HIGH TEMPERATURE MATERIALS MUT464 OFF ROAD VEHICLES MUT444 HUMAN RELATIONS MANAGEMENT MUT434 AVG AND AUTONOMOUS VEHICLES MUT414 EMBEDDED SYSTEM IN AUTOMOBILES MUT474 MODERN AUTOMOTIVE TECHNOLOGY MPT474 FACILITIES PLANNING MPT414 MACHINE TOOL DESIGN MPT424 ARTIFICIAL INTELIGENCE IN MANUFACTURING MPT434 ADVANCED OPERATION RESEARCH MPT444 RAPID PROTOTYPING, TOOLING AND MANUFACTURE MPT454 NUCLEAR ENGINEERING MPT464 PROJECT ENGINEERING AND MANAGEMENT SBT444 ELECTRICAL SYSTEMS IN SHIPS AND SHIPYARDS SBT434 SUBMARINE AND SUBMERSIBLES SBT424 SHIP PRODUCTION MANAGEMENT SBT414 JOINING TECHNIQUES IN SHIPBUILDING TECHNOLOGY POT474 ELECTROCHEMICAL ENGINEERING POT464 ENVIRONMENTAL IMPACT ANALYSIS POT454 FAILURE ANALYSIS OF POLYMERS POT444 POLYMER NAN COMPOSITES POT434 ADDITIVE MANUFACTURING POT424 PETROLEUM REFINERY ENGINEERING POT414 FIBRE TECHNOLOGY PET474 HVAC SYSTEMS PET464 TIME SERIES ANALYSIS PET454 ENERGY MATERIALS PET444 PRODUCTION ENGINEERING TOOLING PET434 LEAN AND AGILE MANUFACTURING PET424MODELLING AND ANALYSIS OF MANUFACTURING SYSTEMS PET414 ADDITIVE MANUFACTURING RAT474 DATA ANALYTICS FOR ENGINEERS RAT464 NONLINEAR CONTROL RAT454 CNC MACHINES RAT444 ROBOT MOTION PLANNING RAT434 INDUSTRIAL MANIPULATORS RAT424 BEHAVIORAL ROBOTICS RAT414 MACHINE VISION FST474 FUNDAMENTALS OF NANOSCIENCE FST464 MARINE CORROSION AND PREVENTION FST454 ENVIRONMENTAL POLLUTION AND CONTROL FST444 QUALITY ENGINEERING IN PRODUCTION SYSTEM FST434 NUMERICAL METHODS FOR PROCESS ENGINEERS FST424 FOOD AND BIOSAFETY FST414 LEGAL ASPECTS OF HSE CBT434 CONVERSATIONAL SYSTEMS CBT454 MARKETING RESEARCH & MARKETING MANAGEMENT RIT414 ADVANCED TOPICS IN ROBOTICS RIT424 BEHAVIORAL ROBOTICS RIT434 INDUSTRIAL MANIPULATORS RIT444 NONLINEAR CONTROL RIT454 CONNECTED AND AUTONOMOUS VEHICLES CGT414 DISTRIBUTED SYSTEMS FOR IOT EOT434 CRYPTOGRAPHY AOT416 AIRTRANSPORTATION AND AIRLINE MANAGEMENT AOT426 AIRTRAFFIC CONTROL AND MANAGEMENT AOT436 ENERGY METHODS IN STRUCTURAL MECHANICS AOT446 AIRCRAFT GENERAL MAINTENANCE AND PRACTICES AOT456ROTORY WING THEORY AND HELICOPTER AERODYNAMICS AOT466 INDUSTRIAL AERODYNAMICS AOT476 CIVIL AVIATION REGULATIONS AGT416 FUNDAMENTALS OF NANOSCIENCE AGT426 PUMP ENGINEERING AND HYDRAULIC CONTROL AGT436 ENVIRONMENTAL IMPACT ASSESSMENT AGT446 BLOWERS AND COMPRESSORS AGT456 SOIL AND WATER CONSERVATION ENGINEERING AGT466 FACILITIES PLANNING AET416 INDUSTRIAL DRIVES AND CONTROL AET426 CONTROL OF POWER CONVERTERS AET436 AVIATION ELECTRONICS AET446 DIGITAL CONTROL SYSTEM AET456 POWER PLANT INSTRUMENTATION AET466 MEMS AET476 ROBOTICS AND INDUSTRIAL AUTOMATION AIT426 MINING OF MASSIVE DATASETS CST436 PARALLEL COMPUTING CST446 DATA COMPRESSION TECHNIQUES AIT456 INTRODUCTION TO REINFORCEMENT LEARNING CST466 DATA MINING AIT476 BIO-INSPIRED OPTIMIZATION TECHNIQUES AMT416 HUMAN COMPUTER INTERACTION CST426 CLIENT SERVER ARCHITECTURE AMT456 INTRODUCTION TO ROBOTIC PROCESS AUTOMATION AUT416 OPERATIONS MANAGEMENT IN AUTO INDUSTRY AUT426 AUTOMOTIVE COMFORT AND SAFETY ENGINEERING AUT436 PRODUCT DESIGN AND LIFECYCLE MANAGEMENT AUT446 ADVANCED AUTOMOTIVE MANUFACTURING MATERIALS AUT456 TOTAL QUALITY MANAGEMENT AUT466 VEHICLE MAINTENANCE AUT476 MACHINE LEARNING BMT416 VLSI DESIGN BMT426 IMPLANTS AND PROSTHETIC ENGINEERING BMT436 RADIOLOGICAL EQUIPMENTS BMT446 BIOMEDICAL TRANSPORT PHENOMENA BMT456 PATTERN RECOGNITION BMT466 MECHATRONICS BMT476MEDICAL DEVICES, REGULATIONS AND QUALITY ASSURANCE BTT416 CANCER BIOLOGY BTT426 ADVANCED SEPARATION PROCESSES BTT436 BIOMATERIALS, TISSUE ENGINEERING AND STEM CELLS BTT446 BIOPROCESS INSTRUMENTATION BTT456 DRUG DESIGN AND DEVELOPMENT BTT466 CLINICAL RESEARCH AND DRUG TESTING CHT416ECONOMICS AND MANAGEMENT OF CHEMICAL INDUSTRIES CHT426 PETROCHEMICALS AND FERTILIZERS CHT436 MATHEMATICAL METHODS IN PROCESS ENGINEERING CHT446 COMPOSITE MATERIALS CHT456 CERAMIC TECHNOLOGY CHT466 TOTAL QUALITY MANAGEMENT CHT476 ENZYME ENGINEERING CET416 BRIDGE ENGINEERING CET426 ADVANCED FOUNDATION DESIGN CET436 TRANSPORTATION PLANNING CET446 INFORMATICS FOR INFRASTRUCTURE MANAGEMENT CET456 REPAIR AND REHABILITATION OF BUILDINGS CET466 ENVIRONMENTAL REMOTE SENSING CET476 BUILDING SERVICES CNT416 BIOREMEDIATION PRINCIPLES AND APPLICATIONS CXT416 DATA AND COMPUTER COMMUNICATION CXT436 PROCESSOR AND SYSTEM DESIGN CXT446 COMPUTER GAME DESIGN AND PROGRAMMING CXT456 OPTIMIZATION TECHNIQUES CST476 MOBILE COMPUTING CST416FORMAL METHODS AND TOOLS IN SOFTWARE ENGINEERING CCT416 CYBER LAW CCT456 BIG DATA SECURITY EBT416 VLSI DESIGN EBT426 ADVANCED BIOMEDICAL SIGNAL PROCESSING EBT436 IOT AND BIOMEDICAL APPLICATIONS EBT446 BIOMEDICAL TRANSPORT PHENOMENA EBT456 PATTERN RECOGNITION EBT476 ASSISTIVE MEDICAL DEVICES ECT416 MODERN COMMUNICATION SYSTEMS ECT426 REAL TIME OPERATING SYSTEMS ECT436 ADAPTIVE SIGNAL PROCESSING ECT446 MICROWAVE DEVICES AND CIRCUITS ECT456 SPEECH AND AUDIO PROCESSING ECT466 ANALOG CMOS DESIGN ECT476 ROBOTICS ERT416 MICRO-ELECTRO-MECHANICAL SYSTEMS ERT426 SPEECH AND AUDIO PROCESSING ERT436 COMMUNICATION ENGINEERING ERT446 PYTHON BASICS FOR MACHINE LEARNING ERT456 SYSTEM SOFTWARE EOT416 ROBOTICS EOT426 ELECTRIC AND HYBRID VEHICLES EOT436 IMAGE PROCESSING TECHNIQUE EET416 NONLINEAR SYSTEMS EET426 SPECIAL ELECTRIC MACHINES EET436 POWER QUALITY EET446 COMPUTER NETWORKS EET456 DESIGN OF POWER ELECTRONIC SYSTEMS EET466 HVDC AND FACTS EET476 ADVANCED ELECTRONIC DESIGN FTT416 FOOD QUALITY, SAFETY AND REGULATIONS FTT426ENTREPRENEURSHIP DEVELOPMENT IN FOOD TECHNOLOGY FTT436 BYE-PRODUCT UTILIZATION IN FOOD INDUSTRY FTT446 FOOD PLANT UTILITIES, MAINTENANCE AND SAFETY FTT456 FERMENTATION AND ENZYME TECHNOLOGY FTT466 BIOPROCESS ENGINEERING FTT476 MEMBRANE TECHNOLOGY IN FOOD ENGINEERING MET416 COMPOSITE MATERIALS MET426 ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING IET436 FINANCIAL AND MANAGERIAL ACCOUNTING IET446 MULTI-CRITERIA DECISION MAKING TECHNIQUES MET456 ROBOTICS AND AUTOMATIONC27.04.2026 Monday9.30am- 12.30pm MET466 TECHNOLOGY MANAGEMENT IET476GROUP TECHNOLOGY AND FLEXIBLE MANUFACTURING SYSTEMS ITT416 SOCIAL NETWORKS ANALYSIS ITT426 INTERNET OF THINGS ITT436 HIGH SPEED NETWORKS ITT446 ADHOC AND WIRELESS SENSOR NETWORKS ITT456 HUMAN COMPUTER INTERFACING ITT466 PARALLEL PROCESSING ITT476 NETWORK SCIENCE ICT416 SYSTEM IDENTIFICATION AND ADAPTIVE CONTROL ICT426INSTRUMENTATION AND CONTROL IN LARGE SCALE INDUSTRIES ICT436 MEMS ICT446 AUTOMOBILE INSTRUMENTATION ICT456 VHDL PROGRAMMING ICT466 BIOMEDICAL SIGNAL PROCESSING ICT476AEROSPACE ENGINEERING AND NAVIGATION INSTRUMENTATION MET436 AACOUSTICS AND NOISE CONTROL MET446 HEAT TRANSFER EQUIPMENT DESIGN MET476 CRYOGENIC ENGINEERING MRT416ADVANCED MICROPROCESSORS AND MICROCONTROLLERS MRT426 NANO-ELECTRONICS MRT436 NON LINEAR SYSTEMS AND CONTROL MRT446 DYNAMICS OF MACHINERY MRT456 ERGONOMICS MRT466 ENERGY MANAGEMENT AND AUDITING MRT476 TOTAL QUALITY MANAGEMENT AND SIX SIGMA MTT436 SMART MATERIALS MTT426 PARTICULATE PROCESSING MTT416 NON FERROUS PHYSICAL METALLURGY MTT476 FUELS, FURNACES AND REFRACTORIES MTT466 FRACTURE MECHANICS MTT456 MANUFACTURING METHODS MTT446 BIO-MATERIALS MUT416 AUTOMOTIVE AIR CONDITIONING MUT476 NVH IN AUTOMOBILES MUT466 AUTOMOTIVE ERGONOMICS AND SAFETY MUT456 THEORY OF VIBRATIONS MUT446 MARKETING MANAGEMENT MUT436 AUTOMOTIVE MECHATRONICS MUT426 OPERATIONS RESEARCH MPT416 METAL FORMING TECHNOLOGY MPT426 INDUSTRIAL HYDRAULICS MPT436 LEAN AND AGILE MANUFACTURING MPT476 ADVANCED METAL CASTING MPT466 TOTAL QUALITY MANAGEMENT MPT456 TRIBOLOGY MPT446 HUMAN RESOURCE MANAGEMENT SBT426 REFRIGERATION AND AIR CONDITIONING OF SHIPS SBT416 SHIP SURVEY ESTIMATION AND REPAIR POT476 MODERN METHODS OF INSTRUMENTATION POT466 PLASTICS PACKAGING TECHNOLOGY POT456 LIQUID CRYSTAL POLYMERS POT446 COMPOSITE MATERIALS POT436 POLYMERS FOR SPACE APPLICATIONS POT426 POLYMERS FOR ELECTRONIC APPLICATIONS POT416 SPECIALITY POLYMERS PET476 ENERGY MANAGEMENT PET466 MULTIVARIATE DATA ANALYSIS PET456 ADVANCED MATERIALS PET446 MACHINE TOOL DESIGN PET436 ERP PET426 ADVANCED MACHINE CONTROLS PET416 INTELLIGENT MANUFACTURING SYSTEMS RAT476 SUPERVISORY CONTROL RAT456 IOT AND APPLICATIONS RAT446 PROBABILISTIC ROBOTICS RAT436 DIGITAL CONTROL SYSTEMS RAT426 NATURAL LANGUAGE PROCESSING RAT416 DESIGN FOR MANUFACTURING AND ASSEMBLY FST476 SAFETY IN TEXTILE INDUSTRY FST466 COMPOSITE MATERIALS FST456 FIRE MODELLING FST446 RELIABILITY ENGINEERING FST436 DOCK SAFETY FST426CHEMICAL TECHONOLOGY AND MECHANICAL OPERATIONS FST416 TRANSPORTATION SYSTEM AND SAFETY SBT436 MARITIME LAW SBT446 DESIGN OF MACHINE ELEMENTS CBT436INTRODUCTION TO INNOVATION, IP MANAGEMENT & ENTREPRENEURSHIP CBT476 FINANCIAL MANAGEMENT RIT416 DESIGN FOR MANUFACTURING AND ASSEMBLY RIT426 NATURAL LANGUAGE PROCESSING RIT436 DIGITAL CONTROL SYSTEMS RIT446 SUPERVISORY CONTROL CCT426 BIG DATA SECURITY CGT426FOUNDATIONS OF MICROPROCESSORS & MICROCONTROLLERS AOT418 STABILITY AND CONTROL IN AIRCRAFT AOT428 AIRCRAFT PRODUCTION TECHNOLOGY AOT438 THEORY OF ELASTICITY AOT448 INTRODUCTION TO FLOW INSTABILITY AOT458 AIRFRAME MAINTENANCE AND REPAIR AOT468 HIGH TEMPERATURE MATERIALS AOT478 MECHANICS OF COMPOSITES AGT418 FOOD QUALITY AND SAFETY AGT428 DEVELOPMENT OF PROCESSED PRODUCTS AGT438 KINEMATICS AND DYNAMICS AGT448 GROUND WATER AND WELL ENGINEERING AGT458 IoT SECURITY AGT468 ENVIRONMENTAL STUDIES AND DISASTER MANAGEMENT ECT418 MECHATRONICS AET428 AUTOMOTIVE ELECTRONICS AET438 CYBER SECURITY AET448INSTRUMENTATION AND CONTROL FOR PETROCHEMICAL INDUSTRIES AET458 WIRELESS COMMUNICATION AET468 OPTICAL INSTRUMENTATION AET478 RENEWABLE ENERGY TECHNOLOGY CST418 HIGH PERFORMANCE COMPUTING CST428 BLOCK CHAIN TECHNOLOGIES CST438 IMAGE PROCESSING TECHNIQUE CST448 INTERNET OF THINGS AIT458 SPEECH PROCESSING AND ANALYTICS CST468 BIOINFORMATICS CST478 COMPUTATIONAL LINGUISTICS AUT418 VEHICLE TRANSPORT AND FLEET MANAGEMENT AUT428 VEHICLE BODY ENGINEERING AND SAFETY AUT438 POWER PLANT ENGINEERING AUT448 ADVANCED METAL JOINING TECHNIQUES AUT458 SIMULATION AND ANALYSIS OF AUTO COMPONENTS AUT468 HYDRAULICS AND PNEUMATICS AUT478 ADVANCED METAL CASTING BMT418 EMBEDDED SYSTEM DESIGN BMT428 ASSISTIVE MEDICAL DEVICES BMT438 REHABILITATION ENGINEERING BMT448 INTRODUCTION TO BIONANOTECHNOLOGY BMT458 RELIABILITY ENGINEERING BMT468 MODELLING OF PHYSIOLOGICAL SYSTEMS BMT478 HUMAN FACTORS IN ENGINEERING AND DESIGN BTT418 PROCESS SAFETY AND BIOETHICS BTT428 BIOBUSINESS BTT438 ENTREPRENEURSHIP AND IPR BTT448 BIOPHYSICS AND BIOSENSORS BTT458 BIOPROCESS QUALITY CONTROL BTT468 MODELLING AND SCALE UP OF BIOREACTORS CHT418 SOLID WASTE MANAGEMENT CHT428 NONCONVENTIONAL PETROLEUM RESOURCES CHT438 PROCESS OPTIMIZATION CHT448 NANOMATERIALS AND NANOTECHNOLOGY CHT458 SAFETY ENGINEERING OF PROCESS PLANTS CHT468 NOVEL SEPARATION TECHNIQUES CHT478 FUEL CELL TECHNOLOGY CET418 EARTHQUAKE RESISTANT DESIGN CET428 SOIL STRUCTURE INTERACTION CET438 AIRPORT, SEAPORT AND HARBOUR ENGINEERING CET448 HYDROCLIMATOLOGY CET458 SUSTAINABLE CONSTRUCTION CET468 CLIMATE CHANGE AND SUSTAINABILITY CET478 BUILDING INFORMATION MODELLING CNT428GIS AND REMOTE SENSING FOR ENVIRONMENTAL MANAGEMENT CXT418 DESIGNING HUMAN CENTERED SYSTEMS CXT428 EVOLUTIONARY COMPUTING CXT438 ADVANCED DATABASE SYSTEMS CST458 SOFTWARE TESTING EBT418 EMBEDDED SYSTEM DESIGN EBT428 DEEP LEARNING TECHNIQUES EBT438 REHABILITATION ENGINEERING EBT448 INTRODUCTION TO BIONANOTECHNOLOGY EBT458 RELIABILITY ENGINEERING EBT468 MODELLING OF PHYSIOLOGICAL SYSTEMS EBT478 HUMAN FACTORS IN ENGINEERING AND DESIGN ECT428 OPTIMIZATION TECHNIQUES ECT438 COMPUTER VISION ECT448 LOW POWER VLSI ECT458 INTERNET OF THINGS ECT468 RENEWABLE ENERGY SYSTEMS ECT478 ORGANIC ELECTRONICS ERT418 PLC AND DATA ACQUISITION SYSTEMS ERT428 POWER ELECTRONICS ERT438 LOW POWER VLSI ERT458 WIRELESS SENSOR NETWORKS ERT468 REAL TIME OPERATING SYSTEMS EET438 ENERGY STORAGE SYSTEMS EET478 BIG DATA ANALYTICS EET418 ELECTRIC AND HYBRID VEHICLES EET428 INTERNET OF THINGS EET448 ROBUST AND ADAPTIVE CONTROL EET458 SOLAR PV SYSTEMS EET468 INDUSTRIAL INSTRUMENTATION AND AUTOMATION FTT418 FOOD LAWS AND REGULATIONS FTT428 ICT APPLICATIONS IN FOOD INDUSTRY FTT438 FOOD INDUSTRY WASTE MANAGEMENT FTT448 PHYTOCHEMICALS IN FOOD FTT458 FOOD INFORMATICS FTT468 AUTOMATION IN FOOD INDUSTRY FTT478 MANAGEMENT OF FOOD PROCESSING INDUSTRY MET418 RELIABILITY ENGINEERING MET428 PROJECT PLANNING AND MANAGEMENT IET438 FINANCIAL ENGINEERING IET448 BIG DATA ANALYTICS IET458 INDUSTRIAL SCHEDULING MET468 ADDITIVE MANUFACTURING IET478 RISK ANALYSIS IN DECISION MAKING ITT418 INFORMATION STORAGE MANAGEMENT ITT428 SOFTWARE QUALITY ASSURANCE ITT438 SOFTWARE ARCHITECTURE ITT448 NETWORK ON CHIP ITT458 NATURAL LANGUAGE PROCESSING ITT468 BIO-INFORMATICS ITT478 DEEP LEARNINGD30.04.2026 Thursday9.30am- 12.30pm ICT418 MODERN METHODS OF INSTRUMENT ANALYSIS ICT428 HYDRAULICS AND PNEUMATICS ICT438 INDUSTRIAL DRIVES AND CONTROL ICT448 INSTRUMENTATION FOR AGRICULTURE ICT458 EMBEDDED SYSTEM DESIGN ICT468 BIOMECHANICS ICT478 OPTO ELECTRONICS AND INSTRUMENTATION MET438 FRACTURE MECHANICS MET448 GAS TURBINES AND JET PROPULSION MET478 POWER PLANT ENGINEERING MET458 ADVANCED ENERGY ENGINEERING MRT448 HEAT AND MASS TRANSFER MRT438 INDUSTRIAL INSTRUMENTATION MRT428 BIO-MECHATRONICS MRT418 WIRELESS AND SENSOR NETWORKS MRT478 ARTIFICIAL INTELLIGENCE MRT468 OPTIMIZATION TECHNIQUES MRT458 SUPPLY CHAIN MANAGEMENT MTT418 NON TRADITIONAL MACHINING MTT468 RUBBER AND TYRE TECHNOLOGY MTT458 CERAMICS AND GLASSES MTT448 ADVANCES IN METAL FORMING MTT438 COMPUTATIONAL MATERIALS SCIENCE MTT428 NON METALLIC MATERIALS MTT478 PROCESS MODELLING AND APPLICATIONS MUT478 ADVANCED ENERGY ENGINEERING MUT468 AUTOMOTIVE NAVIGATION AND CONTROLS MUT458COMPUTER SIMULATION AND ANALYSIS OF AUTOMOTIVE SYSTEMS MUT448 ADVANCED METAL JOINING TECHNIQUES MUT438 HYDROGEN FUELLED VEHICLES MUT428 METROLOGY AND INSTRUMENTATION MPT418 TOOL ENGINEERING MPT458 CREATIVITY AND PRODUCT ENGINEERING MPT448 BIOMEDICAL ENGINEERING MPT438 INDUSTRIAL AUTOMATION MPT428 NANOTECHNOLOGY SBT448 FINITE ELEMENT METHOD SBT438COMPUTER AIDED DESIGN AND COMPUTER AIDED MANUFACTURING SBT428 OCEAN WAVE HYDRODYNAMICS SBT418 EXPERIMENTAL TECHNIQUES ON SHIPS AND MODELS POT478 POLYMERS AND FUEL CELL TECHNOLOGY POT468 POLYMERS AND SEPARATION PROCESS POT458 SAFETY ENGINEERING OF PROCESS PLANTS POT448 POLYMER BLENDS AND COMPOSITES POT438 ADHESIVE SCIENCE AND TECHNOLOGY POT428 BIOMEDICAL AND BIOPOLYMERS POT418 POLYMERS AND ENVIRONMENT PET478 RENEWABLE ENERGY TECHNOLOGIES PET468 ADVANCED OPTIMIZATION TECHNIQUES PET458 PROCESSING OF ADVANCED MATERIALS PET448 DESIGN FOR MANUFACTURE PET438 MARKETING MANAGEMENT PET428 INTEGRATED MANUFACTURING SYSTEMS PET418 MAINTENANCE AND RELIABILITY ENGINEERING RAT478 AI FOR ROBOTICS RAT468 ADAPTIVE CONTROL RAT458 HUMAN-MACHINE INTERFACE RAT448 ROBOT NAVIGATION RAT438 CO-OPERATIVE ROBOTICS RAT428 VIBRATION RAT418 MECHATRONIC SYSTEM DESIGN FST478 SAFETY IN POWDER HANDLING FST468 OFFSHORE TECHNOLOGY FST458 SHIPS FIRE PREVENTION AND CONTROL FST448 TOTAL QUALITY MANAGEMENT FST438 DRILLING AND STORAGE FST428 FIRE RISK CALCULATIONS FST418 ADVANCED SAFETY ENGINEERING AND MANAGEMENT CBT468 BEHAVIORAL ECONOMICS CBT478SERVICE SCIENCE AND SERVICE OPERATIONS MANAGEMENT RIT418 MECHATRONIC SYSTEM DESIGN RIT428 VIBRATION RIT438 CO-OPERATIVE ROBOTICS RIT448 ROBOT NAVIGATION RIT458 INTRODUCTION TO HUMAN-ROBOT INTERACTION RIT468 ADAPTIVE CONTROL CGT418 MOBILE APPLICATION DEVELOPMENT USING ANDROID CONTROLLER OF EXAMINATIONS"
+      ]
+    },
+    {
+      "tag": "ktu_detailed_time_tables_of_b_tech_s4_r_exam_april_2026_2024_sch",
+      "patterns": [
+        "Detailed Time Tables of B.Tech S4 (R) Exam April 2026 (2024 scheme) Incl. B.Tech S4 (WP) (R) Exam April 2026 (2024 Scheme)",
+        "What is Detailed Time Tables of B.Tech S4 (R) Exam April 2026 (2024 scheme) Incl. B.Tech S4 (WP) (R) Exam April 2026 (2024 Scheme)",
+        "Tell me about Detailed Time Tables of B.Tech S4 (R) Exam April 2026 (2024 scheme) Incl. B.Tech S4 (WP) (R) Exam April 2026 (2024 Scheme)",
+        "Details of Detailed Time Tables of B.Tech S4 (R) Exam April 2026 (2024 scheme) Incl. B.Tech S4 (WP) (R) Exam April 2026 (2024 Scheme)",
+        "Explain Detailed Time Tables of B.Tech S4 (R) Exam April 2026 (2024 scheme) Incl. B.Tech S4 (WP) (R) Exam April 2026 (2024 Scheme)"
+      ],
+      "responses": [
+        "KTU/SOEX-IV/2122/2024 17.03.2026 NOTIFICATION Sub: APJAKTU - Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026 - Notification - reg: The Detailed Time Table of B.Tech S8 (R, S) Exam April 2026 (2019 Scheme), including B.Tech S8 (PT) (R, S) Exam April 2026 (2019 Scheme) & B.Tech S8 (WP) (R) Exam April 2026 , is furnished below. Sd/- Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Slot Course Code Course Name Date/Day Time AOT402 ROCKETRY AND SPACE MECHANICS AGT402 DAIRY AND FOOD ENGINEERING AET402 VLSI CIRCUIT DESIGN AIT402 ROBOTIC PROCESS AUTOMATION ADT402 BUSINESS ANALYTICS AMT402 CONCEPTS IN REINFORCEMENT LEARNING AUT402 VEHICLE DYNAMICS BMT402 BIOMATERIALS BTT402 ENVIRONMENTAL BIOTECHNOLOGY CHT402 CHEMICAL PROCESS EQUIPMENT DESIGN II CET402 QUANTITY SURVEYING AND VALUATION CXT402 ADVANCED COMPUTER GRAPHICS CST402 DISTRIBUTED COMPUTING CMT402 INTRODUCTION TO INTERNET OF THINGS CDT402 DEEP LEARNING FOR DATA SCIENCE CCT402 BIOMETRIC SECURITY EBT402 BIOMECHANICS AND DESIGN OF PROSTHETIC DEVICES ECT402 WIRELESS COMMUNICATION ERT402 ALGORITHM ANALYSIS AND DESIGN EOT402 POWER SYSTEM ENGINEERINGB.Tech S8 (R,S) Exam April 2026 (2019 Scheme) including B.Tech S8 (WP) (R) Exam April 2026 & B.Tech S8 (PT) (R,S) Exam April 2026 (2019 Scheme) A20.04.2026 Monday9.30am- 12.30pm EET402 ELECTRICAL SYSTEM DESIGN AND ESTIMATION FTT402 FOOD PLANT LAYOUT AND DESIGN IET402 APPLIED ERGONOMICS ITT402 CRYPTOGRAPHY AND NETWORK SECURITY ICT402 INSTRUMENTATION SYSTEM DESIGN MET402 MECHATRONICS MRT402 AUTOTRONICS MTT402 CERAMICS, POLYMERS AND COMPOSITE MATERIALS MUT402 HYBRID AND ELECTRIC VEHICLES SBT402 OFFSHORE STRUCTURES POT402 POLYMER PRODUCTS - DESIGN AND TESTING PET402 OPERATIONS MANAGEMENT RAT402 AI AND MACHINE LEARNING FST402HUMAN FACTORS ENGINEERING AND BEHAVIOUR BASED SAFETY CBT402 IT PROJECT MANAGEMENT RIT402 FUNDAMENTALS OF HUMANOID ROBOTS CGT402FOUNDATIONS OF BLOCK CHAIN TECHNOLOGY AND APPLICATIONS AOT414 FINITE ELEMENT METHOD AOT424 HYPERSONIC AND HIGH TEMPERATURE AERODYNAMICS AOT434 MICROPROCESSOR AND ITS APPLICATIONS AOT444 INSTRUMENTATION AND MEASUREMENTS AOT454 AEROSPACE GUIDANCE AND CONTROLS AOT464 AUTOMATION AND FEEDBACK CONTROLS IN AEROSPACE AOT474 MACHINE LEARNING IN AEROSPACE ENGINEERING AGT414 DESIGN OF MACHINE ELEMENTS AGT424 REFRIGERATION AND AIR CONDITIONING AGT434 ORGANO ELECTRONICS AGT444 DRAINAGE ENGINEERING AGT454 WEB DESIGNING AND INTERNET APPLICATION AGT464 PROCESS ENGINEERING OF FRUITS AND VEGETABLES AET414 ANN AND DEEP LEARNING AET424 SOFT COMPUTING AET434 BIOINFORMATICS AET444 SPEECH AND AUDIO PROCESSING AET454 WIRELESS SENSOR NETWORKS AET464 NANOELECTRONICS AET474 INTEGRATED OPTICS AND PHOTONIC SYSTEMS AIT414 AI FOR CYBER SECURITY AIT424 INTRODUCTION TO BUSINESS ANALYTICS CST434 NETWORK SECURITY PROTOCOLS CST444 SOFT COMPUTING CST454 FUZZY SET THEORY AND APPLICATIONS CST464 EMBEDDED SYSTEMS CST474 COMPUTER VISION AMT414 GPU COMPUTING CST424 PROGRAMMING PARADIGMS AMT464 SOCIAL AND INFORMATION NETWORKS AUT414 SPECIAL TYPES OF VEHICLES AUT424 ENGINE AND VEHICLE MANAGEMENT SYSTEM AUT434 ADVANCED METAL JOINING TECHNIQUES AUT444 AGV AND AUTONOMOUS VEHICLE AUT454 SUPPLY CHAIN MANAGEMENT AUT464 AEROSPACE ENGINEERING AUT474 METROLOGY AND MEASUREMENTS BMT414 POWER ELECTRONICS AND APPLICATIONS BMT424 ARTIFICIAL ORGANS AND IMPLANTS BMT434COMPUTATIONAL TECHNIQUES FOR BIOMEDICAL SCIENCES BMT444 MEDICAL ROBOTICS BMT454 FUNDAMENTALS OF BIOMEMS AND MICROFLUIDICS BMT464 QUANTITATIVE PHYSIOLOGY BMT474ADVANCED MEDICAL IMAGING AND IMAGE PROCESSING TECHNIQUES BTT414 FOOD PROCESS TECHNOLOGY BTT424 BIOREFINERY ENGINEERING BTT434 BIOPHARMACEUTICAL TECHNOLOGY BTT444 EFFLUENT/ WASTE WATER TREATMENT BTT454 DAIRY PROCESS TECHNOLOGY BTT464 OPERATIONAL RESEARCH CHT414 AIR POLLUTION MONITORING AND CONTROL CHT424 PETROLEUM REFINERY ENGINEERING CHT434 COMPUTATIONAL FLUID DYNAMICS CHT444 POLYMER TECHNOLOGY CHT454 PROCESS UTILITY AND PIPING ENGINEERING CHT464 DRUGS AND PHARMACEUTICALS TECHNOLOGY CHT474 ELECTROCHEMICAL ENGINEERING CET414 ADVANCED STRUCTURAL DESIGN CET424 GEOENVIRONMENTAL ENGINEERING CET434 RAILWAY AND TUNNEL ENGINEERING CET444 IRRIGATION AND DRAINAGE ENGINEERING CET454 CONSTRUCTION METHODS AND EQUIPMENT CET464 AIRQUALITY MANAGEMENT CET474 URBAN PLANNING AND ARCHITECTURE CNT464 ENVIRONMENT MANAGEMENT CXT414 FUZZY SYSTEMS AND GENETIC ALGORITHMS CXT424 BIG DATA ANALYTICS CXT434 SOFTWARE TESTING AND QUALITY ASSURANCE CXT444 MULTIMEDIA COMPRESSION CXT454 PROTOTYPING INTERACTIVE SYSTEMS CXT464 PARALLEL PROGRAMMING CST414 DEEP LEARNING CDT464 BIG DATA SECURITY CCT434 STENOGRAPHY AND DIGITAL WATERMARKING EBT414 POWER ELECTRONICS AND APPLICATIONS EBT424 ARTIFICIAL ORGANS AND IMPLANTS EBT434 ADVANCED COMPUTER PROGRAMMING TECHNIQUES EBT444 MEDICAL ROBOTICS EBT454 FUNDAMENTALS OF BIOMEMS AND MICROFLUIDICS EBT464 CONTROL SYSTEMS ENGINEERING EBT474ADVANCED MEDICAL IMAGING AND IMAGE PROCESSING TECHNIQUES ECT414 BIOMEDICAL ENGINEERING ECT424 SATELLITE COMMUNICATION ECT434 SECURE COMMUNICATION ECT444 PATTERN RECOGNITION ECT454 RF CIRCUIT DESIGN ECT464 MIXED SIGNAL CIRCUIT DESIGN ECT474 ENTREPRENEURSHIP ERT414 ROBOTICS AND AUTOMATION ERT424 MEDICAL IMAGE PROCESSING ERT434 HYBRID AND ELECTRIC VEHICLES ERT444 COMPILER DESIGN ERT454 CRYPTOGRAPHY AND NETWORK SECURITY EOT414 MECHATRONICS EET444 ELECTRICAL MACHINE DESIGN EET434 SMART GRID TECHNOLOGIES EET414 ROBOTICS EET424 ENERGY MANAGEMENT EET454 SWITCHED MODE POWER CONVERTERS EET464 COMPUTER AIDED POWER SYSTEM ANALYSIS EET474 MACHINE LEARNING FTT414 FAT AND OIL PROCESSING TECHNOLOGY FTT424 FOOD STORAGE ENGINEERING FTT434 FOOD SUPPLY CHAIN MANAGEMENT FTT444 EXTENSION AND TRANSFER OF TECHNOLOGY FTT454 NEUTRACEUTICALS AND FUNCTIONAL FOODS FTT464 FOOD TOXICOLOGY FTT474 BEVERAGE PROCESSING IET414 BIOMATERIALS MET424 INDUSTRIAL HYDRAULICS IET434 TIME SERIES ANALYSIS IET444 MULTIVARIATE DATA ANALYSIS IET454 DESIGN AND ANALYSIS OF EXPERIMENTS MET464 MICRO AND NANO MANUFACTURING IET474 TOTAL QUALITY MANAGEMENT AND SIX SIGMAB23.04.2026 Thursday9.30am- 12.30pm ITT414 COMPUTER VISION ITT424 CYBER AND NETWORK FORENSICS ITT434 CLOUD COMPUTING ITT444 DATA MINING AND WAREHOUSING ITT454 SEARCH ENGINE OPTIMISATION ITT464 COMPUTER GRAPHICS ITT474 BLOCK CHAIN TECHNOLOGY ICT414 NUMERICAL COMPUTATION USING PYTHON ICT424 INDUSTRIAL NETWORKS ICT434 ARTIFICIAL INTELLIGENCE ICT444 POWER PLANT INSTRUMENTATION ICT454 IoT AND APPLICATIONS ICT464 IMAGE PROCESSING ICT474 REMOTE SENSING AND CONTROL MET414 QUALITY MANAGEMENT MET434 PRESSURE VESSEL AND PIPING DESIGN MET444 DATA ANALYTICS FOR ENGINEERS MET474 HEATING AND VENTILATION SYSTEMS MET454 INDUSTRIAL TRIBOLOGY MRT414 IOT AND APPLICATIONS MRT424 COMMUNICATION ENGINEERING MRT434 SPECIAL ELECTRICAL MACHINES AND APPLICATION MRT444 METALLURGY AND MATERIALS ENGINEERING MRT474 OPERATIONS MANAGEMENT MRT464 HYBRID AND ELECTRIC VEHICLES MRT454 STATISTICAL QUALITY CONTROL MTT454 ALLOY DEVELOPMENT MTT444LADLE METALLURGY AND CONTINUOUS CASTING OF STEELS MTT434 SPECIAL CASTING TECHNIQUES MTT424 FATIGUE, CREEP AND FRACTURE MTT414 METALLURGICAL FAILURE ANALYSIS MTT474 SURFACE ENGINEERING MTT464 HIGH TEMPERATURE MATERIALS MUT464 OFF ROAD VEHICLES MUT444 HUMAN RELATIONS MANAGEMENT MUT434 AVG AND AUTONOMOUS VEHICLES MUT414 EMBEDDED SYSTEM IN AUTOMOBILES MUT474 MODERN AUTOMOTIVE TECHNOLOGY MPT474 FACILITIES PLANNING MPT414 MACHINE TOOL DESIGN MPT424 ARTIFICIAL INTELIGENCE IN MANUFACTURING MPT434 ADVANCED OPERATION RESEARCH MPT444 RAPID PROTOTYPING, TOOLING AND MANUFACTURE MPT454 NUCLEAR ENGINEERING MPT464 PROJECT ENGINEERING AND MANAGEMENT SBT444 ELECTRICAL SYSTEMS IN SHIPS AND SHIPYARDS SBT434 SUBMARINE AND SUBMERSIBLES SBT424 SHIP PRODUCTION MANAGEMENT SBT414 JOINING TECHNIQUES IN SHIPBUILDING TECHNOLOGY POT474 ELECTROCHEMICAL ENGINEERING POT464 ENVIRONMENTAL IMPACT ANALYSIS POT454 FAILURE ANALYSIS OF POLYMERS POT444 POLYMER NAN COMPOSITES POT434 ADDITIVE MANUFACTURING POT424 PETROLEUM REFINERY ENGINEERING POT414 FIBRE TECHNOLOGY PET474 HVAC SYSTEMS PET464 TIME SERIES ANALYSIS PET454 ENERGY MATERIALS PET444 PRODUCTION ENGINEERING TOOLING PET434 LEAN AND AGILE MANUFACTURING PET424MODELLING AND ANALYSIS OF MANUFACTURING SYSTEMS PET414 ADDITIVE MANUFACTURING RAT474 DATA ANALYTICS FOR ENGINEERS RAT464 NONLINEAR CONTROL RAT454 CNC MACHINES RAT444 ROBOT MOTION PLANNING RAT434 INDUSTRIAL MANIPULATORS RAT424 BEHAVIORAL ROBOTICS RAT414 MACHINE VISION FST474 FUNDAMENTALS OF NANOSCIENCE FST464 MARINE CORROSION AND PREVENTION FST454 ENVIRONMENTAL POLLUTION AND CONTROL FST444 QUALITY ENGINEERING IN PRODUCTION SYSTEM FST434 NUMERICAL METHODS FOR PROCESS ENGINEERS FST424 FOOD AND BIOSAFETY FST414 LEGAL ASPECTS OF HSE CBT434 CONVERSATIONAL SYSTEMS CBT454 MARKETING RESEARCH & MARKETING MANAGEMENT RIT414 ADVANCED TOPICS IN ROBOTICS RIT424 BEHAVIORAL ROBOTICS RIT434 INDUSTRIAL MANIPULATORS RIT444 NONLINEAR CONTROL RIT454 CONNECTED AND AUTONOMOUS VEHICLES CGT414 DISTRIBUTED SYSTEMS FOR IOT EOT434 CRYPTOGRAPHY AOT416 AIRTRANSPORTATION AND AIRLINE MANAGEMENT AOT426 AIRTRAFFIC CONTROL AND MANAGEMENT AOT436 ENERGY METHODS IN STRUCTURAL MECHANICS AOT446 AIRCRAFT GENERAL MAINTENANCE AND PRACTICES AOT456ROTORY WING THEORY AND HELICOPTER AERODYNAMICS AOT466 INDUSTRIAL AERODYNAMICS AOT476 CIVIL AVIATION REGULATIONS AGT416 FUNDAMENTALS OF NANOSCIENCE AGT426 PUMP ENGINEERING AND HYDRAULIC CONTROL AGT436 ENVIRONMENTAL IMPACT ASSESSMENT AGT446 BLOWERS AND COMPRESSORS AGT456 SOIL AND WATER CONSERVATION ENGINEERING AGT466 FACILITIES PLANNING AET416 INDUSTRIAL DRIVES AND CONTROL AET426 CONTROL OF POWER CONVERTERS AET436 AVIATION ELECTRONICS AET446 DIGITAL CONTROL SYSTEM AET456 POWER PLANT INSTRUMENTATION AET466 MEMS AET476 ROBOTICS AND INDUSTRIAL AUTOMATION AIT426 MINING OF MASSIVE DATASETS CST436 PARALLEL COMPUTING CST446 DATA COMPRESSION TECHNIQUES AIT456 INTRODUCTION TO REINFORCEMENT LEARNING CST466 DATA MINING AIT476 BIO-INSPIRED OPTIMIZATION TECHNIQUES AMT416 HUMAN COMPUTER INTERACTION CST426 CLIENT SERVER ARCHITECTURE AMT456 INTRODUCTION TO ROBOTIC PROCESS AUTOMATION AUT416 OPERATIONS MANAGEMENT IN AUTO INDUSTRY AUT426 AUTOMOTIVE COMFORT AND SAFETY ENGINEERING AUT436 PRODUCT DESIGN AND LIFECYCLE MANAGEMENT AUT446 ADVANCED AUTOMOTIVE MANUFACTURING MATERIALS AUT456 TOTAL QUALITY MANAGEMENT AUT466 VEHICLE MAINTENANCE AUT476 MACHINE LEARNING BMT416 VLSI DESIGN BMT426 IMPLANTS AND PROSTHETIC ENGINEERING BMT436 RADIOLOGICAL EQUIPMENTS BMT446 BIOMEDICAL TRANSPORT PHENOMENA BMT456 PATTERN RECOGNITION BMT466 MECHATRONICS BMT476MEDICAL DEVICES, REGULATIONS AND QUALITY ASSURANCE BTT416 CANCER BIOLOGY BTT426 ADVANCED SEPARATION PROCESSES BTT436 BIOMATERIALS, TISSUE ENGINEERING AND STEM CELLS BTT446 BIOPROCESS INSTRUMENTATION BTT456 DRUG DESIGN AND DEVELOPMENT BTT466 CLINICAL RESEARCH AND DRUG TESTING CHT416ECONOMICS AND MANAGEMENT OF CHEMICAL INDUSTRIES CHT426 PETROCHEMICALS AND FERTILIZERS CHT436 MATHEMATICAL METHODS IN PROCESS ENGINEERING CHT446 COMPOSITE MATERIALS CHT456 CERAMIC TECHNOLOGY CHT466 TOTAL QUALITY MANAGEMENT CHT476 ENZYME ENGINEERING CET416 BRIDGE ENGINEERING CET426 ADVANCED FOUNDATION DESIGN CET436 TRANSPORTATION PLANNING CET446 INFORMATICS FOR INFRASTRUCTURE MANAGEMENT CET456 REPAIR AND REHABILITATION OF BUILDINGS CET466 ENVIRONMENTAL REMOTE SENSING CET476 BUILDING SERVICES CNT416 BIOREMEDIATION PRINCIPLES AND APPLICATIONS CXT416 DATA AND COMPUTER COMMUNICATION CXT436 PROCESSOR AND SYSTEM DESIGN CXT446 COMPUTER GAME DESIGN AND PROGRAMMING CXT456 OPTIMIZATION TECHNIQUES CST476 MOBILE COMPUTING CST416FORMAL METHODS AND TOOLS IN SOFTWARE ENGINEERING CCT416 CYBER LAW CCT456 BIG DATA SECURITY EBT416 VLSI DESIGN EBT426 ADVANCED BIOMEDICAL SIGNAL PROCESSING EBT436 IOT AND BIOMEDICAL APPLICATIONS EBT446 BIOMEDICAL TRANSPORT PHENOMENA EBT456 PATTERN RECOGNITION EBT476 ASSISTIVE MEDICAL DEVICES ECT416 MODERN COMMUNICATION SYSTEMS ECT426 REAL TIME OPERATING SYSTEMS ECT436 ADAPTIVE SIGNAL PROCESSING ECT446 MICROWAVE DEVICES AND CIRCUITS ECT456 SPEECH AND AUDIO PROCESSING ECT466 ANALOG CMOS DESIGN ECT476 ROBOTICS ERT416 MICRO-ELECTRO-MECHANICAL SYSTEMS ERT426 SPEECH AND AUDIO PROCESSING ERT436 COMMUNICATION ENGINEERING ERT446 PYTHON BASICS FOR MACHINE LEARNING ERT456 SYSTEM SOFTWARE EOT416 ROBOTICS EOT426 ELECTRIC AND HYBRID VEHICLES EOT436 IMAGE PROCESSING TECHNIQUE EET416 NONLINEAR SYSTEMS EET426 SPECIAL ELECTRIC MACHINES EET436 POWER QUALITY EET446 COMPUTER NETWORKS EET456 DESIGN OF POWER ELECTRONIC SYSTEMS EET466 HVDC AND FACTS EET476 ADVANCED ELECTRONIC DESIGN FTT416 FOOD QUALITY, SAFETY AND REGULATIONS FTT426ENTREPRENEURSHIP DEVELOPMENT IN FOOD TECHNOLOGY FTT436 BYE-PRODUCT UTILIZATION IN FOOD INDUSTRY FTT446 FOOD PLANT UTILITIES, MAINTENANCE AND SAFETY FTT456 FERMENTATION AND ENZYME TECHNOLOGY FTT466 BIOPROCESS ENGINEERING FTT476 MEMBRANE TECHNOLOGY IN FOOD ENGINEERING MET416 COMPOSITE MATERIALS MET426 ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING IET436 FINANCIAL AND MANAGERIAL ACCOUNTING IET446 MULTI-CRITERIA DECISION MAKING TECHNIQUES MET456 ROBOTICS AND AUTOMATIONC27.04.2026 Monday9.30am- 12.30pm MET466 TECHNOLOGY MANAGEMENT IET476GROUP TECHNOLOGY AND FLEXIBLE MANUFACTURING SYSTEMS ITT416 SOCIAL NETWORKS ANALYSIS ITT426 INTERNET OF THINGS ITT436 HIGH SPEED NETWORKS ITT446 ADHOC AND WIRELESS SENSOR NETWORKS ITT456 HUMAN COMPUTER INTERFACING ITT466 PARALLEL PROCESSING ITT476 NETWORK SCIENCE ICT416 SYSTEM IDENTIFICATION AND ADAPTIVE CONTROL ICT426INSTRUMENTATION AND CONTROL IN LARGE SCALE INDUSTRIES ICT436 MEMS ICT446 AUTOMOBILE INSTRUMENTATION ICT456 VHDL PROGRAMMING ICT466 BIOMEDICAL SIGNAL PROCESSING ICT476AEROSPACE ENGINEERING AND NAVIGATION INSTRUMENTATION MET436 AACOUSTICS AND NOISE CONTROL MET446 HEAT TRANSFER EQUIPMENT DESIGN MET476 CRYOGENIC ENGINEERING MRT416ADVANCED MICROPROCESSORS AND MICROCONTROLLERS MRT426 NANO-ELECTRONICS MRT436 NON LINEAR SYSTEMS AND CONTROL MRT446 DYNAMICS OF MACHINERY MRT456 ERGONOMICS MRT466 ENERGY MANAGEMENT AND AUDITING MRT476 TOTAL QUALITY MANAGEMENT AND SIX SIGMA MTT436 SMART MATERIALS MTT426 PARTICULATE PROCESSING MTT416 NON FERROUS PHYSICAL METALLURGY MTT476 FUELS, FURNACES AND REFRACTORIES MTT466 FRACTURE MECHANICS MTT456 MANUFACTURING METHODS MTT446 BIO-MATERIALS MUT416 AUTOMOTIVE AIR CONDITIONING MUT476 NVH IN AUTOMOBILES MUT466 AUTOMOTIVE ERGONOMICS AND SAFETY MUT456 THEORY OF VIBRATIONS MUT446 MARKETING MANAGEMENT MUT436 AUTOMOTIVE MECHATRONICS MUT426 OPERATIONS RESEARCH MPT416 METAL FORMING TECHNOLOGY MPT426 INDUSTRIAL HYDRAULICS MPT436 LEAN AND AGILE MANUFACTURING MPT476 ADVANCED METAL CASTING MPT466 TOTAL QUALITY MANAGEMENT MPT456 TRIBOLOGY MPT446 HUMAN RESOURCE MANAGEMENT SBT426 REFRIGERATION AND AIR CONDITIONING OF SHIPS SBT416 SHIP SURVEY ESTIMATION AND REPAIR POT476 MODERN METHODS OF INSTRUMENTATION POT466 PLASTICS PACKAGING TECHNOLOGY POT456 LIQUID CRYSTAL POLYMERS POT446 COMPOSITE MATERIALS POT436 POLYMERS FOR SPACE APPLICATIONS POT426 POLYMERS FOR ELECTRONIC APPLICATIONS POT416 SPECIALITY POLYMERS PET476 ENERGY MANAGEMENT PET466 MULTIVARIATE DATA ANALYSIS PET456 ADVANCED MATERIALS PET446 MACHINE TOOL DESIGN PET436 ERP PET426 ADVANCED MACHINE CONTROLS PET416 INTELLIGENT MANUFACTURING SYSTEMS RAT476 SUPERVISORY CONTROL RAT456 IOT AND APPLICATIONS RAT446 PROBABILISTIC ROBOTICS RAT436 DIGITAL CONTROL SYSTEMS RAT426 NATURAL LANGUAGE PROCESSING RAT416 DESIGN FOR MANUFACTURING AND ASSEMBLY FST476 SAFETY IN TEXTILE INDUSTRY FST466 COMPOSITE MATERIALS FST456 FIRE MODELLING FST446 RELIABILITY ENGINEERING FST436 DOCK SAFETY FST426CHEMICAL TECHONOLOGY AND MECHANICAL OPERATIONS FST416 TRANSPORTATION SYSTEM AND SAFETY SBT436 MARITIME LAW SBT446 DESIGN OF MACHINE ELEMENTS CBT436INTRODUCTION TO INNOVATION, IP MANAGEMENT & ENTREPRENEURSHIP CBT476 FINANCIAL MANAGEMENT RIT416 DESIGN FOR MANUFACTURING AND ASSEMBLY RIT426 NATURAL LANGUAGE PROCESSING RIT436 DIGITAL CONTROL SYSTEMS RIT446 SUPERVISORY CONTROL CCT426 BIG DATA SECURITY CGT426FOUNDATIONS OF MICROPROCESSORS & MICROCONTROLLERS AOT418 STABILITY AND CONTROL IN AIRCRAFT AOT428 AIRCRAFT PRODUCTION TECHNOLOGY AOT438 THEORY OF ELASTICITY AOT448 INTRODUCTION TO FLOW INSTABILITY AOT458 AIRFRAME MAINTENANCE AND REPAIR AOT468 HIGH TEMPERATURE MATERIALS AOT478 MECHANICS OF COMPOSITES AGT418 FOOD QUALITY AND SAFETY AGT428 DEVELOPMENT OF PROCESSED PRODUCTS AGT438 KINEMATICS AND DYNAMICS AGT448 GROUND WATER AND WELL ENGINEERING AGT458 IoT SECURITY AGT468 ENVIRONMENTAL STUDIES AND DISASTER MANAGEMENT ECT418 MECHATRONICS AET428 AUTOMOTIVE ELECTRONICS AET438 CYBER SECURITY AET448INSTRUMENTATION AND CONTROL FOR PETROCHEMICAL INDUSTRIES AET458 WIRELESS COMMUNICATION AET468 OPTICAL INSTRUMENTATION AET478 RENEWABLE ENERGY TECHNOLOGY CST418 HIGH PERFORMANCE COMPUTING CST428 BLOCK CHAIN TECHNOLOGIES CST438 IMAGE PROCESSING TECHNIQUE CST448 INTERNET OF THINGS AIT458 SPEECH PROCESSING AND ANALYTICS CST468 BIOINFORMATICS CST478 COMPUTATIONAL LINGUISTICS AUT418 VEHICLE TRANSPORT AND FLEET MANAGEMENT AUT428 VEHICLE BODY ENGINEERING AND SAFETY AUT438 POWER PLANT ENGINEERING AUT448 ADVANCED METAL JOINING TECHNIQUES AUT458 SIMULATION AND ANALYSIS OF AUTO COMPONENTS AUT468 HYDRAULICS AND PNEUMATICS AUT478 ADVANCED METAL CASTING BMT418 EMBEDDED SYSTEM DESIGN BMT428 ASSISTIVE MEDICAL DEVICES BMT438 REHABILITATION ENGINEERING BMT448 INTRODUCTION TO BIONANOTECHNOLOGY BMT458 RELIABILITY ENGINEERING BMT468 MODELLING OF PHYSIOLOGICAL SYSTEMS BMT478 HUMAN FACTORS IN ENGINEERING AND DESIGN BTT418 PROCESS SAFETY AND BIOETHICS BTT428 BIOBUSINESS BTT438 ENTREPRENEURSHIP AND IPR BTT448 BIOPHYSICS AND BIOSENSORS BTT458 BIOPROCESS QUALITY CONTROL BTT468 MODELLING AND SCALE UP OF BIOREACTORS CHT418 SOLID WASTE MANAGEMENT CHT428 NONCONVENTIONAL PETROLEUM RESOURCES CHT438 PROCESS OPTIMIZATION CHT448 NANOMATERIALS AND NANOTECHNOLOGY CHT458 SAFETY ENGINEERING OF PROCESS PLANTS CHT468 NOVEL SEPARATION TECHNIQUES CHT478 FUEL CELL TECHNOLOGY CET418 EARTHQUAKE RESISTANT DESIGN CET428 SOIL STRUCTURE INTERACTION CET438 AIRPORT, SEAPORT AND HARBOUR ENGINEERING CET448 HYDROCLIMATOLOGY CET458 SUSTAINABLE CONSTRUCTION CET468 CLIMATE CHANGE AND SUSTAINABILITY CET478 BUILDING INFORMATION MODELLING CNT428GIS AND REMOTE SENSING FOR ENVIRONMENTAL MANAGEMENT CXT418 DESIGNING HUMAN CENTERED SYSTEMS CXT428 EVOLUTIONARY COMPUTING CXT438 ADVANCED DATABASE SYSTEMS CST458 SOFTWARE TESTING EBT418 EMBEDDED SYSTEM DESIGN EBT428 DEEP LEARNING TECHNIQUES EBT438 REHABILITATION ENGINEERING EBT448 INTRODUCTION TO BIONANOTECHNOLOGY EBT458 RELIABILITY ENGINEERING EBT468 MODELLING OF PHYSIOLOGICAL SYSTEMS EBT478 HUMAN FACTORS IN ENGINEERING AND DESIGN ECT428 OPTIMIZATION TECHNIQUES ECT438 COMPUTER VISION ECT448 LOW POWER VLSI ECT458 INTERNET OF THINGS ECT468 RENEWABLE ENERGY SYSTEMS ECT478 ORGANIC ELECTRONICS ERT418 PLC AND DATA ACQUISITION SYSTEMS ERT428 POWER ELECTRONICS ERT438 LOW POWER VLSI ERT458 WIRELESS SENSOR NETWORKS ERT468 REAL TIME OPERATING SYSTEMS EET438 ENERGY STORAGE SYSTEMS EET478 BIG DATA ANALYTICS EET418 ELECTRIC AND HYBRID VEHICLES EET428 INTERNET OF THINGS EET448 ROBUST AND ADAPTIVE CONTROL EET458 SOLAR PV SYSTEMS EET468 INDUSTRIAL INSTRUMENTATION AND AUTOMATION FTT418 FOOD LAWS AND REGULATIONS FTT428 ICT APPLICATIONS IN FOOD INDUSTRY FTT438 FOOD INDUSTRY WASTE MANAGEMENT FTT448 PHYTOCHEMICALS IN FOOD FTT458 FOOD INFORMATICS FTT468 AUTOMATION IN FOOD INDUSTRY FTT478 MANAGEMENT OF FOOD PROCESSING INDUSTRY MET418 RELIABILITY ENGINEERING MET428 PROJECT PLANNING AND MANAGEMENT IET438 FINANCIAL ENGINEERING IET448 BIG DATA ANALYTICS IET458 INDUSTRIAL SCHEDULING MET468 ADDITIVE MANUFACTURING IET478 RISK ANALYSIS IN DECISION MAKING ITT418 INFORMATION STORAGE MANAGEMENT ITT428 SOFTWARE QUALITY ASSURANCE ITT438 SOFTWARE ARCHITECTURE ITT448 NETWORK ON CHIP ITT458 NATURAL LANGUAGE PROCESSING ITT468 BIO-INFORMATICS ITT478 DEEP LEARNINGD30.04.2026 Thursday9.30am- 12.30pm ICT418 MODERN METHODS OF INSTRUMENT ANALYSIS ICT428 HYDRAULICS AND PNEUMATICS ICT438 INDUSTRIAL DRIVES AND CONTROL ICT448 INSTRUMENTATION FOR AGRICULTURE ICT458 EMBEDDED SYSTEM DESIGN ICT468 BIOMECHANICS ICT478 OPTO ELECTRONICS AND INSTRUMENTATION MET438 FRACTURE MECHANICS MET448 GAS TURBINES AND JET PROPULSION MET478 POWER PLANT ENGINEERING MET458 ADVANCED ENERGY ENGINEERING MRT448 HEAT AND MASS TRANSFER MRT438 INDUSTRIAL INSTRUMENTATION MRT428 BIO-MECHATRONICS MRT418 WIRELESS AND SENSOR NETWORKS MRT478 ARTIFICIAL INTELLIGENCE MRT468 OPTIMIZATION TECHNIQUES MRT458 SUPPLY CHAIN MANAGEMENT MTT418 NON TRADITIONAL MACHINING MTT468 RUBBER AND TYRE TECHNOLOGY MTT458 CERAMICS AND GLASSES MTT448 ADVANCES IN METAL FORMING MTT438 COMPUTATIONAL MATERIALS SCIENCE MTT428 NON METALLIC MATERIALS MTT478 PROCESS MODELLING AND APPLICATIONS MUT478 ADVANCED ENERGY ENGINEERING MUT468 AUTOMOTIVE NAVIGATION AND CONTROLS MUT458COMPUTER SIMULATION AND ANALYSIS OF AUTOMOTIVE SYSTEMS MUT448 ADVANCED METAL JOINING TECHNIQUES MUT438 HYDROGEN FUELLED VEHICLES MUT428 METROLOGY AND INSTRUMENTATION MPT418 TOOL ENGINEERING MPT458 CREATIVITY AND PRODUCT ENGINEERING MPT448 BIOMEDICAL ENGINEERING MPT438 INDUSTRIAL AUTOMATION MPT428 NANOTECHNOLOGY SBT448 FINITE ELEMENT METHOD SBT438COMPUTER AIDED DESIGN AND COMPUTER AIDED MANUFACTURING SBT428 OCEAN WAVE HYDRODYNAMICS SBT418 EXPERIMENTAL TECHNIQUES ON SHIPS AND MODELS POT478 POLYMERS AND FUEL CELL TECHNOLOGY POT468 POLYMERS AND SEPARATION PROCESS POT458 SAFETY ENGINEERING OF PROCESS PLANTS POT448 POLYMER BLENDS AND COMPOSITES POT438 ADHESIVE SCIENCE AND TECHNOLOGY POT428 BIOMEDICAL AND BIOPOLYMERS POT418 POLYMERS AND ENVIRONMENT PET478 RENEWABLE ENERGY TECHNOLOGIES PET468 ADVANCED OPTIMIZATION TECHNIQUES PET458 PROCESSING OF ADVANCED MATERIALS PET448 DESIGN FOR MANUFACTURE PET438 MARKETING MANAGEMENT PET428 INTEGRATED MANUFACTURING SYSTEMS PET418 MAINTENANCE AND RELIABILITY ENGINEERING RAT478 AI FOR ROBOTICS RAT468 ADAPTIVE CONTROL RAT458 HUMAN-MACHINE INTERFACE RAT448 ROBOT NAVIGATION RAT438 CO-OPERATIVE ROBOTICS RAT428 VIBRATION RAT418 MECHATRONIC SYSTEM DESIGN FST478 SAFETY IN POWDER HANDLING FST468 OFFSHORE TECHNOLOGY FST458 SHIPS FIRE PREVENTION AND CONTROL FST448 TOTAL QUALITY MANAGEMENT FST438 DRILLING AND STORAGE FST428 FIRE RISK CALCULATIONS FST418 ADVANCED SAFETY ENGINEERING AND MANAGEMENT CBT468 BEHAVIORAL ECONOMICS CBT478SERVICE SCIENCE AND SERVICE OPERATIONS MANAGEMENT RIT418 MECHATRONIC SYSTEM DESIGN RIT428 VIBRATION RIT438 CO-OPERATIVE ROBOTICS RIT448 ROBOT NAVIGATION RIT458 INTRODUCTION TO HUMAN-ROBOT INTERACTION RIT468 ADAPTIVE CONTROL CGT418 MOBILE APPLICATION DEVELOPMENT USING ANDROID CONTROLLER OF EXAMINATIONS"
+      ]
+    },
+    {
+      "tag": "ktu_pg_old_scheme_extended_up_to_31_03_2026",
+      "patterns": [
+        "PG (Old Scheme) – Extended up to 31/03/2026",
+        "What is PG (Old Scheme) – Extended up to 31/03/2026",
+        "Tell me about PG (Old Scheme) – Extended up to 31/03/2026",
+        "Details of PG (Old Scheme) – Extended up to 31/03/2026",
+        "Explain PG (Old Scheme) – Extended up to 31/03/2026"
+      ],
+      "responses": [
+        "Notice: PG (Old Scheme) – Extended up to 31/03/2026"
+      ]
+    },
+    {
+      "tag": "ktu_detailed_time_table_of_b_tech_s2_r_s_examination_april_2026_",
+      "patterns": [
+        "Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme)",
+        "What is Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme)",
+        "Tell me about Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme)",
+        "Details of Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme)",
+        "Explain Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme)"
+      ],
+      "responses": [
+        "KTU/EX-II#1/957/2026 17.03.2026 NOTIFICATION Sub : APJAKTU - Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme) - Notification - reg: The Detailed Time Table of B.Tech S2 (R, S) Examination April 2026 (2024 scheme) is published herewith. Except Slot F, all the other slots are scheduled in the Afternoon, whereas Slot F will be held in the Forenoon. Sd/- Dr. VINU THOMAS Controller of Examinations * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. SlotCourse CodeCourse Name Date/Day Time GYMAT201 MATHEMATICS FOR ELECTRICAL SCIENCE-2 / PHYSICAL SCIENCE-2 GAMAT201 MATHEMATICS FOR INFORMATION SCIENCE - 2 GDMAT201 MATHEMATICS FOR LIFE SCIENCE - 2 GAPHT121 PHYSICS FOR INFORMATION SCIENCE GBPHT121 PHYSICS FOR ELECTRICAL SCIENCE GXCYT122 CHEMISTRY FOR INFORMATION SCIENCE / ELECTRICAL SCIENCE GZPHT121 PHYSICS FOR PHYSICAL SCIENCE / LIFE SCIENCE GCCYT122 CHEMISTRY FOR PHYSICAL SCIENCE GDCYT122 CHEMISTRY FOR LIFE SCIENCE GXEST203FOUNDATIONS OF COMPUTING: FROM HARDWARE ESSENTIALS TO WEB DESIGN GCEST203 ENGINEERING GRAPHICS AND COMPUTER AIDED DRAWING GDEST203 BASIC MECHANICAL & CIVIL ENGINEERING GBEST213 ENGINEERING MECHANICS GXEST204 PROGRAMMING IN C GZEST204 BASIC ELECTRICAL & ELECTRONICS ENGINEERING PCECT205 NETWORK THEORY PCCST205 DISCRETE MATHEMATICSB.Tech S2 (R,S) Exam April 2026 (2024 Scheme) B28.04.2026 Tuesday1.30pm- 4.00pm 02.05.2026 Saturday1.30pm- 4.00pmA C05.05.2026 Tuesday1.30pm- 4.00pm D08.05.2026 Friday2.00pm- 4.30pm PCITT205 DISCRETE MATHEMATICAL STRUCTURES PCEET205 MEASUREMENTS AND INSTRUMENTATION PCBMT205 ANATOMY AND PHYSIOLOGY FOR BIOMEDICAL ENGINEERING PCEBT205 BASIC ANATOMY & PHYSIOLOGY FOR BIOMEDICAL ENGINEERING PCBRT205 ANATOMY AND PHYSIOLOGY FOR BIOMEDICAL ENGINEERING PCEIT205 LOGIC CIRCUIT DESIGN PCCPT205 SENSORS AND ACTUATORS PCERT205 DIGITAL ELECTRONICS PCRAT205 SENSORS AND ACTUATORS FOR ROBOTICS PCRUT205 SENSOR TECHNOLOGY FOR ROBOTICS PCICT205 BASIC OF INSTRUMENTATION ENGINEERING PCCET205 MECHANICS OF SOLIDS PCCHT205 PROCESS CALCULATIONS PCMET205 MATERIAL SCIENCE AND ENGINEERING PCAUT205 AUTOMOBILE POWER PLANT PCMRT205 TRANSDUCERS & MEASUREMENTS PCBBT205 BIOPROCESS CALCULATIONS PCPET205 FUNDAMENTALS OF MANUFACTURING SYSTEMS AND PROCESSES PCFTT205 FOOD CHEMISTRYE12.05.2026 Tuesday1.30pm- 4.00pm PCAOT205 FUNDAMENTALS OF AERONAUTICS AND AIRCRAFT INSTRUMENTS PCAGT205 CROP PRODUCTION & PROTECTION TECHNOLOGIES PCIET205 MATERIALS AND MANUFACTURING ENGINEERING PCNST205 BASIC SHIP THEORY PCPOT205 POLYMERS & POLYMERISATION PRINCIPLES PCSFT205 PRINCIPLES OF SAFETY MANAGEMENT PCEOT205 ANALOG ELECTRONICS CIRCUITS F UCEST206 ENGINEERING ENTREPRENEURSHIP & IPR15.05.2026 Friday9.30am- 12.00pm CONTROLLER OF EXAMINATIONS"
+      ]
+    },
+    {
+      "tag": "ktu_result_is_published_mba_s2_s_fe_examination_jan_2026",
+      "patterns": [
+        "Result is published MBA S2 (S,FE) Examination Jan 2026",
+        "What is Result is published MBA S2 (S,FE) Examination Jan 2026",
+        "Tell me about Result is published MBA S2 (S,FE) Examination Jan 2026",
+        "Details of Result is published MBA S2 (S,FE) Examination Jan 2026",
+        "Explain Result is published MBA S2 (S,FE) Examination Jan 2026"
+      ],
+      "responses": [
+        "KTU/EX-VII#3/1311/2025 19.04.2026 NOTIFICATION Sub: APJAKTU - Examination (PG-Valuation) - Publication of Result - MBA S2 (S,FE) Examination Jan 2026 - Notified - Reg: It is hereby notified that the result of MBA S2 (S,FE) Examination Jan 2026 is published herewith. The detailed results are available under the 'Result' tab of the University website and in the Student/College login. Answer Book Copy The portal is now open to the students for submitting requests for Answer Book Copy. Students are requested to adhere to the following schedule for submission. Without Fine : Up to 23.04.2026 With Fine : Up to 26.04.2026 With Super Fine: Up to 28.04.2026 SalilRosh T S Deputy Registrar * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_detailed_time_table_of_mba_s2_r_s_2020_scheme_incl_p",
+      "patterns": [
+        "APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026",
+        "What is APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026",
+        "Tell me about APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026",
+        "Details of APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026",
+        "Explain APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026"
+      ],
+      "responses": [
+        "KTU/SOEX-II/4033/2017 20.04.2026 NOTIFICATION Sub : APJAKTU - Detailed Time Table of MBA S2 (R, S) (2020 Scheme) Incl PT (S, FE) Examinations April 2026 - Notification - reg: The Detailed Time Table of MBA S2 (R, S) (2020 Scheme) ​ Including PT (S,FE) Examinations April 2026 is published herewith. Sd/- Anand B Deputy Registrar * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature. Slot Course Code Course Name Date/Day Time A 20MBA102 Marketing Management04.05.2026 Monday9.30am- 12.30pm B 20MBA104 Financial Management07.05.2026 Thursday9.30am- 12.30pm C 20MBA106 Human Resource Management11.05.2026 Monday9.30am- 12.30pm D 20MBA108 Operations Management14.05.2026 Thursday9.30am- 12.30pm E 20MBA110 Operations Research16.05.2026 Saturday9.30am- 12.30pm F 20MBA112 Research for Managerial Decisions19.05.2026 Tuesday9.30am- 12.30pm G 20MBA114 Entrepreneurship Development21.05.2026 Thursday9.30am- 12.30pmMBA S2 (R,S) Exam April 2026 (2020 Scheme) Including Part-Time CONTROLLER OF EXAMINATIONS"
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_exam_registrations_for_exam",
+      "patterns": [
+        "APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme)",
+        "What is APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme)",
+        "Tell me about APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme)",
+        "Details of APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme)",
+        "Explain APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme)"
+      ],
+      "responses": [
+        "KTU/EX-VI#1/2899/2022 20.04.2026 NOTIFICATION Sub : APJAKTU - Examination - (UG) Valuation - Exam registrations for Exam - B.Tech S3(S) Exam May 2026 (2024 Scheme) - Notified - Reg: It is hereby informed that Supplementary Exam Registration for B.Tech S3(S) Exam May 2026 (2024 Scheme) is opened as scheduled below :- Exam Definition Date for submission by Students Without Fine With Fine With Super Fine B.Tech S3(S) Exam May 2026 (2024 Scheme) 27-04-2026 30-04-2026 02-05-2026 N ote For supplementary Students 1 . Supplementary students can do exam registration including the payment of fee through student login. 2 . Once supplementary registration is submitted through student login, the registration process including payment of fee should be completed through student login itself. 3 . Registration will be completed only after successful payment of fee made through student login in the portal. 4 . Students are directed to ensure that payment is successful before the last date of registration mentioned in notification for the students. ** Requests for additional time to complete exam registration will not be entertained under any circumstances. SalilRosh T S Deputy Registrar * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_examination_ug_valuation_publication_of_results_digi",
+      "patterns": [
+        "APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified",
+        "What is APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified",
+        "Tell me about APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified",
+        "Details of APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified",
+        "Explain APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified"
+      ],
+      "responses": [
+        "KTU/EX-V#10/3148/2025 18.04.2026 NOTIFICATION Sub : APJAKTU - Examination (UG-Valuation) - Publication of Results - Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) - Notified - Reg:- It is hereby notified that the results of Digital 101 MOOC Course for B.Tech/BBA/BCA/B.Des First-Year Students (2024 Curriculum) are published. The detailed results are available in Student's and College login. SalilRosh T S Deputy Registrar * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_supplementary_exam_registration_of_mba_s2_r_s_examination_ap",
+      "patterns": [
+        "Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 opened",
+        "What is Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 opened",
+        "Tell me about Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 opened",
+        "Details of Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 opened",
+        "Explain Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 opened"
+      ],
+      "responses": [
+        "KTU/EX-VII#5/745/2025 22.04.2026 NOTIFICATION Sub : APJAKTU - Examination - Valuation (PG) - Supplementary Exam registration of MBA S2 (R,S) Examination April 2026 - Notified - Reg:- It is hereby informed that Exam Registration to the following Examination April 2026 is opened for Supplementary Students, as scheduled below:- Exam Definition Date for submission by Supplementary Students Without Fine With Fine With Super Fine MBA S2 (R,S) Examination April 2026 24.04.2026 27.04.2026 29.04.2026 Note for supplementary students 1. Supplementary students can do exam registration including the payment of fee through student login. 2. Once supplementary registration is submitted through student login, the registration process including payment of fee should be completed through student login itself. 3. Registration will be completed only after successful payment of fee made through student login in the portal. 4. Students are directed to ensure that payment is successful before the last date of registration mentioned in notification for the students. **Requests for additional time to complete exam registration will not be entertained under any circumstances. SalilRosh T S Deputy Registrar * This is a computer system (Digital File) generated letter. Hence there is no need for a physical signature."
+      ]
+    },
+    {
+      "tag": "ktu_apjaktu_detailed_time_table_of_b_tech_s4_pt_s_fe_exam_april_",
+      "patterns": [
+        "APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)",
+        "What is APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)",
+        "Tell me about APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)",
+        "Details of APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)",
+        "Explain APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)"
+      ],
+      "responses": [
+        "Notice: APJAKTU - Detailed Time Table of B.Tech S4 (PT) (S, FE) Exam, April 2026 (2019 Scheme)"
+      ]
+    }
+  ]
+}

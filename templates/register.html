@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register · Octagon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:    #0f1f3d;
+            --blue:    #1a56db;
+            --accent:  #4f8fff;
+            --text:    #111827;
+            --sub:     #6b7280;
+            --border:  #e5e7eb;
+            --bg:      #f8f9fc;
+            --white:   #ffffff;
+            --radius:  14px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ── Left panel ── */
+        .left {
+            width: 46%;
+            min-width: 400px;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 48px 56px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 4px 0 40px rgba(0,0,0,0.06);
+            overflow-y: auto;
+        }
+
+        .left::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--navy), var(--accent));
+        }
+
+        .brand {
+            font-size: 90px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin-bottom: 32px;
+            line-height: 1;
+        }
+
+        .brand span { color: var(--accent); }
+
+        .heading h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--sub);
+            margin-bottom: 36px;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* ── Form ── */
+        .field { margin-bottom: 18px; }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+        }
+
+        .field input::placeholder { color: #b0b7c3; }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(79,143,255,0.15);
+            background: var(--white);
+        }
+
+        .select-wrap { position: relative; }
+
+        .select-wrap::after {
+            content: '▾';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--sub);
+            pointer-events: none;
+            font-size: 14px;
+        }
+
+        /* ── Role cards ── */
+        .role-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .role-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .role-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0; height: 0;
+        }
+
+        .role-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 12px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg);
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .role-label .role-icon { font-size: 26px; }
+
+        .role-label .role-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--sub);
+        }
+
+        .role-label .role-desc {
+            font-size: 11px;
+            color: #b0b7c3;
+            line-height: 1.4;
+        }
+
+        .role-card input:checked + .role-label {
+            border-color: var(--accent);
+            background: rgba(79,143,255,0.06);
+            box-shadow: 0 0 0 3px rgba(79,143,255,0.12);
+        }
+
+        .role-card input:checked + .role-label .role-name {
+            color: var(--accent);
+        }
+
+        /* Hidden select for form submission */
+        #roleSelect { display: none; }
+
+        /* ── Submit ── */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--navy);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            letter-spacing: 0.3px;
+            margin-bottom: 22px;
+        }
+
+        .submit-btn:hover { background: #162a52; transform: translateY(-1px); }
+        .submit-btn:active { transform: translateY(0); }
+
+        .footer-text {
+            text-align: center;
+            font-size: 13px;
+            color: var(--sub);
+        }
+
+        .footer-text a {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover { text-decoration: underline; }
+
+        /* ── Right panel ── */
+        .right {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #0a1628 0%, #0f2044 40%, #0a1e3d 100%);
+        }
+
+        .right-illustration {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .illus-svg {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .quote-block {
+            position: absolute;
+            bottom: 48px;
+            left: 44px;
+            right: 44px;
+        }
+
+        .quote-mark {
+            font-size: 64px;
+            line-height: 0.6;
+            color: var(--accent);
+            font-family: Georgia, serif;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .quote-text {
+            font-size: clamp(18px, 2.2vw, 24px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .quote-attr {
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Animations ── */
+        .left > * {
+            animation: fadeUp 0.45s ease both;
+        }
+
+        .brand       { animation-delay: 0.00s; }
+        .heading     { animation-delay: 0.05s; }
+        .subtitle    { animation-delay: 0.08s; }
+        .field       { animation-delay: 0.10s; }
+        .role-label-title { animation-delay: 0.12s; }
+        .role-cards  { animation-delay: 0.14s; }
+        .submit-btn  { animation-delay: 0.18s; }
+        .footer-text { animation-delay: 0.21s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+            .right { display: none; }
+            .left { width: 100%; min-width: unset; padding: 48px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left">
+        <div class="brand">OCT<span>AGON</span></div>
+
+        <div class="heading"><h2>Create Account</h2></div>
+        <p class="subtitle">Join as a student or teacher and get started.</p>
+
+        <form method="POST" id="registerForm">
+
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter your username" required autocomplete="username">
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter a strong password" required autocomplete="new-password">
+            </div>
+
+            <p class="role-label-title" style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--sub);margin-bottom:10px;">I am a</p>
+
+            <div class="role-cards">
+                <label class="role-card">
+                    <input type="radio" name="role_visual" value="teacher" onchange="syncRole(this)">
+                    <div class="role-label">
+                        <span class="role-icon">🎓</span>
+                        <span class="role-name">Teacher</span>
+                        <span class="role-desc">Manage classes &amp; attendance</span>
+                    </div>
+                </label>
+                <label class="role-card">
+                    <input type="radio" name="role_visual" value="student" onchange="syncRole(this)">
+                    <div class="role-label">
+                        <span class="role-icon">📚</span>
+                        <span class="role-name">Student</span>
+                        <span class="role-desc">Track attendance &amp; marks</span>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Teacher verification code -->
+            <div class="field" id="teacherCodeField" style="display:none;">
+                <label>Teacher Verification Code</label>
+                <input
+                    type="password"
+                    id="teacherCode"
+                    placeholder="Enter faculty access code"
+                    autocomplete="off"
+                >
+                <p id="teacherCodeError" style="display:none;font-size:12px;color:#f87171;margin-top:6px;">
+                    ✕ &nbsp;Incorrect code. Please try again.
+                </p>
+            </div>
+
+            <!-- Student only: dept + year -->
+            <div id="studentClassBlock" style="display:none;">
+                <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--sub);margin-bottom:10px;">Your Class</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div class="field" style="margin-bottom:0;">
+                        <label>Department</label>
+                        <div class="select-wrap">
+                            <select name="department" id="studentDept">
+                                <option value="">Select</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="ME">ME</option>
+                                <option value="CE">CE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="IT">IT</option>
+                                <option value="AIDS">AIDS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field" style="margin-bottom:0;">
+                        <label>Year</label>
+                        <div class="select-wrap">
+                            <select name="year" id="studentYear">
+                                <option value="">Select</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <p id="classError" style="display:none;font-size:12px;color:#f87171;margin-top:8px;">
+                    ✕ &nbsp;Please select your department and year.
+                </p>
+            </div>
+
+            <input type="hidden" name="teacher_classes" value="[]">
+
+            <select name="role" id="roleSelect" required style="display:none;">
+                <option value="">Select role</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select>
+
+            <button class="submit-btn" type="submit" style="margin-top:20px;">Create Account →</button>
+        </form>
+
+        <div class="footer-text">
+            Already have an account? <a href="/">Login here</a>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="right-illustration">
+            <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" class="illus-svg">
+                <circle cx="480" cy="80" r="48" fill="#f0f4ff" opacity="0.15"/>
+                <circle cx="80"  cy="60"  r="2" fill="white" opacity="0.5"/>
+                <circle cx="160" cy="30"  r="1.5" fill="white" opacity="0.4"/>
+                <circle cx="300" cy="50"  r="2" fill="white" opacity="0.5"/>
+                <circle cx="420" cy="100" r="1.5" fill="white" opacity="0.35"/>
+                <circle cx="520" cy="40"  r="2" fill="white" opacity="0.4"/>
+                <circle cx="200" cy="90"  r="1.5" fill="white" opacity="0.3"/>
+                <circle cx="560" cy="130" r="1.5" fill="white" opacity="0.4"/>
+                <circle cx="50"  cy="140" r="2" fill="white" opacity="0.35"/>
+                <circle cx="360" cy="20"  r="1.5" fill="white" opacity="0.5"/>
+                <rect x="100" y="260" width="400" height="280" rx="4" fill="#1e3a6e" opacity="0.9"/>
+                <polygon points="80,260 300,160 520,260" fill="#162d55" opacity="0.95"/>
+                <rect x="140" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="200" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="260" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="320" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="380" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="438" y="270" width="22" height="270" rx="3" fill="#2a4a80" opacity="0.8"/>
+                <rect x="80"  y="536" width="440" height="12" rx="2" fill="#162d55"/>
+                <rect x="60"  y="548" width="480" height="12" rx="2" fill="#11234a"/>
+                <rect x="256" y="420" width="88" height="120" rx="4" fill="#0f1f3d"/>
+                <rect x="260" y="424" width="80" height="112" rx="3" fill="#1a3668" opacity="0.5"/>
+                <rect x="130" y="300" width="60" height="70" rx="3" fill="#fbbf24" opacity="0.25"/>
+                <rect x="134" y="304" width="52" height="62" rx="2" fill="#fbbf24" opacity="0.15"/>
+                <rect x="220" y="300" width="60" height="70" rx="3" fill="#fbbf24" opacity="0.25"/>
+                <rect x="224" y="304" width="52" height="62" rx="2" fill="#fbbf24" opacity="0.15"/>
+                <rect x="320" y="300" width="60" height="70" rx="3" fill="#fbbf24" opacity="0.25"/>
+                <rect x="324" y="304" width="52" height="62" rx="2" fill="#fbbf24" opacity="0.15"/>
+                <rect x="410" y="300" width="60" height="70" rx="3" fill="#fbbf24" opacity="0.25"/>
+                <rect x="414" y="304" width="52" height="62" rx="2" fill="#fbbf24" opacity="0.15"/>
+                <rect x="266" y="120" width="68" height="50" rx="3" fill="#162d55"/>
+                <circle cx="300" cy="143" r="18" fill="#0f1f3d" stroke="#4f8fff" stroke-width="2" opacity="0.8"/>
+                <line x1="300" y1="143" x2="300" y2="130" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="300" y1="143" x2="310" y2="148" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                <rect x="0" y="560" width="600" height="140" fill="#0a1628"/>
+                <polygon points="240,560 360,560 420,700 180,700" fill="#111f3a"/>
+                <rect x="58"  y="470" width="10" height="90"  fill="#0d1e3a"/>
+                <ellipse cx="63"  cy="455" rx="28" ry="35" fill="#0d4a2a" opacity="0.85"/>
+                <rect x="528" y="470" width="10" height="90"  fill="#0d1e3a"/>
+                <ellipse cx="533" cy="455" rx="28" ry="35" fill="#0d4a2a" opacity="0.85"/>
+                <line x1="170" y1="480" x2="170" y2="560" stroke="#2a3a5a" stroke-width="3"/>
+                <circle cx="170" cy="475" r="8" fill="#fbbf24" opacity="0.6"/>
+                <line x1="430" y1="480" x2="430" y2="560" stroke="#2a3a5a" stroke-width="3"/>
+                <circle cx="430" cy="475" r="8" fill="#fbbf24" opacity="0.6"/>
+                <line x1="300" y1="80" x2="300" y2="122" stroke="#4f8fff" stroke-width="2"/>
+                <polygon points="300,80 330,90 300,100" fill="#4f8fff" opacity="0.8"/>
+            </svg>
+            <div class="quote-block">
+                <span class="quote-mark">"</span>
+                <p class="quote-text">The beautiful thing about learning<br>is that no one can take it away from you.</p>
+                <p class="quote-attr">— B.B. King</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function syncRole(el) {
+            const role       = el.value;
+            const roleSelect = document.getElementById('roleSelect');
+            const codeField  = document.getElementById('teacherCodeField');
+            const codeInput  = document.getElementById('teacherCode');
+            const codeError  = document.getElementById('teacherCodeError');
+            const stuBlock   = document.getElementById('studentClassBlock');
+            const deptSel    = document.getElementById('studentDept');
+            const yearSel    = document.getElementById('studentYear');
+
+            roleSelect.value = role;
+
+            if (role === 'teacher') {
+                codeField.style.display = 'block';
+                codeInput.required = true;
+                stuBlock.style.display = 'none';
+                // Clear and un-require student fields so they don't block submission
+                deptSel.required = false;
+                yearSel.required = false;
+                deptSel.value = '';
+                yearSel.value = '';
+            } else {
+                codeField.style.display = 'none';
+                codeInput.required = false;
+                codeInput.value = '';
+                codeError.style.display = 'none';
+                stuBlock.style.display = 'block';
+                // Students MUST pick dept + year
+                deptSel.required = true;
+                yearSel.required = true;
+            }
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const role = document.getElementById('roleSelect').value;
+
+            // Block if no role chosen
+            if (!role) {
+                e.preventDefault();
+                alert('Please select a role (Teacher or Student).');
+                return;
+            }
+
+            if (role === 'teacher') {
+                const code  = document.getElementById('teacherCode').value;
+                const error = document.getElementById('teacherCodeError');
+                if (code !== 'iamrealteacher') {
+                    e.preventDefault();
+                    error.style.display = 'block';
+                    document.getElementById('teacherCode').focus();
+                } else {
+                    error.style.display = 'none';
+                }
+
+            } else {
+                // Student — validate dept + year are selected
+                const dept = document.getElementById('studentDept').value;
+                const year = document.getElementById('studentYear').value;
+                const classError = document.getElementById('classError');
+                if (!dept || !year) {
+                    e.preventDefault();
+                    classError.style.display = 'block';
+                    if (!dept) document.getElementById('studentDept').style.borderColor = '#ef4444';
+                    if (!year) document.getElementById('studentYear').style.borderColor = '#ef4444';
+                    return;
+                }
+                classError.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Attendance · Octagon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:    #0f1f3d;
+            --navy2:   #162a52;
+            --accent:  #4f8fff;
+            --glow:    rgba(79,143,255,0.12);
+            --green:   #10b981;
+            --green-lt:#d1fae5;
+            --red:     #ef4444;
+            --red-lt:  #fee2e2;
+            --amber:   #f59e0b;
+            --amber-lt:#fef3c7;
+            --text:    #111827;
+            --sub:     #6b7280;
+            --border:  #e5e7eb;
+            --bg:      #f3f4f8;
+            --white:   #ffffff;
+            --radius:  14px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            height: 64px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+        }
+
+        .topbar-brand { font-size: 18px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        .topbar-brand span { color: var(--accent); }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 99px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+        /* ── Main ── */
+        .main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 28px 80px;
+        }
+
+        /* ── Page header ── */
+        .page-header {
+            margin-bottom: 28px;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .page-header p { margin-top: 6px; font-size: 14px; color: var(--sub); }
+
+        /* ── Legend ── */
+        .legend {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.4s 0.05s ease both;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            color: var(--sub);
+        }
+
+        .legend-dot {
+            width: 14px; height: 14px;
+            border-radius: 4px;
+        }
+
+        /* ── Table card ── */
+        .table-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow-x: auto;
+            animation: fadeUp 0.4s 0.08s ease both;
+        }
+
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .table-header h2 { font-size: 15px; font-weight: 700; }
+
+        .changes-badge {
+            display: none;
+            background: var(--amber-lt);
+            color: var(--amber);
+            border-radius: 99px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .save-btn {
+            padding: 10px 22px;
+            background: var(--navy);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            display: none;
+        }
+
+        .save-btn:hover { background: var(--navy2); transform: translateY(-1px); }
+        .save-btn.visible { display: inline-block; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        thead tr { background: var(--bg); }
+
+        th {
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub);
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th.name-col { text-align: left; }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td.name-cell {
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .student-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .student-avatar {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #f9fafb; }
+
+        /* ── Toggle cell ── */
+        .toggle-cell {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle-dot {
+            width: 28px; height: 28px;
+            border-radius: 7px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.15s;
+            border: 2px solid transparent;
+        }
+
+        .toggle-dot.present {
+            background: var(--green-lt);
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        .toggle-dot.absent {
+            background: var(--bg);
+            color: #ccc;
+            border-color: var(--border);
+        }
+
+        .toggle-dot.modified {
+            outline: 3px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        .toggle-cell:hover .toggle-dot { opacity: 0.75; transform: scale(1.12); }
+
+        /* ── Session header in table ── */
+        .session-th {
+            min-width: 60px;
+            cursor: default;
+        }
+
+        .session-date {
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--sub);
+            display: block;
+        }
+
+        /* ── Empty state ── */
+        .empty-state {
+            padding: 60px;
+            text-align: center;
+            color: var(--sub);
+            font-size: 14px;
+        }
+
+        .empty-state .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+
+        /* ── Confirmation overlay ── */
+        .confirm-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .confirm-overlay.open { display: flex; }
+
+        .confirm-modal {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+            animation: slideUp 0.25s cubic-bezier(0.22,1,0.36,1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(24px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        .confirm-icon { font-size: 40px; margin-bottom: 16px; }
+
+        .confirm-modal h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .confirm-modal p {
+            font-size: 14px;
+            color: var(--sub);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .confirm-summary {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .confirm-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .confirm-cancel {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            color: var(--sub);
+            transition: all 0.2s;
+        }
+
+        .confirm-cancel:hover { background: var(--bg); }
+
+        .confirm-ok {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: var(--navy);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .confirm-ok:hover { background: var(--navy2); }
+
+        /* ── Success toast ── */
+        .toast {
+            display: none;
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: var(--green);
+            color: #fff;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(16,185,129,0.35);
+            z-index: 300;
+            animation: fadeUp 0.3s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+    <div class="topbar-brand">OCT<span>AGON</span></div>
+    <a href="/teacher" class="back-btn">← Dashboard</a>
+</div>
+
+<div class="main">
+
+    <div class="page-header">
+        <p class="eyebrow">// Edit Mode</p>
+        <h1>Edit Attendance</h1>
+        <p>
+            {% if dept and year %}
+                {{ dept }} · Year {{ year }} &nbsp;·&nbsp;
+            {% endif %}
+            Click any cell to toggle a student's attendance. Changes are highlighted in orange until saved.
+        </p>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot" style="background:var(--green-lt);border:2px solid var(--green);"></div>
+            Present
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background:var(--bg);border:2px solid var(--border);"></div>
+            Absent
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background:var(--bg);border:2px solid var(--border);outline:3px solid var(--amber);outline-offset:2px;border-radius:4px;"></div>
+            Modified (unsaved)
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-header">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <h2>Attendance Grid</h2>
+                <span class="changes-badge" id="changesBadge">0 changes</span>
+            </div>
+            <button class="save-btn" id="saveBtn" onclick="openConfirm()">Save Changes →</button>
+        </div>
+
+        {% if not students %}
+            <div class="empty-state">
+                <div class="icon">📭</div>
+                No students found for this class.
+            </div>
+        {% elif not sessions_list %}
+            <div class="empty-state">
+                <div class="icon">📅</div>
+                No sessions have been created yet.
+            </div>
+        {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th class="name-col">Student</th>
+                    {% for sess in sessions_list %}
+                    <th class="session-th" title="Session {{ sess['session_code'] }}">
+                        <span class="session-date">
+                            {{ sess['start_time']|int|strftime('%d %b') if sess['start_time'] else '—' }}
+                        </span>
+                        S{{ loop.index }}
+                    </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td class="name-cell">
+                        <div class="student-chip">
+                            <div class="student-avatar">{{ student['username'][0]|upper }}</div>
+                            {{ student['username'] }}
+                        </div>
+                    </td>
+                    {% for sess in sessions_list %}
+                    {% set is_present = student['id'] in matrix and sess['id'] in matrix[student['id']] %}
+                    <td class="toggle-cell"
+                        data-student="{{ student['id'] }}"
+                        data-session="{{ sess['id'] }}"
+                        data-original="{{ 'true' if is_present else 'false' }}"
+                        data-current="{{ 'true' if is_present else 'false' }}"
+                        onclick="toggleCell(this)">
+                        <div class="toggle-dot {{ 'present' if is_present else 'absent' }}">
+                            {{ '✓' if is_present else '' }}
+                        </div>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Confirmation modal -->
+<div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-modal">
+        <div class="confirm-icon">⚠️</div>
+        <h3>Save attendance changes?</h3>
+        <p>This will permanently update the attendance records. Please review the summary below before confirming.</p>
+        <div class="confirm-summary" id="confirmSummary"></div>
+        <div class="confirm-buttons">
+            <button class="confirm-cancel" onclick="closeConfirm()">Cancel</button>
+            <button class="confirm-ok" onclick="saveChanges()">Yes, Save →</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ &nbsp;Attendance updated successfully!</div>
+
+<script>
+    let changes = {};  // key: "studentId_sessionId" → { student_id, session_id, present }
+
+    function toggleCell(cell) {
+        const studentId = parseInt(cell.dataset.student);
+        const sessionId = parseInt(cell.dataset.session);
+        const current   = cell.dataset.current === 'true';
+        const original  = cell.dataset.original === 'true';
+        const newVal    = !current;
+        const key       = `${studentId}_${sessionId}`;
+
+        cell.dataset.current = newVal ? 'true' : 'false';
+
+        const dot = cell.querySelector('.toggle-dot');
+        dot.className = 'toggle-dot ' + (newVal ? 'present' : 'absent');
+        dot.textContent = newVal ? '✓' : '';
+
+        if (newVal !== original) {
+            changes[key] = { student_id: studentId, session_id: sessionId, present: newVal };
+            dot.classList.add('modified');
+        } else {
+            delete changes[key];
+            dot.classList.remove('modified');
+        }
+
+        updateUI();
+    }
+
+    function updateUI() {
+        const count  = Object.keys(changes).length;
+        const badge  = document.getElementById('changesBadge');
+        const btn    = document.getElementById('saveBtn');
+        badge.textContent = count + (count === 1 ? ' change' : ' changes');
+        badge.style.display = count ? 'inline-block' : 'none';
+        btn.classList.toggle('visible', count > 0);
+    }
+
+    function openConfirm() {
+        const vals    = Object.values(changes);
+        const added   = vals.filter(c => c.present).length;
+        const removed = vals.filter(c => !c.present).length;
+
+        document.getElementById('confirmSummary').innerHTML =
+            `<strong>${Object.keys(changes).length} total change(s)</strong><br>` +
+            (added   ? `✅ ${added} student(s) will be marked <strong>present</strong><br>` : '') +
+            (removed ? `❌ ${removed} student(s) will be marked <strong>absent</strong>` : '');
+
+        document.getElementById('confirmOverlay').classList.add('open');
+    }
+
+    function closeConfirm() {
+        document.getElementById('confirmOverlay').classList.remove('open');
+    }
+
+    async function saveChanges() {
+        closeConfirm();
+
+        const resp = await fetch('/edit_attendance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ changes: Object.values(changes) })
+        });
+
+        if (resp.ok) {
+            // Commit changes — reset originals
+            document.querySelectorAll('.toggle-cell').forEach(cell => {
+                cell.dataset.original = cell.dataset.current;
+                cell.querySelector('.toggle-dot').classList.remove('modified');
+            });
+            changes = {};
+            updateUI();
+
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+    }
+
+    // Close confirm on backdrop click
+    document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeConfirm();
+    });
+</script>
+
+</body>
+</html>
